@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_quotes"
+        android:icon="@drawable/quotes"
+        android:title="Quotes" />
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/heart_24"
+        android:title="Favorites" />
+    <item
+        android:id="@+id/navigation_notification"
+        android:icon="@drawable/bell_24"
+        android:title="Notification" />
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/settings_24"
+        android:title="Setting" />
+</menu>

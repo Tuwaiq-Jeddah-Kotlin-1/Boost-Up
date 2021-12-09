@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/heart_24.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/quote-right_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/quotes.xml" value="0.26197916666666665" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/quotess.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/settings_24.xml" value="0.152" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/user_24.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_main.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_favorites_list.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.25" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/menu/bottom_bar_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
