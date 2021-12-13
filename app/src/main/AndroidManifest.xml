@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotivationalQuotesApp">
         <activity
-            android:name="com.mahila.motivationalQuotesApp.view.MainActivity"
+            android:name=".view.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AuthenticationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
