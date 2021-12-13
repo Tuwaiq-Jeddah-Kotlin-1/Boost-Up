@@ -5,25 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.mahila.motivationalQuotesApp.databinding.FragmentFavoritesListBinding
+import androidx.fragment.app.viewModels
+import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
+import com.mahila.motivationalQuotesApp.viewModel.UserViewModel
 
 
-class FavoritesListFragment : Fragment() {
-    private var _binding: FragmentFavoritesListBinding? = null
+class ForgotPasswordFragment : Fragment() {
+    private val userViewModel: UserViewModel by viewModels()
+    private var _binding: FragmentSigninBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         // Data binding
-        _binding = FragmentFavoritesListBinding.inflate(inflater, container, false)
+        _binding = FragmentSigninBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-
-        // Setup RecyclerView
-        // Observe LiveData
-
         return binding.root
     }
 
@@ -37,5 +35,4 @@ class FavoritesListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
