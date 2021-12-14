@@ -1,5 +1,6 @@
 package com.mahila.motivationalQuotesApp.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +39,11 @@ class SettingFragment : Fragment() {
         binding.signOutLL.setOnClickListener {
            //dia-log
             userViewModel.signOut()
-            findNavController().navigate(R.id.action_settingFragment_to_AuthenticationActivity)
-
+            //findNavController().navigate(R.id.action_settingFragment_to_AuthenticationActivity)
+            requireActivity().run{
+                startActivity(Intent(this, AuthenticationActivity::class.java))
+                finish()
+            }
         }
 
     }

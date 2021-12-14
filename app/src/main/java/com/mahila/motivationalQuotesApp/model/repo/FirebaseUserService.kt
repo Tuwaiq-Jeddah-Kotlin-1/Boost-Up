@@ -6,13 +6,14 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mahila.motivationalQuotesApp.model.entity.User
+import kotlinx.coroutines.tasks.await
 
 object FirebaseUserService {
     private const val TAG = "FirebaseUserService"
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    fun signUp(name: String, email: String, password: String) {
+    suspend fun signUp(name: String, email: String, password: String) {
 
         try {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -25,8 +26,7 @@ object FirebaseUserService {
                     Log.e(TAG, "Error add the user ", task.exception!!)
                     //    Toast.makeText(this ,task.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
-            }
-
+            }.await()
 
         } catch (e: Exception) {
             Log.e(TAG, "Error sign up ", e)
@@ -35,7 +35,7 @@ object FirebaseUserService {
 
     }
 
-    fun signIn(email: String, password: String) {
+    suspend  fun signIn(email: String, password: String) {
 
         try {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -45,7 +45,7 @@ object FirebaseUserService {
                     Log.e(TAG, task.exception!!.message, task.exception!!)
                     //    Toast.makeText(this ,"", Toast.LENGTH_SHORT).show()
                 }
-            }
+            }.await()
 
 
         } catch (e: Exception) {
@@ -55,7 +55,7 @@ object FirebaseUserService {
 
     }
 
-    fun forgotPassword(email: String) {
+    suspend fun forgotPassword(email: String) {
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -63,7 +63,7 @@ object FirebaseUserService {
                 } else {
                     //Toast msg
                 }
-            }
+            }.await()
     }
 
     fun resetPassword() {

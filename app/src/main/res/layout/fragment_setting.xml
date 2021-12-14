@@ -35,20 +35,20 @@
 
         <LinearLayout
             android:id="@+id/resetPasswordLL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="42dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/shape_u"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/modeLL"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="259dp">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/pencil" />
+                android:src="@drawable/pencil"
+                android:layout_marginHorizontal="30dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,50 +58,43 @@
 
         <LinearLayout
             android:id="@+id/modeLL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginEnd="27dp"
-            android:layout_marginBottom="58dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/shape_u"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/signOutLL"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resetPasswordLL">
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="349dp">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="start"
-                android:src="@drawable/moon" />
+                android:src="@drawable/moon"
+                android:layout_marginHorizontal="30dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:text="Dark mode" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/signOutLL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="326dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/shape_u"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modeLL">
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="447dp">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/sign_out" />
+                android:src="@drawable/sign_out"
+                android:layout_marginHorizontal="30dp"/>
 
             <Space
                 android:layout_width="10dp"

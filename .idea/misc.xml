@@ -16,6 +16,7 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/quotess.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/settings_24.xml" value="0.152" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/settings_icon.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/shape_u.xml" value="0.18125" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/sign-out_24.xml" value="0.14375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/user_24.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_authentication.xml" value="0.1" />
@@ -25,7 +26,7 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.25" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.176" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.264" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/jj.xml" value="0.25" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/menu/bottom_bar_menu.xml" value="0.1" />

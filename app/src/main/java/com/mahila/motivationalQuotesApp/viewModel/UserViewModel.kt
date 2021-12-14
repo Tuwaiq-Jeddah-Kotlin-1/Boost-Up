@@ -22,4 +22,5 @@ class UserViewModel : ViewModel() {
         FirebaseUserService.forgotPassword(email)
 
     }
+
 }

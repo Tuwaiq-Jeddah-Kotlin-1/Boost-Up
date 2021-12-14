@@ -10,5 +10,6 @@
     <color name="red">#A9310A</color>
     <color name="lightGray">#FBFBFB</color>
     <color name="lightPurple">#A191F0</color>
+    <color name="darkPurple">#130F25</color>
 
 </resources>
