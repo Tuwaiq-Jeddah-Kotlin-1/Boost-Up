@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+
     //data binding
     implementation 'androidx.databinding:databinding-runtime:7.0.4'
 

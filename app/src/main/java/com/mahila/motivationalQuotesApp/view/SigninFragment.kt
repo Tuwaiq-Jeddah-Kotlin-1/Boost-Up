@@ -1,5 +1,6 @@
 package com.mahila.motivationalQuotesApp.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,9 @@ class SigninFragment : Fragment() {
 
 
         binding.signUpTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
+         //   findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
+            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment,SignupFragment())
+                .commitNow()
 
         }
         binding.signinButton.setOnClickListener {
@@ -48,8 +51,11 @@ class SigninFragment : Fragment() {
                     binding.emailEditText.text.toString(),
                     binding.passwordEditText.text.toString()
                 )
-                findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
-
+            //   findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
+                requireActivity().run{
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
             }
         }
     }

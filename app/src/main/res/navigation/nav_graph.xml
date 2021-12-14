@@ -5,50 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_signup">
-
-    <activity
-        android:id="@+id/navigation_mainActivity"
-        android:name="com.mahila.motivationalQuotesApp.view.MainActivity"
-        tools:layout="@layout/activity_main">
-
-    </activity>
-    <activity
-        android:id="@+id/navigation_AuthenticationActivity"
-        android:name="com.mahila.motivationalQuotesApp.view.MainActivity"
-        tools:layout="@layout/activity_authentication">
-
-    </activity>
-    <fragment
-        android:id="@+id/navigation_signin"
-        android:name="com.mahila.motivationalQuotesApp.view.SigninFragment"
-        android:label="signin"
-        tools:layout="@layout/fragment_signin">
-        <action
-            android:id="@+id/action_signinFragment_to_signupFragment"
-            app:destination="@id/navigation_signup" />
-        <action
-            android:id="@+id/action_signinFragment_to_mainActivity"
-            app:destination="@id/navigation_mainActivity" />
-        <action
-            android:id="@+id/action_signinFragment_to_AuthenticationActivity"
-            app:destination="@id/navigation_AuthenticationActivity" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_signup"
-        android:name="com.mahila.motivationalQuotesApp.view.SignupFragment"
-        android:label="signup">
-        <action
-            android:id="@+id/action_signupFragment_to_signinFragment"
-            app:destination="@id/navigation_signin" />
-        <action
-            android:id="@+id/action_signupFragment_to_mainActivity"
-            app:destination="@id/navigation_mainActivity" />
-        <action
-            android:id="@+id/action_signupFragment_to_AuthenticationActivity"
-            app:destination="@id/navigation_AuthenticationActivity" />
-    </fragment>
+    app:startDestination="@id/navigation_quotes">
 
     <fragment
         android:id="@+id/navigation_quotes"
@@ -70,13 +27,7 @@
         android:id="@+id/navigation_setting"
         android:name="com.mahila.motivationalQuotesApp.view.SettingFragment"
         android:label="Setting"
-        tools:layout="@layout/fragment_setting" >
-        <action
-            android:id="@+id/action_settingFragment_to_signupFragment"
-            app:destination="@id/navigation_signup" />
-        <action
-            android:id="@+id/action_settingFragment_to_AuthenticationActivity"
-            app:destination="@id/navigation_AuthenticationActivity" />
+        tools:layout="@layout/fragment_setting">
 
     </fragment>
 

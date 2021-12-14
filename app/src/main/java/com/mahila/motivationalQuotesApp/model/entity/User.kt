@@ -10,7 +10,7 @@ data class User(
     val uid: String,
     var name: String,
     var email: String,
-   // var FavoritesList:MutableList<Quote>
+   // var FavoritesList:List<Quote>
 ) : Parcelable {
 
 
@@ -20,7 +20,6 @@ data class User(
                 val uid = getString("uid")!!
                 val name = getString("name")!!
                 val email = getString("email")!!
-
                 User(uid, name, email)
             } catch (e: Exception) {
                 Log.e(TAG, "Error converting toUser", e)
@@ -28,7 +27,7 @@ data class User(
             }
         }
 
-        private const val TAG = "Event"
+        private const val TAG = "User"
     }
 }
 

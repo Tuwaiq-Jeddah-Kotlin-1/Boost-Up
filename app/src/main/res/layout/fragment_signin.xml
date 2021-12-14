@@ -12,48 +12,113 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
         tools:context=".view.SigninFragment">
 
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="223dp"
-            android:layout_marginBottom="245dp"
-            app:layout_constraintBottom_toTopOf="@+id/signUpTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="62dp"
+            android:layout_marginBottom="142dp"
+            android:text="Welcome back"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+            app:layout_constraintEnd_toEndOf="@+id/emailEditText"
+            app:layout_constraintStart_toStartOf="@+id/emailEditText"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="0dp"
+            android:id="@+id/emailEditText"
+            android:layout_width="371dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="74dp"
-            app:layout_constraintBottom_toTopOf="@+id/signinButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:hint="user@gmail.com"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
+            app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
+            app:layout_constraintStart_toStartOf="@+id/passwordEditText"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="371dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textVisiblePassword"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="@+id/signinButton"
+            app:layout_constraintStart_toStartOf="@+id/signinButton"
             app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
         <Button
             android:id="@+id/signinButton"
-            android:layout_width="0dp"
+            android:layout_width="371dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="247dp"
+            android:layout_marginBottom="22dp"
+            android:drawableLeft="@drawable/button_shape"
+            android:backgroundTint="@color/lightPurple"
+            android:background="@drawable/button_shape"
             android:text="Sign in"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/signUpTextView"
+            app:layout_constraintEnd_toEndOf="@+id/signUpTextView"
+            app:layout_constraintStart_toStartOf="@+id/signUpTextView"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="75dp"
+            android:text="Forgot password?"
+            android:textColor="@color/lightPurple"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/signinButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/signUpTextView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="sign up"
-            android:layout_marginBottom="198dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="101dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/signinButton">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account?"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sign up"
+                android:textColor="@color/lightPurple"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
