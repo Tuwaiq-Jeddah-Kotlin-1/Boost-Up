@@ -1,15 +1,11 @@
-package com.mahila.motivationalQuotesApp.view
+package com.mahila.motivationalQuotesApp.views
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
-import com.google.firebase.auth.FirebaseAuth
 import com.mahila.motivationalQuotesApp.R
-import com.mahila.motivationalQuotesApp.model.repo.FirebaseUserService
-import com.mahila.motivationalQuotesApp.viewModel.UserViewModel
+import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
 
 class AuthenticationActivity : AppCompatActivity() {

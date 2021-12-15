@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.viewModel
+package com.mahila.motivationalQuotesApp.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
