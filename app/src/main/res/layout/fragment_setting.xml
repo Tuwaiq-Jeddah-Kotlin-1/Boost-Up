@@ -2,11 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="args1"
+            type="com.mahila.motivationalQuotesApp.views.SettingFragmentArgs" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.SettingFragment">
+        tools:context=".views.SettingFragment">
 
 
         <ImageView
@@ -14,37 +21,64 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="54dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="11dp"
             android:src="@drawable/user"
-            app:layout_constraintBottom_toTopOf="@+id/userNamTextView"
-            app:layout_constraintEnd_toEndOf="@+id/userNamTextView"
-            app:layout_constraintStart_toStartOf="@+id/userNamTextView"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/userNamTextView"
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="26dp"
-            android:text="userName"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/edittext_back_ground"
+            android:gravity="center_vertical|start"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/resetPasswordLL"
             app:layout_constraintEnd_toEndOf="@+id/resetPasswordLL"
             app:layout_constraintStart_toStartOf="@+id/resetPasswordLL"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/pencil" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_disk"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/userNamTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="userName"
+                android:hint=""
+                tools:layout_editor_absoluteX="173dp"
+                tools:layout_editor_absoluteY="214dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/resetPasswordLL"
             android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="29dp"
             android:background="@drawable/shape_u"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/modeLL"
             app:layout_constraintEnd_toEndOf="@+id/modeLL"
             app:layout_constraintStart_toStartOf="@+id/modeLL"
-            app:layout_constraintTop_toBottomOf="@+id/userNamTextView">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ImageView
                 android:layout_width="25dp"
@@ -89,9 +123,9 @@
             android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginStart="37dp"
-            android:layout_marginEnd="37dp"
-            android:layout_marginBottom="218dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="151dp"
             android:background="@drawable/shape_u"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"

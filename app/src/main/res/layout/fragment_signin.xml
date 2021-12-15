@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="@+id/passwordEditText"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        tools:context=".view.SigninFragment">
+        tools:context=".views.SigninFragment">
 
         <TextView
             android:id="@+id/textView3"

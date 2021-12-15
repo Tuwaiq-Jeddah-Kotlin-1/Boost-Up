@@ -1,8 +1,5 @@
-package com.mahila.motivationalQuotesApp.view
+package com.mahila.motivationalQuotesApp.views
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSettingBinding
-import com.mahila.motivationalQuotesApp.viewModel.UserViewModel
+import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
 
 class SettingFragment : Fragment() {
+    private val args by navArgs<SettingFragmentArgs>()
+
     private val userViewModel: UserViewModel by viewModels()
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
@@ -28,7 +28,8 @@ class SettingFragment : Fragment() {
 
         // Data binding
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
+//        binding.args1 = args
+       // binding.lifecycleOwner = this
 
         return binding.root
     }

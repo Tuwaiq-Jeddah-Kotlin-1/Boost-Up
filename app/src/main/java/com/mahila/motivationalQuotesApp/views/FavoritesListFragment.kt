@@ -1,18 +1,15 @@
-package com.mahila.motivationalQuotesApp.view
+package com.mahila.motivationalQuotesApp.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.mahila.motivationalQuotesApp.R
-import com.mahila.motivationalQuotesApp.databinding.FragmentQuotesListBinding
+import com.mahila.motivationalQuotesApp.databinding.FragmentFavoritesListBinding
 
 
-class QuotesListFragment : Fragment() {
-
-
-    private var _binding: FragmentQuotesListBinding? = null
+class FavoritesListFragment : Fragment() {
+    private var _binding: FragmentFavoritesListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,7 +18,7 @@ class QuotesListFragment : Fragment() {
     ): View {
 
         // Data binding
-        _binding = FragmentQuotesListBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoritesListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
         // Setup RecyclerView
@@ -34,11 +31,11 @@ class QuotesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
