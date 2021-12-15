@@ -24,7 +24,7 @@
 
         <EditText
             android:id="@+id/userNameEditText"
-            android:layout_width="371dp"
+            android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginBottom="31dp"
             android:background="@drawable/edit_text_shape"
@@ -38,7 +38,7 @@
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="371dp"
+            android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginBottom="39dp"
             android:background="@drawable/edit_text_shape"
@@ -52,7 +52,7 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="371dp"
+            android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/edit_text_shape"
@@ -66,7 +66,7 @@
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
-            android:layout_width="371dp"
+            android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginBottom="52dp"
             android:background="@drawable/edit_text_shape"
@@ -78,9 +78,9 @@
             app:layout_constraintStart_toStartOf="@+id/signupButton"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/signupButton"
-            android:layout_width="371dp"
+            android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginBottom="26dp"
             android:background="@drawable/button_shape"
@@ -95,7 +95,7 @@
 
         <LinearLayout
             android:id="@+id/signInTextView"
-            android:layout_width="0dp"
+            android:layout_width="333dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"
             android:layout_marginEnd="19dp"

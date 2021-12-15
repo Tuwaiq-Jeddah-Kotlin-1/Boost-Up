@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -29,8 +28,8 @@
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="371dp"
-            android:layout_height="0dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/edit_text_shape"
             android:gravity="center"
@@ -43,38 +42,38 @@
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="371dp"
-            android:layout_height="0dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/edit_text_shape"
             android:gravity="center"
             android:hint="Password"
             android:inputType="textVisiblePassword"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/forgotPasswordTextView"
             app:layout_constraintEnd_toEndOf="@+id/signinButton"
             app:layout_constraintStart_toStartOf="@+id/signinButton"
             app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/signinButton"
-            android:layout_width="371dp"
-            android:layout_height="0dp"
+            android:layout_width="333dp"
+            android:layout_height="66dp"
             android:layout_marginBottom="22dp"
-            android:drawableLeft="@drawable/button_shape"
-            android:backgroundTint="@color/lightPurple"
             android:background="@drawable/button_shape"
+            android:backgroundTint="@color/lightPurple"
+            android:drawableStart="@drawable/button_shape"
             android:text="Sign in"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/signUpTextView"
             app:layout_constraintEnd_toEndOf="@+id/signUpTextView"
             app:layout_constraintStart_toStartOf="@+id/signUpTextView"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/forgotPasswordTextView"
+            android:layout_width="333dp"
+            android:layout_height="30dp"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="75dp"
             android:text="Forgot password?"
@@ -87,7 +86,7 @@
 
         <LinearLayout
             android:id="@+id/signUpTextView"
-            android:layout_width="0dp"
+            android:layout_width="333dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginStart="20dp"

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
 import com.mahila.motivationalQuotesApp.viewModel.UserViewModel
@@ -32,12 +31,15 @@ class SigninFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.forgotPasswordTextView.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, ForgotPasswordFragment())
+                .commit()
+        }
 
         binding.signUpTextView.setOnClickListener {
-         //   findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
-            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment,SignupFragment())
-                .commitNow()
+            //   findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
+            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, SignupFragment()).addToBackStack(null).commit()
+             //   .commitNow()
 
         }
         binding.signinButton.setOnClickListener {
@@ -48,13 +50,13 @@ class SigninFragment : Fragment() {
                     .show()
             } else {
                 userViewModel.signIn(
-                    binding.emailEditText.text.toString(),
+                    binding.emailEditText.text.toString().trim(),
                     binding.passwordEditText.text.toString()
                 )
-            //   findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
-                requireActivity().run{
+                //   findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
+                requireActivity().run {
                     startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+                    //  finish()
                 }
             }
         }
