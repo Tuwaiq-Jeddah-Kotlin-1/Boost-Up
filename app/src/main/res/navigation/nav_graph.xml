@@ -26,8 +26,18 @@
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.mahila.motivationalQuotesApp.view.SettingFragment"
-        android:label="Setting"
+        android:label="Profile"
         tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_settingFragment_to_editProfileFragment"
+            app:destination="@id/navigation_Profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_Profile"
+        android:name="com.mahila.motivationalQuotesApp.view.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile">
 
     </fragment>
 

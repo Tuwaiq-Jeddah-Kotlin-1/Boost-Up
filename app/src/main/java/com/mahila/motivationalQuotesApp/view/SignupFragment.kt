@@ -25,8 +25,6 @@ class SignupFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        // Data binding
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -43,7 +41,6 @@ class SignupFragment : Fragment() {
                 .addToBackStack(null).commit()
         }
 
-
         binding.signupButton.setOnClickListener {
             if (binding.emailEditText.text.toString().isBlank() ||
                 binding.passwordEditText.text.toString().isBlank()
@@ -56,13 +53,13 @@ class SignupFragment : Fragment() {
             } else {
                 userViewModel.signUp(
                     binding.userNameEditText.text.toString(),
-                    binding.emailEditText.text.toString(),
+                    binding.emailEditText.text.toString().trim(),
                     binding.passwordEditText.text.toString()
                 )
                 //  findNavController().navigate(R.id.action_signupFragment_to_mainActivity)
                 requireActivity().run {
                     startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+                   // finish()
                 }
             }
 
