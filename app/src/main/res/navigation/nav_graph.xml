@@ -26,14 +26,14 @@
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.mahila.motivationalQuotesApp.views.SettingFragment"
-        android:label="Profile"
+        android:label="Setting"
         tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingFragment_to_editProfileFragment"
             app:destination="@id/navigation_Profile" />
         <argument
             android:name="currentUser"
-            app:argType="com.mahila.motivationalQuotesApp.model.entity.User" />
+            app:argType="com.mahila.motivationalQuotesApp.model.entities.User" />
     </fragment>
 
     <fragment

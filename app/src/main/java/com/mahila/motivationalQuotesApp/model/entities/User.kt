@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.model.entity
+package com.mahila.motivationalQuotesApp.model.entities
 
 import android.os.Parcelable
 import android.util.Log

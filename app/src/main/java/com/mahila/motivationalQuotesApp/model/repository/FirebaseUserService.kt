@@ -1,10 +1,10 @@
-package com.mahila.motivationalQuotesApp.model.repo
+package com.mahila.motivationalQuotesApp.model.repository
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.mahila.motivationalQuotesApp.model.entity.User
-import com.mahila.motivationalQuotesApp.model.entity.User.Companion.toUser
+import com.mahila.motivationalQuotesApp.model.entities.User
+import com.mahila.motivationalQuotesApp.model.entities.User.Companion.toUser
 import kotlinx.coroutines.tasks.await
 
 object FirebaseUserService {
@@ -16,13 +16,12 @@ object FirebaseUserService {
     suspend fun getUserData(): User? {
         return try {
             auth.currentUser?.let {
-                println(auth.currentUser!!.uid)
                 db.collection("users")
                     .document(auth.currentUser!!.uid).get().await().toUser()
             }
 
         } catch (e: Exception) {
-            Log.e(TAG, "Error getting the event details", e)
+            Log.e(TAG, "Error getting the user details", e)
 
             null
         }
@@ -100,8 +99,7 @@ object FirebaseUserService {
         auth.signOut()
     }
 
-    fun checksignInState(): Boolean {
-        return auth.currentUser != null
-    }
+    fun checksignInState()= auth.currentUser != null
+
 
 }

@@ -29,7 +29,7 @@ class SettingFragment : Fragment() {
         // Data binding
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
 //        binding.args1 = args
-       // binding.lifecycleOwner = this
+        binding.lifecycleOwner = this
 
         return binding.root
     }
