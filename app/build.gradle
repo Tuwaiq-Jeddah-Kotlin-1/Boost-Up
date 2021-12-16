@@ -41,10 +41,11 @@ android {
 }
 
 dependencies {
-
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //data binding
     implementation 'androidx.databinding:databinding-runtime:7.0.4'
-
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.4.0"
@@ -52,7 +53,7 @@ dependencies {
     // Coroutines Library
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-//navigation
+    //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 

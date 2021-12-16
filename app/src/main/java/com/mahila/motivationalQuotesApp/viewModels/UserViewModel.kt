@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mahila.motivationalQuotesApp.model.entity.User
-import com.mahila.motivationalQuotesApp.model.repo.FirebaseUserService
+import com.mahila.motivationalQuotesApp.model.entities.User
+import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
 import kotlinx.coroutines.launch
 
 class UserViewModel : ViewModel() {

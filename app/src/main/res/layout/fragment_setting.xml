@@ -2,14 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
 
-        <import type="android.view.View" />
-
-        <variable
-            name="args1"
-            type="com.mahila.motivationalQuotesApp.views.SettingFragmentArgs" />
-    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +15,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="54dp"
             android:layout_marginBottom="11dp"
-            android:src="@drawable/user"
+            android:src="@drawable/ic_user"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
@@ -35,7 +28,7 @@
             android:layout_height="66dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/edittext_back_ground"
+            android:background="@drawable/back_ground_without_stroke"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/resetPasswordLL"
@@ -47,7 +40,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginHorizontal="10dp"
-                android:src="@drawable/pencil" />
+                android:src="@drawable/ic_pencil" />
 
             <ImageView
                 android:layout_width="20dp"
@@ -84,7 +77,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="30dp"
-                android:src="@drawable/pencil" />
+                android:src="@drawable/ic_pencil" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,7 +103,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="30dp"
-                android:src="@drawable/moon" />
+                android:src="@drawable/ic_moon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +131,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="30dp"
-                android:src="@drawable/sign_out" />
+                android:src="@drawable/ic_sign_out" />
 
             <Space
                 android:layout_width="10dp"

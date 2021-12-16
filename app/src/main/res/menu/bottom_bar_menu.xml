@@ -11,10 +11,10 @@
         android:title="Favorites" />
     <item
         android:id="@+id/navigation_notification"
-        android:icon="@drawable/bell_24"
+        android:icon="@drawable/ic_bell"
         android:title="Notification" />
     <item
         android:id="@+id/navigation_setting"
-        android:icon="@drawable/settings_icon"
-        android:title="Profile" />
+        android:icon="@drawable/ic_settings"
+        android:title="Setting" />
 </menu>
