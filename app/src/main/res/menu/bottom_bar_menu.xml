@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/navigation_quotes"
-        android:icon="@drawable/quotes"
+        android:icon="@drawable/ic_quote_right"
         android:title="Quotes" />
     <item
         android:id="@+id/navigation_favorite"
-        android:icon="@drawable/heart_24"
+        android:icon="@drawable/ic_heart"
         android:title="Favorites" />
     <item
         android:id="@+id/navigation_notification"

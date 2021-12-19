@@ -10,9 +10,8 @@ data class User(
     val uid: String,
     var name: String,
     var email: String,
-   // var FavoritesList:List<Quote>
+    //var favoritesList: List<Quote>
 ) : Parcelable {
-
 
     companion object {
         fun DocumentSnapshot.toUser(): User? {

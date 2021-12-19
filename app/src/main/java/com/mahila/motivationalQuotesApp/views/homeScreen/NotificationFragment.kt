@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.views
+package com.mahila.motivationalQuotesApp.views.homeScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater

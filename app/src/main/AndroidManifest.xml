@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotivationalQuotesApp">
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.homeScreen.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".views.AuthenticationActivity"
+            android:name=".views.auth.AuthenticationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
