@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.mahila.motivationalQuotesApp.databinding.QuotesListItemBinding
+import com.mahila.motivationalQuotesApp.databinding.FavoritesListItemBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
-class QuotesRecycleViewAdapter(var quotesList:List<Quote>) :
-    RecyclerView.Adapter<QuotesRecycleViewAdapter.QuotesHolder>() {
-    class QuotesHolder(private val binding: QuotesListItemBinding) :
+class FavoritesRecycleViewAdapter(var quotesList:List<Quote>) :
+    RecyclerView.Adapter< FavoritesRecycleViewAdapter.QuotesHolder>() {
+    class QuotesHolder(private val binding: FavoritesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(quote: Quote) {
             binding.quote = quote
@@ -20,7 +20,7 @@ class QuotesRecycleViewAdapter(var quotesList:List<Quote>) :
         companion object {
             fun from(parent: ViewGroup): QuotesHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = QuotesListItemBinding.inflate(layoutInflater, parent, false)
+                val binding = FavoritesListItemBinding.inflate(layoutInflater, parent, false)
 
                 return QuotesHolder(
                     binding

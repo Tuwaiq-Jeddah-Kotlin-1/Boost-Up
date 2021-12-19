@@ -3,6 +3,8 @@ package com.mahila.motivationalQuotesApp.model.repository
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mahila.motivationalQuotesApp.model.entities.Quote
+import com.mahila.motivationalQuotesApp.model.entities.Quote.Companion.toQuote
 import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.entities.User.Companion.toUser
 import kotlinx.coroutines.tasks.await
@@ -24,6 +26,84 @@ object FirebaseUserService {
             Log.e(TAG, "Error getting the user details", e)
 
             null
+        }
+    }
+
+    suspend fun getFavoritesQuotes(): List<Quote>? {
+        return try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("favoritesList").get().await()
+                    .documents.mapNotNull {
+                        it.toQuote()
+                    }
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting the favorites quotes", e)
+
+            null
+        }
+    }
+
+    suspend fun addFavoriteQuote(quote: Quote) {
+        try {
+            // Create a reference to the collection
+            val favoritesListRef = auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("favoritesList")
+            }
+//Query to avoid the duplicate quote (that due to the quotes that fetch from the Api are without Id).
+            val query = favoritesListRef?.whereEqualTo("text", quote.text)
+            query?.get()?.addOnSuccessListener { documents ->
+                if (documents.size() == 0) {
+                    auth.currentUser?.let {
+                        db.collection("users")
+                            .document(auth.currentUser!!.uid)
+                            .collection("favoritesList").add(quote)
+                    }
+                }
+            }?.addOnFailureListener { e ->
+                Log.e(TAG, "Error adding an favorite quote", e)
+            }?.await()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error adding an favorite quote", e)
+        }
+    }
+
+    suspend fun deleteFavoriteQuote(quote: Quote) {
+        try {
+            // Create a reference to the collection
+            val favoritesListRef = auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("favoritesList")
+            }
+            // Create a query against the collection.
+            val query = favoritesListRef?.whereEqualTo("text", quote.text)
+            query?.get()?.addOnSuccessListener { documents ->
+                if (documents.size() > 0) {
+                    auth.currentUser?.let {
+                        db.collection("users")
+                            .document(auth.currentUser!!.uid)
+                            .collection("favoritesList").document(documents.toList()[0].id).delete()
+                            .addOnSuccessListener {
+                                Log.d(
+                                    TAG,
+                                    "DocumentSnapshot successfully deleted!"
+                                )
+                            }.addOnFailureListener { e -> Log.w(TAG, "Error deleting quote", e) }
+                    }
+                }
+            }?.addOnFailureListener { exception ->
+                Log.e(TAG, "Error adding an favorite quote", exception)
+            }?.await()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error deleting an favorite quote", e)
         }
     }
 
@@ -88,18 +168,47 @@ object FirebaseUserService {
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "User password updated.")
-                }else {
+                } else {
                     Log.d(TAG, "User password has not been updated.")
                     //Toast msg
                 }
             }?.await()
     }
 
+    suspend fun resetUserName(newName: String) {
+        try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid).update(
+                        mapOf(
+                            "name" to newName
+                        )
+                    ).await()
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error updating user name", e)
+        }
+    }
+
+    suspend fun resetEmail(newEmail: String) {
+        auth.currentUser?.updateEmail(newEmail)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "User email updated.")
+                } else {
+                    Log.d(TAG, "User email has not been updated.")
+                    //Toast msg
+                }
+            }?.await()
+    }
+
+    //
     fun signOut() {
         auth.signOut()
     }
 
-    fun checksignInState()= auth.currentUser != null
+    fun checksignInState() = auth.currentUser != null
 
 
 }

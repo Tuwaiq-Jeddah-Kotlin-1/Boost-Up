@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.views
+package com.mahila.motivationalQuotesApp.views.auth
 
 import android.content.Intent
 import android.os.Bundle

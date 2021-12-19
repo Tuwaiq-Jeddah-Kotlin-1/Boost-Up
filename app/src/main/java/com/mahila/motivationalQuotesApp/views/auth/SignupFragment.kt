@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.views
+package com.mahila.motivationalQuotesApp.views.auth
 
 
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSignupBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
+import com.mahila.motivationalQuotesApp.views.homeScreen.MainActivity
 
 
 class SignupFragment : Fragment() {

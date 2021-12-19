@@ -4,9 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="quote"
             type="com.mahila.motivationalQuotesApp.model.entities.Quote" />
@@ -90,18 +88,19 @@
                 android:id="@+id/shareIcon"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
+                android:shareAnQuoteViaOtherApps="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_u_share" />
 
             <ImageView
-                android:id="@+id/likeIcon"
+                android:id="@+id/unlikeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:sendAnQuoteToFavoritesList="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_unlike" />
-
 
         </LinearLayout>
 

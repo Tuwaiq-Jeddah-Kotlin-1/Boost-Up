@@ -15,7 +15,6 @@ class QuotesViewModel : ViewModel() {
 
     val goQuotesRepo = GoQuotesRepo()
     fun fetchQuotes(): LiveData<GoQuotesData> {
-        println("-------fetchQuotes--------")
 
         val quotes = MutableLiveData<GoQuotesData>()
         viewModelScope.launch {

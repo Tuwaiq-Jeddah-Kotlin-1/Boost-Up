@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.SettingFragment">
+        tools:context=".views.homeScreen.SettingFragment">
 
 
         <ImageView
@@ -37,26 +37,28 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <ImageView
+                android:id="@+id/editNameIcon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginHorizontal="10dp"
                 android:src="@drawable/ic_pencil" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginHorizontal="10dp"
-                android:src="@drawable/ic_disk"
-                android:visibility="gone" />
-
             <TextView
                 android:id="@+id/userNamTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="userName"
-                android:hint=""
+                android:text="You"
                 tools:layout_editor_absoluteX="173dp"
                 tools:layout_editor_absoluteY="214dp" />
+                
+                 <EditText
+                android:id="@+id/userNamEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter your new name"
+                tools:layout_editor_absoluteX="173dp"
+                tools:layout_editor_absoluteY="214dp"
+                 android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,15 +76,24 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ImageView
+                android:id="@+id/resetIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="30dp"
                 android:src="@drawable/ic_pencil" />
 
             <TextView
+                android:id="@+id/resetPasswordTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reset Password" />
+                
+                <EditText
+                android:id="@+id/resetPasswordEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter new password"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -100,12 +111,15 @@
             app:layout_constraintTop_toBottomOf="@+id/resetPasswordLL">
 
             <ImageView
+                android:id="@+id/modeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginHorizontal="30dp"
                 android:src="@drawable/ic_moon" />
 
             <TextView
+                            android:id="@+id/modeTextView"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dark mode" />
