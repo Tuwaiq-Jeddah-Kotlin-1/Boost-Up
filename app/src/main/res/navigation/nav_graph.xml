@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/navigation_quotes"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.QuotesListFragment"
-        android:label="Quotes"
+        android:label="@string/quotes"
         tools:layout="@layout/fragment_quotes_list">
        
     </fragment>
@@ -18,18 +18,18 @@
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.FavoritesListFragment"
-        android:label="Favorites"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites_list" />
     <fragment
         android:id="@+id/navigation_notification"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.NotificationFragment"
-        android:label="Notification"
+        android:label="@string/notification"
         tools:layout="@layout/fragment_notification" />
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.SettingFragment"
-        android:label="Setting"
+        android:label="@string/setting"
         tools:layout="@layout/fragment_setting">
         
     </fragment>

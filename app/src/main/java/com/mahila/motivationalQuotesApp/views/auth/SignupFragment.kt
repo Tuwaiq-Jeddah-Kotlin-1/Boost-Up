@@ -50,7 +50,7 @@ class SignupFragment : Fragment() {
                 Toast.makeText(requireContext(), "Input Fields cannot be Empty", Toast.LENGTH_LONG)
                     .show()
             } else if (binding.passwordEditText.text.toString() != binding.confirmPasswordEditText.text.toString()) {
-                Toast.makeText(requireContext(), "Passwords don't match", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.not_match), Toast.LENGTH_LONG).show()
             } else {
                 userViewModel.signUp(
                     binding.userNameEditText.text.toString(),
