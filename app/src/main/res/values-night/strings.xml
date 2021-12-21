@@ -1,10 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Motivational Quotes App</string>
     <string name="name">name</string>
     <string name="new_password">new password</string>
     <string name="send">Send</string>
     <string name="you">You</string>
-    <string name="enter_your_new_name">Enter your new name</string>
     <string name="reset_password">Reset Password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="dark_mode">Dark mode</string>
@@ -21,7 +20,6 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="daily_reminder">Daily Reminder</string>
     <string name="date_ntime">Date:\nTime:</string>
-    <string name="light_mode">Light mode</string>
     <string name="password_field">Password field cannot be Empty</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="your_name_field">Your name field cannot be Empty</string>

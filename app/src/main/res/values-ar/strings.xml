@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">الاسم</string>
+    <string name="new_password">كلمة المرور </string>
+    <string name="send">إرسال</string>
+    <string name="you">أنت</string>
+    <string name="enter_your_new_name">ادخِل الاسم الجديد</string>
+    <string name="reset_password">تغيير كلمة المرور</string>
+    <string name="enter_new_password">ادخِل كلمة المرور</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="light_mode">الوضع الفاتح</string>
+    <string name="sign_out">تسجيل الخروج</string>
+    <string name="welcome_back">أهلا بعودتك</string>
+    <string name="password">كلمة المرور</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="forgot_password">نسيت كلمة المرور؟</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟ أنشِئ حسابًا</string>
+    <string name="join_mqa">انضم لنا</string>
+    <string name="jon">زياد</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="sign_up">إنشاء حساب </string>
+    <string name="already_have_an_account">لديك حساب؟</string>
+    <string name="daily_reminder">منبة يومي</string>
+    <string name="date_ntime">التاريخ:\nالوقت:</string>
+    <string name="password_field">حقل كلمة المرور لا يمكن أن يكون فارغ</string>
+    <string name="changes_saved">تم حفظ التغييرات بنجاح</string>
+    <string name="your_name_field">حقل الاسم لا يمكن ان يكون فارغ</string>
+    <string name="not_changed">لم تقم بأي تغيير على الاسم</string>
+    <string name="email_field">حقل البريد الإلكتروني لايمكن أن يكون فارغ</string>
+    <string name="not_match">كلمة المرور ليست متطابقة</string>
+    <string name="quotes">اقتباسات</string>
+    <string name="favorites">الإعجابات</string>
+    <string name="notification">التنبيهات</string>
+    <string name="setting">الإعدادات</string>
+</resources>

@@ -11,5 +11,6 @@
     <color name="lightGray">#FBFBFB</color>
     <color name="lightPurple">#A191F0</color>
     <color name="darkPurple">#130F25</color>
+    <color name="darkGray">#8E8E8E</color>
 
 </resources>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mahila.motivationalQuotesApp.databinding.FragmentQuotesListBinding
 import com.mahila.motivationalQuotesApp.viewModels.QuotesViewModel
+import com.mahila.motivationalQuotesApp.views.adapters.FavoritesRecycleViewAdapter
 import com.mahila.motivationalQuotesApp.views.adapters.QuotesRecycleViewAdapter
 
 
@@ -35,14 +36,15 @@ class QuotesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Setup RecyclerView
         // Observe LiveData
-        quotesViewModel.fetchQuotes().observe(viewLifecycleOwner, { data ->
-           val adapter=QuotesRecycleViewAdapter(quotesList=data.quotes)
+        quotesViewModel.fetchQuotes().observe(viewLifecycleOwner, { dataDuotesList ->
+            val listOfRandomQuotes = dataDuotesList.quotes.shuffled().take(20)
+            val adapter = QuotesRecycleViewAdapter(listOfRandomQuotes)
+            // val adapter=QuotesRecycleViewAdapter(quotesList=data.quotes)
             binding.quotesListRecycleView.adapter = adapter
 
         })
 
     }
-
 
 
     override fun onDestroyView() {

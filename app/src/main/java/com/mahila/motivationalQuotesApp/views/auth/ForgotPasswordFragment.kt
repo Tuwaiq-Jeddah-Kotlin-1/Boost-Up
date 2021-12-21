@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentForgotPasswordBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
@@ -32,7 +33,7 @@ class ForgotPasswordFragment : Fragment() {
        binding.sendButton.setOnClickListener {
            if (binding.emailEditText.text.toString().isBlank()
            ) {
-               Toast.makeText(requireContext(), "Email field can't be empty", Toast.LENGTH_LONG)
+               Toast.makeText(requireContext(), getString(R.string.email_field), Toast.LENGTH_LONG)
                    .show()
            } else {
                userViewModel.forgotPassword(

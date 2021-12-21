@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="62dp"
             android:layout_marginBottom="142dp"
-            android:text="Welcome back"
+            android:text="@string/welcome_back"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -47,7 +47,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/edit_text_shape"
             android:gravity="center"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textVisiblePassword"
             app:layout_constraintBottom_toTopOf="@+id/forgotPasswordTextView"
             app:layout_constraintEnd_toEndOf="@+id/signinButton"
@@ -62,7 +62,7 @@
             android:background="@drawable/button_shape"
             android:backgroundTint="@color/lightPurple"
             android:drawableStart="@drawable/button_shape"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/signUpTextView"
@@ -76,7 +76,7 @@
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="75dp"
-            android:text="Forgot password?"
+            android:text="@string/forgot_password"
             android:textColor="@color/lightPurple"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account?"
+                android:text="@string/don_t_have_an_account"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sign up"
+                android:text="@string/sign_up"
                 android:textColor="@color/lightPurple"
                 android:textSize="16sp"
                 android:textStyle="bold" />

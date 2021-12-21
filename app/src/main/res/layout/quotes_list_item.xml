@@ -88,7 +88,7 @@
                 android:id="@+id/shareIcon"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:shareAnQuoteViaOtherApps="@{quote}"
+                android:shareAQuoteViaOtherApps="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_u_share" />
@@ -97,7 +97,7 @@
                 android:id="@+id/unlikeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:sendAnQuoteToFavoritesList="@{quote}"
+                android:sendAQuoteToFavoritesList="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_unlike" />

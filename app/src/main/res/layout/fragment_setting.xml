@@ -47,7 +47,7 @@
                 android:id="@+id/userNamTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You"
+                android:text="@string/you"
                 tools:layout_editor_absoluteX="173dp"
                 tools:layout_editor_absoluteY="214dp" />
                 
@@ -55,7 +55,7 @@
                 android:id="@+id/userNamEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter your new name"
+                android:hint="@string/enter_your_new_name"
                 tools:layout_editor_absoluteX="173dp"
                 tools:layout_editor_absoluteY="214dp"
                  android:visibility="gone" />
@@ -86,13 +86,13 @@
                 android:id="@+id/resetPasswordTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reset Password" />
+                android:text="@string/reset_password" />
                 
                 <EditText
                 android:id="@+id/resetPasswordEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter new password"
+                android:hint="@string/enter_new_password"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -122,7 +122,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dark mode" />
+                android:text="@string/dark_mode" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,7 +154,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:text="@string/sign_out"
                 android:textColor="@color/red" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

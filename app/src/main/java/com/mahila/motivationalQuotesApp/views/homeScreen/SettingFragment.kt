@@ -65,14 +65,14 @@ class SettingFragment : Fragment() {
                     binding.userNamEditText.text.toString().isBlank() -> {
                         Toast.makeText(
                             requireContext(),
-                            "Your name field cannot be Empty",
+                            getString(R.string.your_name_field),
                             Toast.LENGTH_LONG
                         ).show()
                     }
                     binding.userNamEditText.text.toString() == binding.userNamTextView.text.toString() -> {
                         Toast.makeText(
                             requireContext(),
-                            "Your name was not changed ",
+                            getString(R.string.not_changed) ,
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -91,7 +91,7 @@ class SettingFragment : Fragment() {
                         userViewModel.resetUserName(binding.userNamEditText.text.toString())
                         Toast.makeText(
                             requireContext(),
-                            "Changes saved successfully",
+                            getString(R.string.changes_saved),
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -115,7 +115,8 @@ class SettingFragment : Fragment() {
                 if (binding.resetPasswordEditText.text.toString().isBlank()) {
                     Toast.makeText(
                         requireContext(),
-                        "Password field cannot be Empty",
+                        getString(R.string.password_field)
+                                ,
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
@@ -132,7 +133,7 @@ class SettingFragment : Fragment() {
                     //userViewModel.resetPassword(binding.resetPasswordEditText.text.toString())
                     Toast.makeText(
                         requireContext(),
-                        "Changes saved successfully",
+                        getString(R.string.changes_saved),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -148,7 +149,7 @@ class SettingFragment : Fragment() {
                     )
 //toDo
                 )
-                binding.modeTextView.text = "Light mode"
+                binding.modeTextView.text =  getString(R.string.light_mode)
             } else {
                 binding.modeIcon.tag = "DARK"
                 binding.modeIcon.setImageDrawable(
@@ -157,7 +158,7 @@ class SettingFragment : Fragment() {
                         R.drawable.ic_moon
                     )
                 )
-                binding.modeTextView.text = "Dark mode"
+                binding.modeTextView.text = getString(R.string.dark_mode)
 //toDo
             }
         }

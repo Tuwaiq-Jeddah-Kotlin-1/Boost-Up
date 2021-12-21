@@ -3,7 +3,6 @@ package com.mahila.motivationalQuotesApp.views.adapters
 import android.content.Intent
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.BindingAdapter
 import com.mahila.motivationalQuotesApp.R
@@ -16,9 +15,9 @@ import kotlinx.coroutines.launch
 class BindingAdapters {
     companion object {
 
-        @BindingAdapter("android:sendAnQuoteToFavoritesList")
+        @BindingAdapter("android:sendAQuoteToFavoritesList")
         @JvmStatic
-        fun sendAnQuoteToFavoritesList(view: ImageView, currentQuote: Quote) {
+        fun sendAQuoteToFavoritesList(view: ImageView, currentQuote: Quote) {
             view.setOnClickListener {
                 if (view.tag != "LIKE") {
                     view.tag = "LIKE"
@@ -50,9 +49,9 @@ class BindingAdapters {
             }
         }
 
-        @BindingAdapter("android:shareAnQuoteViaOtherApps")
+        @BindingAdapter("android:shareAQuoteViaOtherApps")
         @JvmStatic
-        fun shareAnQuoteViaOtherApps(view: ImageView, currentQuote: Quote) {
+        fun shareAQuoteViaOtherApps(view: ImageView, currentQuote: Quote) {
             view.setOnClickListener {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
@@ -61,10 +60,12 @@ class BindingAdapters {
                 }
 
                 val shareIntent = Intent.createChooser(sendIntent, "Share this quote with: ")
-                startActivity(view.context,shareIntent,null)
+                startActivity(view.context, shareIntent, null)
 
             }
         }
+
+
 
     }
 
