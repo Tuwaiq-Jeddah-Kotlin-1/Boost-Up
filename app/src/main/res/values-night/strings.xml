@@ -30,4 +30,8 @@
     <string name="favorites">Favorites</string>
     <string name="notification">Notification</string>
     <string name="setting">Setting</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
 </resources>

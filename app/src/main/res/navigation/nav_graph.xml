@@ -5,41 +5,111 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_quotes">
+    app:startDestination="@id/navigation_signin">
 
     <fragment
         android:id="@+id/navigation_quotes"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.QuotesListFragment"
         android:label="@string/quotes"
         tools:layout="@layout/fragment_quotes_list">
-       
+
     </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.FavoritesListFragment"
         android:label="@string/favorites"
-        tools:layout="@layout/fragment_favorites_list" />
+        tools:layout="@layout/fragment_favorites_list">
+
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_notification"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.NotificationFragment"
         android:label="@string/notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification">
+        <action
+            android:id="@+id/action_notificationFragment_to_addNotificationFragment"
+            app:destination="@id/navigation_addNotification" />
+        <action
+            android:id="@+id/action_notificationFragment_to_forgotPasswordFragment"
+            app:destination="@id/navigation_forgotPassword" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.SettingFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting">
-        
+        <action
+            android:id="@+id/action_settingFragment_to_signupFragment"
+            app:destination="@id/navigation_signup" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_signin"
+        android:name="com.mahila.motivationalQuotesApp.views.auth.SigninFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/action_signinFragment_to_quotesFragment"
+            app:destination="@id/navigation_quotes" />
+        <action
+            android:id="@+id/action_signinFragment_to_signupFragment"
+            app:destination="@id/navigation_signup" />
+        <action
+            android:id="@+id/action_signinFragment_to_forgotPasswordFragment"
+            app:destination="@id/navigation_forgotPassword" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_Profile"
-        android:name="com.mahila.motivationalQuotesApp.views.homeScreen.EditFragment"
-        android:label="Edit Profile"
-        tools:layout="@layout/fragment_edit">
+        android:id="@+id/navigation_signup"
+        android:name="com.mahila.motivationalQuotesApp.views.auth.SignupFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/action_signupFragment_to_signinFragment"
+            app:destination="@id/navigation_signin" />
+        <action
+            android:id="@+id/action_signupFragment_to_quotesFragment"
+            app:destination="@id/navigation_quotes" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_forgotPassword"
+        android:name="com.mahila.motivationalQuotesApp.views.auth.ForgotPasswordFragment"
+        android:label="Forgot Password"
+        tools:layout="@layout/fragment_forgot_password">
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_signinFragment"
+            app:destination="@id/navigation_signin" />
 
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_addNotification"
+        android:name="com.mahila.motivationalQuotesApp.views.homeScreen.AddNotificationFragment"
+        android:label="Add Notification"
+        tools:layout="@layout/fragment_add_notification">
+        <action
+            android:id="@+id/action_addNotificationFragment_to_notificationFragment"
+            app:destination="@id/navigation_notification"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/navigation_notification"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_openNotificationQuote"
+        android:name="com.mahila.motivationalQuotesApp.views.homeScreen.OpenNotificationQuoteFragment"
+        android:label="@string/motivation_reminder"
+        tools:layout="@layout/fragment_open_notification_quote">
+        <action
+            android:id="@+id/action_openNotificationQuoteFragment_to_quotesFragment"
+            app:destination="@id/navigation_quotes" />
+
+    </fragment>
 </navigation>

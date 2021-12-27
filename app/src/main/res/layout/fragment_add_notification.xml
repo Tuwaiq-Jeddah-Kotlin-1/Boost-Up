@@ -7,9 +7,61 @@
         android:layout_height="match_parent"
         tools:context=".views.homeScreen.AddNotificationFragment">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginRight="30dp"
+            android:hint="Selecte Time"
+            app:helperText="Selecte time"
+            app:boxStrokeColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/datePicker"
+            app:layout_constraintStart_toStartOf="@+id/datePicker"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/datePicker"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Selecte date"
+            app:helperText="Selecte date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="118dp"
+            android:background="@drawable/button_shape"
+            android:text="@string/done"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCan"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/btnCan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginEnd="33dp"
+            android:background="@drawable/button_shape"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnOk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnOk" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

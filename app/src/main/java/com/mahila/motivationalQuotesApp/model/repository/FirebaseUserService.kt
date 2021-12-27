@@ -3,6 +3,8 @@ package com.mahila.motivationalQuotesApp.model.repository
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mahila.motivationalQuotesApp.model.entities.Notification
+import com.mahila.motivationalQuotesApp.model.entities.Notification.Companion.toNotification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.Quote.Companion.toQuote
 import com.mahila.motivationalQuotesApp.model.entities.User
@@ -26,6 +28,71 @@ object FirebaseUserService {
             Log.e(TAG, "Error getting the user details", e)
 
             null
+        }
+    }
+
+    suspend fun getNotifications(): List<Notification>? {
+        return try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("notificationsList").get().await()
+                    .documents.mapNotNull {
+                        it.toNotification()
+                    }
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting the notifications list", e)
+
+            null
+        }
+    }
+
+    suspend fun addNotification(notification: Notification) {
+        try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("notificationsList")
+                    .document(notification.notificationId).set(notification).await()
+            }
+
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error adding an notification", e)
+        }
+    }
+
+    suspend fun deleteNotification(notification: Notification) {
+        try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid)
+                    .collection("notificationsList")
+                    .document(notification.notificationId).delete().await()
+            }
+
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error deleting an favorite quote", e)
+        }
+    }
+
+    suspend fun setToInactiveNotification(notification: Notification) {
+        try {
+            auth.currentUser?.let {
+                db.collection("users")
+                    .document(auth.currentUser!!.uid).collection("notificationsList")
+                    .document(notification.notificationId).update(
+                        mapOf(
+                            "active" to false
+                        )
+                    ).await()
+            }
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error updating user name", e)
         }
     }
 
@@ -99,7 +166,7 @@ object FirebaseUserService {
                     }
                 }
             }?.addOnFailureListener { exception ->
-                Log.e(TAG, "Error adding an favorite quote", exception)
+                Log.e(TAG, "Error deleting an favorite quote", exception)
             }?.await()
 
         } catch (e: Exception) {
@@ -107,6 +174,7 @@ object FirebaseUserService {
         }
     }
 
+    //----------- Manage User Account
     suspend fun signUp(name: String, email: String, password: String) {
 
         try {
@@ -208,7 +276,7 @@ object FirebaseUserService {
         auth.signOut()
     }
 
-    fun checksignInState() = auth.currentUser != null
+    fun checkSignInState() = auth.currentUser != null
 
 
 }

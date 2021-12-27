@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentForgotPasswordBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
@@ -39,11 +40,11 @@ class ForgotPasswordFragment : Fragment() {
                userViewModel.forgotPassword(
                    binding.emailEditText.text.toString().trim()
                )
-               //   findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
-               requireActivity().run {
+                 findNavController().navigate(R.id.action_forgotPasswordFragment_to_signinFragment)
+              /* requireActivity().run {
                    startActivity(Intent(this, AuthenticationActivity::class.java))
                    //  finish()
-               }
+               }*/
            }
        }
 

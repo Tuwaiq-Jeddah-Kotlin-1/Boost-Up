@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
-import com.mahila.motivationalQuotesApp.views.homeScreen.MainActivity
+import com.mahila.motivationalQuotesApp.views.MainActivity
 
 
 class SigninFragment : Fragment() {
@@ -33,14 +35,16 @@ class SigninFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.forgotPasswordTextView.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, ForgotPasswordFragment())
-                .commit()
+            /* parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, ForgotPasswordFragment())
+                 .commit()*/
+            findNavController().navigate(R.id.action_signinFragment_to_forgotPasswordFragment)
+
         }
 
         binding.signUpTextView.setOnClickListener {
-            //   findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
-            parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, SignupFragment()).addToBackStack(null).commit()
-             //   .commitNow()
+            findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
+            // parentFragmentManager.beginTransaction().replace(R.id.auth_fragment, SignupFragment()).addToBackStack(null).commit()
+            //   .commitNow()
 
         }
         binding.signinButton.setOnClickListener {
@@ -54,16 +58,24 @@ class SigninFragment : Fragment() {
                     binding.emailEditText.text.toString().trim(),
                     binding.passwordEditText.text.toString()
                 )
-                //   findNavController().navigate(R.id.action_signinFragment_to_mainActivity)
-                requireActivity().run {
+                  findNavController().navigate(R.id.action_signinFragment_to_quotesFragment)
+/*                requireActivity().run {
                     startActivity(Intent(this, MainActivity::class.java))
                     //  finish()
-                }
+                }*/
             }
         }
     }
 
+     override fun onStart() {
+        super.onStart()
 
+        if (userViewModel.checksignInState()) {
+            findNavController().navigate(R.id.action_signinFragment_to_quotesFragment)
+
+        }
+
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

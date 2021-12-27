@@ -1,27 +1,34 @@
 package com.mahila.motivationalQuotesApp.model.entities
 
 import android.os.Parcelable
-import android.provider.ContactsContract
 import android.util.Log
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Notification(
     val notificationId: String,
-    val dateAndTime: Timestamp,
-    val title: String
-) : Parcelable {
+    var dateAndTime: Long,
+    var delay: Long,
+    var type: String,
+    var active: Boolean,
+    var timeAsString: String,
+    var dateAsString: String,
+
+    ) : Parcelable {
 
     companion object {
 
         fun DocumentSnapshot.toNotification(): Notification? {
             return try {
                 val notificationId = getString("notificationId")!!
-                val dateAndTime = getTimestamp("dateAndTime")!!
-                val title = getString("title")!!
-                Notification(notificationId, dateAndTime, title)
+                val dateAndTime = getLong("dateAndTime")!!
+                val delay = getLong("delay")!!
+                val type = getString("type")!!
+                val active = getBoolean("active")!!
+                val timeAsString = getString("timeAsString")!!
+                val dateAsString = getString("dateAsString")!!
+                Notification(notificationId, dateAndTime,delay, type, active, timeAsString, dateAsString)
 
             } catch (e: Exception) {
                 Log.e(TAG, "Error converting toNotification", e)

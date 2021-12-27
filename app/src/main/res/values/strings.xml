@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Motivational Quotes App</string>
+    <string name="app_name" translatable="false">Boost Up</string>
     <string name="name">name</string>
     <string name="new_password">new password</string>
     <string name="send">Send</string>
@@ -32,4 +32,15 @@
     <string name="favorites">Favorites</string>
     <string name="notification">Notification</string>
     <string name="setting">Setting</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="auto">Auto mode</string>
+    <string name="motivation_reminder">Motivation Reminder</string>
+    <string name="Reminder_scheduled_successfully">Reminder scheduled successfully.</string>
+    <string name="invalid_time_date">Invalid time and date.</string>
+    <string name="Share_quote_with">"Share this quote with: "</string>
+    <string name="you_can">you can!</string>
+    <string name="me">me!</string>
 </resources>

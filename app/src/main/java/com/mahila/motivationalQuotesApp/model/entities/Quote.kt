@@ -3,18 +3,18 @@ package com.mahila.motivationalQuotesApp.model.entities
 import android.os.Parcelable
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
 data class Quote(
-   // val quoteID: String,
+    @SerializedName("content")
     var text: String,
     val author: String,
-   // val tag: String
 ) : Parcelable {
 
-  companion object {
+    companion object {
 
         fun DocumentSnapshot.toQuote(): Quote? {
             return try {

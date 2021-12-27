@@ -29,7 +29,18 @@
     <string name="email_field">حقل البريد الإلكتروني لايمكن أن يكون فارغ</string>
     <string name="not_match">كلمة المرور ليست متطابقة</string>
     <string name="quotes">اقتباسات</string>
-    <string name="favorites">الإعجابات</string>
+    <string name="favorites">المفضلة</string>
     <string name="notification">التنبيهات</string>
     <string name="setting">الإعدادات</string>
+    <string name="done">تم</string>
+    <string name="cancel">إلغاء</string>
+    <string name="date">التاريخ: </string>
+    <string name="time">الوقت: </string>
+    <string name="auto">الوضع التلقائي</string>
+    <string name="motivation_reminder">Motivation Reminder</string>
+    <string name="Reminder_scheduled_successfully">Reminder scheduled successfully.</string>
+    <string name="invalid_time_date">Invalid time and date.</string>
+    <string name="Share_quote_with">"Share this quote with: "</string>
+    <string name="you_can">you can!</string>
+    <string name="me">me!</string>
 </resources>

@@ -1,16 +1,21 @@
 package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.content.Intent
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.BindingAdapter
+import androidx.work.WorkManager
 import com.mahila.motivationalQuotesApp.R
+import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class BindingAdapters {
     companion object {
@@ -65,8 +70,54 @@ class BindingAdapters {
             }
         }
 
+        @BindingAdapter("android:inactiveNotificationIcon")
+        @JvmStatic
+        fun inactiveNotificationIcon(view: ImageView, currentNotification: Notification) {
+            view.setOnClickListener {
+                WorkManager.getInstance(view.context)
+                    .cancelAllWorkByTag(currentNotification.notificationId)
+                if (view.tag != "INACTIVE") {
+                    view.tag = "INACTIVE"
+                    view.setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            view.context,
+                            R.drawable.ic_bell_gray
+                        )
+                    )
+                    GlobalScope.launch(Dispatchers.IO) {
+                        FirebaseUserService.setToInactiveNotification(currentNotification)
 
+                    }
 
+                }
+            }
+            if (!currentNotification.active) {
+                view.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        view.context,
+                        R.drawable.ic_bell_gray
+                    )
+                )
+            }
+        }
+
+        @BindingAdapter("android:delNotificationIcon")
+        @JvmStatic
+        fun delNotificationIcon(view: ConstraintLayout, currentNotification: Notification) {
+            val currentTime = Calendar.getInstance().timeInMillis
+
+            if (currentNotification.dateAndTime < currentTime) {
+
+                view.visibility = View.GONE
+                GlobalScope.launch(Dispatchers.IO) {
+                    FirebaseUserService.deleteNotification(currentNotification)
+
+                }
+
+            }
+
+        }
     }
+
 
 }

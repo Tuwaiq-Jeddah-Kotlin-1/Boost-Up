@@ -1,5 +1,6 @@
 package com.mahila.motivationalQuotesApp.viewModels
 
+import QuotableData
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,9 +15,22 @@ private const val TAG = "QuotesViewModel"
 class QuotesViewModel : ViewModel() {
 
     val goQuotesRepo = GoQuotesRepo()
-    fun fetchQuotes(): LiveData<GoQuotesData> {
+/*    fun fetchQuotes(): LiveData<GoQuotesData> {
 
         val quotes = MutableLiveData<GoQuotesData>()
+        viewModelScope.launch {
+            try {
+                quotes.postValue(goQuotesRepo.fetchQuotes())
+
+            } catch (e: Exception) {
+                Log.e(TAG, "Error fetching Quotes", e)
+            }
+        }
+        return quotes
+    }  */
+    fun fetchQuotes(): LiveData<QuotableData> {
+
+        val quotes = MutableLiveData<QuotableData>()
         viewModelScope.launch {
             try {
                 quotes.postValue(goQuotesRepo.fetchQuotes())
