@@ -4,17 +4,17 @@
     <item
         android:id="@+id/navigation_quotes"
         android:icon="@drawable/ic_quote_right"
-        android:title="Quotes" />
+        android:title="@string/quotes" />
     <item
         android:id="@+id/navigation_favorite"
         android:icon="@drawable/ic_heart"
-        android:title="Favorites" />
+        android:title="@string/favorites" />
     <item
         android:id="@+id/navigation_notification"
         android:icon="@drawable/ic_bell"
-        android:title="Notification" />
+        android:title="@string/notification" />
     <item
         android:id="@+id/navigation_setting"
         android:icon="@drawable/ic_settings"
-        android:title="Setting" />
+        android:title="@string/setting" />
 </menu>

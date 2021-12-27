@@ -29,20 +29,21 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_authentication.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/favorites_list_item.xml" value="0.2" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_add_notification.xml" value="0.1381340579710145" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_add_notification.xml" value="0.264" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profil.xml" value="0.2359375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profile.xml" value="0.234375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_favorites_list.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_forgot_password.xml" value="0.234375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_open_notification_quote.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.1" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.2" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.14285714285714285" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.2" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/jj.xml" value="0.25" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/notification_list_item.xml" value="0.1" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/quotes_list_item.xml" value="0.4678111587982833" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/notification_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/quotes_list_item.xml" value="0.264" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/menu/bottom_bar_menu.xml" value="0.1" />
       </map>
     </option>

@@ -2,18 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mahila.motivationalQuotesApp">
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
+        android:name=".app.MQApp"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MotivationalQuotesApp">
+
         <activity
-            android:name=".views.homeScreen.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.auth.AuthenticationActivity"
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

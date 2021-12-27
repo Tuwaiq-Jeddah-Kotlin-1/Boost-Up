@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSignupBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
-import com.mahila.motivationalQuotesApp.views.homeScreen.MainActivity
+import com.mahila.motivationalQuotesApp.views.MainActivity
 
 
 class SignupFragment : Fragment() {
@@ -36,10 +37,10 @@ class SignupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInTextView.setOnClickListener {
-            //  findNavController().navigate(R.id.action_signupFragment_to_signinFragment)
-            parentFragmentManager.beginTransaction()
+              findNavController().navigate(R.id.action_signupFragment_to_signinFragment)
+            /*parentFragmentManager.beginTransaction()
                 .replace(R.id.auth_fragment, SigninFragment())
-                .addToBackStack(null).commit()
+                .addToBackStack(null).commit()*/
         }
 
         binding.signupButton.setOnClickListener {

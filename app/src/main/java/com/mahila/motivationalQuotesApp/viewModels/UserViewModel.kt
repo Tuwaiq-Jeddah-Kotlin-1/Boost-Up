@@ -4,16 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
 import kotlinx.coroutines.launch
 
- class UserViewModel : ViewModel() {
+class UserViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
+
     private val _FavoritesQuotes = MutableLiveData<List<Quote>>()
     val favoritesQuotes: LiveData<List<Quote>> = _FavoritesQuotes
+    private val _Notifications = MutableLiveData<List<Notification>>()
+    val notifications: LiveData<List<Notification>> = _Notifications
 
     init {
         viewModelScope.launch {
@@ -21,6 +25,9 @@ import kotlinx.coroutines.launch
         }
         viewModelScope.launch {
             _FavoritesQuotes.value = FirebaseUserService.getFavoritesQuotes()
+        }
+        viewModelScope.launch {
+            _Notifications.value = FirebaseUserService.getNotifications()
         }
 
     }
@@ -42,12 +49,13 @@ import kotlinx.coroutines.launch
 
     }
 
-    fun checksignInState() = FirebaseUserService.checksignInState()
+    fun checksignInState() = FirebaseUserService.checkSignInState()
 
- fun resetUserName(newUserName: String) = viewModelScope.launch {
+    fun resetUserName(newUserName: String) = viewModelScope.launch {
         FirebaseUserService.resetUserName(newUserName)
 
     }
+
     fun resetPassword(newPassword: String) = viewModelScope.launch {
         FirebaseUserService.resetPassword(newPassword)
 
@@ -55,6 +63,11 @@ import kotlinx.coroutines.launch
 
     fun addFavoriteQuote(quote: Quote) = viewModelScope.launch {
         FirebaseUserService.addFavoriteQuote(quote)
+
+    }
+
+    fun addNotification(notification: Notification) = viewModelScope.launch {
+        FirebaseUserService.addNotification(notification)
 
     }
 

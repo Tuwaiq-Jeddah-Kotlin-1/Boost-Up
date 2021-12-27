@@ -15,14 +15,18 @@
         android:id="@+id/cl1"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_margin="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/back_ground_with_stroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        >
 
         <TextView
             android:id="@+id/quoteText"
@@ -34,7 +38,6 @@
             android:layout_marginBottom="13dp"
             android:gravity="center"
             android:text="@{quote.text}"
-            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             android:foregroundGravity="top"

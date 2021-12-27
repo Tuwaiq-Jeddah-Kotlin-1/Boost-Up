@@ -36,10 +36,16 @@ class QuotesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Setup RecyclerView
         // Observe LiveData
-        quotesViewModel.fetchQuotes().observe(viewLifecycleOwner, { dataDuotesList ->
-            val listOfRandomQuotes = dataDuotesList.quotes.shuffled().take(20)
+     /*   quotesViewModel.fetchQuotes().observe(viewLifecycleOwner, { dataQuotesList ->
+            val listOfRandomQuotes = dataQuotesList.quotes.shuffled().take(20)
             val adapter = QuotesRecycleViewAdapter(listOfRandomQuotes)
             // val adapter=QuotesRecycleViewAdapter(quotesList=data.quotes)
+            binding.quotesListRecycleView.adapter = adapter
+
+        }) */
+        quotesViewModel.fetchQuotes().observe(viewLifecycleOwner, { dataQuotesList ->
+            val listOfRandomQuotes = dataQuotesList.results.shuffled().take(10)
+            val adapter = QuotesRecycleViewAdapter(listOfRandomQuotes)
             binding.quotesListRecycleView.adapter = adapter
 
         })

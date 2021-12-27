@@ -35,6 +35,7 @@ class FavoritesListFragment : Fragment() {
         // Setup RecyclerView
         // Observe LiveData
         userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
+
            val adapter= FavoritesRecycleViewAdapter(favoritesList)
             
             binding.favoritesListRecycleView.adapter = adapter
