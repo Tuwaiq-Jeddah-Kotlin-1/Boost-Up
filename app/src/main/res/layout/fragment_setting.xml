@@ -6,8 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         tools:context=".views.homeScreen.SettingFragment">
-
 
         <ImageView
             android:id="@+id/imageView"
@@ -82,17 +82,12 @@
                 android:src="@drawable/ic_world" />
 
             <TextView
-                android:id="@+id/resetPasswordTextView"
+                android:id="@+id/langEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
-
-            <EditText
-                android:id="@+id/resetPasswordEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_new_password"
-                android:visibility="gone" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -118,6 +113,8 @@
                 android:tag="DARK" />
 
             <TextView
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:id="@+id/modeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,15 +143,16 @@
                 android:layout_marginHorizontal="30dp"
                 android:src="@drawable/ic_sign_out" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_out"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 android:textColor="@color/red" />
         </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

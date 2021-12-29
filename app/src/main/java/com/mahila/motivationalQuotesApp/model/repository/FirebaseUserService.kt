@@ -175,7 +175,8 @@ object FirebaseUserService {
     }
 
     //----------- Manage User Account
-    suspend fun signUp(name: String, email: String, password: String) {
+    suspend fun signUp(name: String, email: String, password: String)//: Task<AuthResult>
+    {
 
         try {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -184,7 +185,10 @@ object FirebaseUserService {
                     val user = User(auth.currentUser!!.uid, name, email)
 
                     db.collection("users").document(auth.currentUser!!.uid).set(user)
+                    //   return@addOnCompleteListener
                 } else {
+
+                    //  return@addOnCompleteListener
                     Log.e(TAG, "Error add the user ", task.exception!!)
                     //    Toast.makeText(this ,task.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
@@ -197,7 +201,7 @@ object FirebaseUserService {
 
     }
 
-    suspend fun signIn(email: String, password: String) {
+    suspend fun signIn(email: String, password: String):Boolean {
 
         try {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -208,11 +212,13 @@ object FirebaseUserService {
                     //    Toast.makeText(this ,"", Toast.LENGTH_SHORT).show()
                 }
             }.await()
+            return true
 
 
         } catch (e: Exception) {
-            Log.e(TAG, "Error sign in ", e)
 
+            Log.e(TAG, "Error sign in ", e)
+            return false
         }
 
     }

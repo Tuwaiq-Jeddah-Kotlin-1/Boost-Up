@@ -44,25 +44,26 @@ class SignupFragment : Fragment() {
         }
 
         binding.signupButton.setOnClickListener {
-            if (binding.emailEditText.text.toString().isBlank() ||
-                binding.passwordEditText.text.toString().isBlank()
-                || binding.confirmPasswordEditText.text.toString().isBlank()
+            if (binding.emailEditText.editText?.text.toString().isBlank() ||
+                binding.passwordEditText.editText?.text.toString().isBlank()
+                || binding.confirmPasswordEditText.editText?.text.toString().isBlank()
             ) {
                 Toast.makeText(requireContext(), "Input Fields cannot be Empty", Toast.LENGTH_LONG)
                     .show()
-            } else if (binding.passwordEditText.text.toString() != binding.confirmPasswordEditText.text.toString()) {
+            } else if (binding.passwordEditText.editText?.text.toString() !=
+                binding.confirmPasswordEditText.editText?.text.toString()) {
                 Toast.makeText(requireContext(), getString(R.string.not_match), Toast.LENGTH_LONG).show()
             } else {
                 userViewModel.signUp(
-                    binding.userNameEditText.text.toString(),
-                    binding.emailEditText.text.toString().trim(),
-                    binding.passwordEditText.text.toString()
+                    binding.userNameEditText.editText?.text.toString(),
+                    binding.emailEditText.editText?.text.toString().trim(),
+                    binding.passwordEditText.editText?.text.toString()
                 )
-                //  findNavController().navigate(R.id.action_signupFragment_to_mainActivity)
-                requireActivity().run {
-                    startActivity(Intent(this, MainActivity::class.java))
+                  findNavController().navigate(R.id.action_signupFragment_to_signinFragment)
+                /*requireActivity().run {
+                    startActivity(Intent(this, MainActivity::class.java))*/
                    // finish()
-                }
+               // }
             }
 
 

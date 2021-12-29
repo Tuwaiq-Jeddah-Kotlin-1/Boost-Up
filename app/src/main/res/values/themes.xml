@@ -3,17 +3,22 @@
     <style name="Theme.MotivationalQuotesApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!--  <item name="android:buttonStyle">@drawable/button_shape</item>-->
 
-         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/darkPurple</item>
+        <!-- Primary brand color.top bar  -->
+        <item name="colorPrimary">@color/appBarColor</item>
+        <!-- top top bar  -->
+        <item name="colorPrimaryVariant">@color/black</item>
+        <!-- nav bar text/iconography-->
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/lightPurple</item>
+
         <item name="colorSecondaryVariant">@color/darkPurple</item>
-        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/colorBackground</item>
     </style>
 
 

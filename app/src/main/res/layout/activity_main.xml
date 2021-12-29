@@ -7,12 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.homeScreen.MainActivity">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       >
+        android:layout_height="match_parent">
 
         <fragment
             android:id="@+id/nav_host_fragment_activity_main"
@@ -31,29 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
+            android:background="@color/white"
+            app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+            app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_bar_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/main2_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <fragment
-            android:id="@+id/additional_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/nav_graph" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

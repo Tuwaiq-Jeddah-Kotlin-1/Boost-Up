@@ -36,11 +36,20 @@
     <string name="cancel">Cancel</string>
     <string name="date">Date:</string>
     <string name="time">Time:</string>
-    <string name="auto">Auto mode</string>
+    <string name="auto_mode">Follow system mode</string>
+    <string name="auto_lang">System language</string>
     <string name="motivation_reminder">Motivation Reminder</string>
     <string name="Reminder_scheduled_successfully">Reminder scheduled successfully.</string>
     <string name="invalid_time_date">Invalid time and date.</string>
     <string name="Share_quote_with">"Share this quote with: "</string>
     <string name="you_can">you can!</string>
     <string name="me">me!</string>
+    <string name="ar">العربية</string>
+    <string name="en">EN</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="Add_reminder">Add Notification</string>
+    <string name="join_boost_up">Join Boost Up</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select time</string>
 </resources>

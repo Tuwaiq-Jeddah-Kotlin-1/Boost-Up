@@ -1,5 +1,6 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +17,8 @@ import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSettingBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
-import com.mahila.motivationalQuotesApp.views.SHARED_KEY
-import com.mahila.motivationalQuotesApp.views.sharePreferencesValue
-import com.mahila.motivationalQuotesApp.views.sharedDarkModeFlag
+import com.mahila.motivationalQuotesApp.views.*
+import java.util.*
 
 
 class SettingFragment : Fragment() {
@@ -26,13 +26,10 @@ class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
 
-    //locale
-    private lateinit var firstLocaleCode: String
-    private lateinit var secondLocaleCode: String
+    //---------------------
     private lateinit var currentSystemLocaleCode: String
 
-    /* lateinit var sharedDarkModeFlag : SharedPreferences
-     private val SHARED_KEY = "DARK_MODE"*/
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,9 +44,16 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpModeButton(view)
+        setUpLangButton()
         currentSystemLocaleCode =
             ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
-        setUpModeButton(view)
+
+        binding.resetPasswordLL.setOnClickListener {
+            changeLang()
+        }
+
+//------------
 
         binding.signOutLL.setOnClickListener {
             confirmSignOut()
@@ -60,83 +64,67 @@ class SettingFragment : Fragment() {
 
         })
         binding.editNameIcon.setOnClickListener {
-            if (binding.editNameIcon.tag != "Modifiable") {
-                binding.editNameIcon.tag = "Modifiable"
+            editName(view)
+        }
+
+
+        binding.modeLL.setOnClickListener {
+            changeMode(view)
+
+        }
+    }
+
+
+    private fun editName(view: View?) {
+        if (binding.editNameIcon.tag != "Modifiable") {
+            binding.editNameIcon.tag = "Modifiable"
+            if (view != null) {
                 binding.editNameIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
                         R.drawable.ic_disk
                     )
                 )
-                binding.userNamTextView.visibility = View.GONE
-                binding.userNamEditText.visibility = View.VISIBLE
+            }
+            binding.userNamTextView.visibility = View.GONE
+            binding.userNamEditText.visibility = View.VISIBLE
 
-            } else {
-                when {
-                    binding.userNamEditText.text.toString().isBlank() -> {
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.your_name_field),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    binding.userNamEditText.text.toString() == binding.userNamTextView.text.toString() -> {
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.not_changed),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    else -> {
-                        binding.userNamEditText.visibility = View.GONE
-                        binding.userNamTextView.text = binding.userNamTextView.text.toString()
-                        binding.userNamTextView.visibility = View.VISIBLE
-                        binding.editNameIcon.tag = "Unmodifiable"
+        } else {
+            when {
+                binding.userNamEditText.text.toString().isBlank() -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.your_name_field),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.userNamEditText.text.toString() == binding.userNamTextView.text.toString() -> {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.not_changed),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                else -> {
+                    binding.userNamEditText.visibility = View.GONE
+                    binding.userNamTextView.text = binding.userNamTextView.text.toString()
+                    binding.userNamTextView.visibility = View.VISIBLE
+                    binding.editNameIcon.tag = "Unmodifiable"
+                    if (view != null) {
                         binding.editNameIcon.setImageDrawable(
                             AppCompatResources.getDrawable(
                                 view.context,
                                 R.drawable.ic_pencil
                             )
                         )
-                        //update nam, vm called
-                        userViewModel.resetUserName(binding.userNamEditText.text.toString())
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.changes_saved),
-                            Toast.LENGTH_LONG
-                        ).show()
-
                     }
-                }
-            }
-        }
-
-
-        binding.modeLL.setOnClickListener {
-
-            sharePreferencesValue = sharedDarkModeFlag.getString(SHARED_KEY, "Auto")
-
-            when (sharePreferencesValue) {
-                "Auto" -> {
-                    sharedDarkModeFlag.edit().clear().apply()
-                    sharedDarkModeFlag.edit().putString(SHARED_KEY, "DARK").apply()
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    setUpModeButton(view)
-                }
-                "DARK" -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    sharedDarkModeFlag.edit().clear().apply()
-                    sharedDarkModeFlag.edit().putString(SHARED_KEY, "LIGHT")
-                        .apply()
-                    setUpModeButton(view)
-
-                }
-                else -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    sharedDarkModeFlag.edit().clear().apply()
-                    sharedDarkModeFlag.edit().putString(SHARED_KEY, "Auto")
-                        .apply()
-                    setUpModeButton(view)
+                    //update nam, vm called
+                    userViewModel.resetUserName(binding.userNamEditText.text.toString())
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.changes_saved),
+                        Toast.LENGTH_LONG
+                    ).show()
 
                 }
             }
@@ -166,13 +154,13 @@ class SettingFragment : Fragment() {
     }
 
     private fun setUpModeButton(view: View) {
-        when (sharePreferencesValue) {
+        when (sharePreferencesValueOfMode) {
             "Auto" -> {
-                binding.modeTextView.text = getString(R.string.light_mode)
+                binding.modeTextView.text = getString(R.string.dark_mode)
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
-                        R.drawable.ic_light_moon
+                        R.drawable.ic_moon
                     )
                 )
             }
@@ -180,19 +168,100 @@ class SettingFragment : Fragment() {
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
-                        R.drawable.ic_moon
+                        R.drawable.ic_light_moon
                     )
                 )
-                binding.modeTextView.text = getString(R.string.auto)
+                binding.modeTextView.text = getString(R.string.light_mode)
             }
             else -> {
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
-                        R.drawable.ic_moon
+                        R.drawable.ic_light_moon
                     )
                 )
-                binding.modeTextView.text = getString(R.string.dark_mode)
+                binding.modeTextView.text = getString(R.string.auto_mode)
+            }
+        }
+    }
+
+    private fun setUpLangButton() {
+        when (sharePreferencesValueOfLang) {
+            "Auto" -> {
+                binding.langEditText.text = getString(R.string.en)
+            }
+            "en" -> {
+
+                binding.langEditText.text = getString(R.string.ar)
+            }
+            else -> {
+
+                binding.langEditText.text = getString(R.string.auto_lang)
+            }
+        }
+    }
+
+    private fun changeLang() {
+
+        when (sharePreferencesValueOfLang) {
+            "Auto" -> {
+                applyLocalized("en")
+                sharedPre.edit().putString(SHARED_LANG_KEY, "en").apply()
+                setUpLangButton()
+            }
+            "en" -> {
+                applyLocalized("ar")
+                sharedPre.edit().putString(SHARED_LANG_KEY, "ar")
+                    .apply()
+                setUpLangButton()
+            }
+            else -> {
+                applyLocalized("Auto")
+                sharedPre.edit().putString(SHARED_LANG_KEY, "Auto")
+                    .apply()
+                setUpLangButton()
+
+            }
+        }
+    }
+
+    private fun applyLocalized(langCode: String) {
+        var langCode = langCode
+        if (langCode == "Auto") {
+            langCode =
+                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
+        }
+         val locale = Locale(langCode)
+        Locale.setDefault(locale)
+         val resources = activity?.resources
+        val configuration = activity?.resources?.configuration
+        configuration?.setLocale(locale)
+        resources?.updateConfiguration(configuration, resources.displayMetrics)
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        activity?.finish()
+    }
+
+    private fun changeMode(view: View) {
+        sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
+
+        when (sharePreferencesValueOfMode) {
+            "Auto" -> {
+                sharedPre.edit().putString(SHARED_MODE_KEY, "DARK").apply()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                setUpModeButton(view)
+            }
+            "DARK" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPre.edit().putString(SHARED_MODE_KEY, "LIGHT")
+                    .apply()
+                setUpModeButton(view)
+            }
+            else -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                sharedPre.edit().putString(SHARED_MODE_KEY, "Auto")
+                    .apply()
+                setUpModeButton(view)
+
             }
         }
     }

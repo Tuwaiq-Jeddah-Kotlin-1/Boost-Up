@@ -4,7 +4,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".app.MQApp"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

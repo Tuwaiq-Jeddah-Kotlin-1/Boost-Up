@@ -80,7 +80,7 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
     companion object {
         const val NOTIFICATION_ID = "MQApp_notification_id"
         const val NOTIFICATION_CONTENT_ID = "MQApp_notification_id"
-        const val NOTIFICATION_NAME = "MQApp"
+        const val NOTIFICATION_NAME = "BoostUpApp"
         const val NOTIFICATION_CHANNEL = "MQApp_channel_01"
         const val NOTIFICATION_WORK = "MQApp_notification_work"
     }
