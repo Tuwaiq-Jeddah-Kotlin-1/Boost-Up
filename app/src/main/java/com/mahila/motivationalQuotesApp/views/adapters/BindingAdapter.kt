@@ -103,7 +103,7 @@ class BindingAdapters {
 
         @BindingAdapter("android:delNotificationIcon")
         @JvmStatic
-        fun delNotificationIcon(view: ConstraintLayout, currentNotification: Notification) {
+        fun delNotificationIcon(view: View, currentNotification: Notification) {
             val currentTime = Calendar.getInstance().timeInMillis
 
             if (currentNotification.dateAndTime < currentTime) {

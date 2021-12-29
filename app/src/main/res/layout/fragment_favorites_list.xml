@@ -8,14 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.homeScreen.FavoritesListFragment">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoritesListRecycleView"
+            android:background="@color/colorBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="50dp"
             android:clipToPadding="false"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -66,6 +66,7 @@ class AddNotificationFragment : Fragment() {
             val listOfRandomQuotes = quotesList.results.shuffled().take(1)
             randomQuote="${listOfRandomQuotes[0].text},${listOfRandomQuotes[0].author}"
         })
+
         binding.datePicker.setOnClickListener {
             OpenDatePiecker()
         }

@@ -14,6 +14,8 @@ import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.MainActivity
+import com.mahila.motivationalQuotesApp.views.sharePreferencesValueOfLang
+import java.util.*
 
 
 class SigninFragment : Fragment() {
@@ -48,16 +50,17 @@ class SigninFragment : Fragment() {
 
         }
         binding.signinButton.setOnClickListener {
-            if (binding.emailEditText.text.toString().isBlank()
-                || binding.passwordEditText.text.toString().isBlank()
+            if (binding.emailEditText.editText?.text.toString().isBlank()
+                || binding.passwordEditText.editText?.text.toString().isBlank()
             ) {
                 Toast.makeText(requireContext(), "Login fields can't be empty", Toast.LENGTH_LONG)
                     .show()
             } else {
                 userViewModel.signIn(
-                    binding.emailEditText.text.toString().trim(),
-                    binding.passwordEditText.text.toString()
+                    binding.emailEditText.editText?.text.toString().trim(),
+                    binding.passwordEditText.editText?.text.toString()
                 )
+
                   findNavController().navigate(R.id.action_signinFragment_to_quotesFragment)
 /*                requireActivity().run {
                     startActivity(Intent(this, MainActivity::class.java))
@@ -71,11 +74,13 @@ class SigninFragment : Fragment() {
         super.onStart()
 
         if (userViewModel.checksignInState()) {
+
             findNavController().navigate(R.id.action_signinFragment_to_quotesFragment)
 
         }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

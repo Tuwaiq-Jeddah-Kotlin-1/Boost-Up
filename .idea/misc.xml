@@ -3,18 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/back_ground_without_stroke.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/edittext_back_ground.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/ic_bell_light_purple.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/ic_bell_p.xml" value="0.22870370370370371" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable-v24/sign-out_24.xml" value="0.20625" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/back_ground_with_stroke.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/bell_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/button_shape.xml" value="0.24666666666666667" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/edit_text_shape.xml" value="0.24666666666666667" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/heart_24.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_bell.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_bell_gray.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_calendar.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_clock.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_disk.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_heart.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_light_moon.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_like.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_moon.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pencil.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_plus.xml" value="0.103125" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_quote_right.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_settings.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_share.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_sign_out.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_u_share.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_unlike.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_user.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_world.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/pencil_24.xml" value="0.14375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/power_24.xml" value="0.14375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/quote-right_24.xml" value="0.26614583333333336" />
@@ -29,7 +49,7 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_authentication.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/favorites_list_item.xml" value="0.2" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_add_notification.xml" value="0.264" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_add_notification.xml" value="0.2" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profil.xml" value="0.2359375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profile.xml" value="0.234375" />
@@ -40,9 +60,9 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.14285714285714285" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.2" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.25" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/jj.xml" value="0.25" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/notification_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/notification_list_item.xml" value="0.48785425101214575" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/quotes_list_item.xml" value="0.264" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/menu/bottom_bar_menu.xml" value="0.1" />
       </map>

@@ -7,61 +7,116 @@
         android:layout_height="match_parent"
         tools:context=".views.homeScreen.AddNotificationFragment">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/timePicker"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginRight="30dp"
-            android:hint="Selecte Time"
-            app:helperText="Selecte time"
-            app:boxStrokeColor="@color/red"
-            app:layout_constraintEnd_toEndOf="@+id/datePicker"
-            app:layout_constraintStart_toStartOf="@+id/datePicker"
-            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/datePicker"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="180dp"
-            android:layout_marginEnd="30dp"
-            android:hint="Selecte date"
-            app:helperText="Selecte date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnOk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="118dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/button_shape"
             android:text="@string/done"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnCan"
             app:layout_constraintEnd_toStartOf="@+id/btnCan"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="118dp"
             android:background="@drawable/button_shape"
             android:text="@string/cancel"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnOk"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnOk" />
+            app:layout_constraintStart_toEndOf="@+id/btnOk"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
+        <LinearLayout
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="175dp"
+            android:gravity="center_vertical|start"
+            android:background="@drawable/edit_text_shape"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/btnCan"
+            app:layout_constraintStart_toStartOf="@+id/timePicker"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginHorizontal="30dp"
+                android:src="@drawable/ic_calendar" />
+            <TextView
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@string/select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="244dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center_vertical|start"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/datePicker"
+            app:layout_constraintEnd_toEndOf="@+id/datePicker"
+            app:layout_constraintStart_toStartOf="@+id/datePicker"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/resetIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginHorizontal="30dp"
+                android:src="@drawable/ic_clock" />
+            <TextView
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@string/select_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timePicker3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:hint="@string/select_time"
+            android:visibility="gone"
+            app:counterMaxLength="10"
+            app:helperTextEnabled="true"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_clock">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="false" />
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

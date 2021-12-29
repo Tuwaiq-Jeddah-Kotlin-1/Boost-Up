@@ -16,8 +16,9 @@
             android:backgroundTint="@color/lightPurple"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/ic_bell"
+            android:src="@drawable/ic_plus"
             android:tint="@color/white"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -25,9 +26,11 @@
             android:id="@+id/notificationListRecycleView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="50dp"
             android:clipToPadding="false"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@color/colorBackground"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

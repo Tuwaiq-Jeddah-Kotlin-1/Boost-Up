@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/navigation_signup"
         android:name="com.mahila.motivationalQuotesApp.views.auth.SignupFragment"
-        android:label="Sign Up"
+        android:label="@string/sign_up"
         tools:layout="@layout/fragment_signin">
         <action
             android:id="@+id/action_signupFragment_to_signinFragment"
@@ -81,7 +81,7 @@
     <fragment
         android:id="@+id/navigation_forgotPassword"
         android:name="com.mahila.motivationalQuotesApp.views.auth.ForgotPasswordFragment"
-        android:label="Forgot Password"
+        android:label="@string/forgot"
         tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_signinFragment"
@@ -92,7 +92,7 @@
     <fragment
         android:id="@+id/navigation_addNotification"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.AddNotificationFragment"
-        android:label="Add Notification"
+        android:label="@string/Add_reminder"
         tools:layout="@layout/fragment_add_notification">
         <action
             android:id="@+id/action_addNotificationFragment_to_notificationFragment"

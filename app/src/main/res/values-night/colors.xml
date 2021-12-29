@@ -12,4 +12,12 @@
     <color name="lightPurple">#A191F0</color>
     <color name="darkPurple">#130F25</color>
     <color name="darkGray">#8E8E8E</color>
+    <color name="colorBackground">#2d2d2d</color>
+
+    <color name="colorGrayBackground">#1e1e1e</color>
+    <color name="colorNeonPurple">#44437f</color>
+    <color name="colorDarkGrayText">#94949b</color>
+    <color name="colorLightGrayText">#c3c4c8</color>
+    <color name="InactiveBottomNavIconColor">#444444</color>
+
 </resources>
