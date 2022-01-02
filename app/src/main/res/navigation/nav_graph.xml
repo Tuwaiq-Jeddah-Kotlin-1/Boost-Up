@@ -20,6 +20,10 @@
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.FavoritesListFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites_list">
+        <action
+            android:id="@+id/action_favoriteFragment_to_favoriteFragment"
+            app:destination="@id/navigation_favorite"
+            />
 
     </fragment>
 
@@ -30,10 +34,12 @@
         tools:layout="@layout/fragment_notification">
         <action
             android:id="@+id/action_notificationFragment_to_addNotificationFragment"
-            app:destination="@id/navigation_addNotification" />
-        <action
-            android:id="@+id/action_notificationFragment_to_forgotPasswordFragment"
-            app:destination="@id/navigation_forgotPassword" />
+            app:destination="@id/navigation_addNotification"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+
     </fragment>
 
 
@@ -99,7 +105,10 @@
             app:destination="@id/navigation_notification"
             app:launchSingleTop="false"
             app:popUpTo="@id/navigation_notification"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            />
     </fragment>
 
     <fragment

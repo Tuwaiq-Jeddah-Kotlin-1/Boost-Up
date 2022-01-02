@@ -23,6 +23,7 @@ var sharePreferencesValueOfMode: String? = null
 var sharePreferencesValueOfLang: String? = null
 const val SHARED_MODE_KEY = "MODE"
 const val SHARED_LANG_KEY = "LANG"
+const val SHARED_STAY_SIGNED_IN = "SIGNED_IN"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -31,7 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+   /*     println("-----Patterns----")
+        println(android.util.Patterns.EMAIL_ADDRESS.matcher("m..a@gmali.com").matches())*/
         sharedPre = this.getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
         sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
         changeMode()

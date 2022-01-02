@@ -1,3 +1,5 @@
+package com.mahila.motivationalQuotesApp.worker
+
 import android.app.Notification.DEFAULT_ALL
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -78,11 +80,11 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
     }
 
     companion object {
-        const val NOTIFICATION_ID = "MQApp_notification_id"
-        const val NOTIFICATION_CONTENT_ID = "MQApp_notification_id"
+        const val NOTIFICATION_ID = "BoostUpApp_notification_id"
+        const val NOTIFICATION_CONTENT_ID = "BoostUpApp_notification_id"
         const val NOTIFICATION_NAME = "BoostUpApp"
-        const val NOTIFICATION_CHANNEL = "MQApp_channel_01"
-        const val NOTIFICATION_WORK = "MQApp_notification_work"
+        const val NOTIFICATION_CHANNEL = "BoostUpApp_channel_01"
+        const val NOTIFICATION_WORK = "BoostUpApp_notification_work"
     }
 
 }

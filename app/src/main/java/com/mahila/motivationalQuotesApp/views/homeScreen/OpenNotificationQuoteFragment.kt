@@ -1,6 +1,6 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
-import NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ class OpenNotificationQuoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        // Data binding
+        //  binding
         _binding = FragmentOpenNotificationQuoteBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -31,7 +31,7 @@ class OpenNotificationQuoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var quote = arguments?.getString(NOTIFICATION_CONTENT_ID)?.split(",")
+        var quote = arguments?.getString(NOTIFICATION_CONTENT_ID)?.split("*")
 
         val quoteText = quote?.get(0) ?: getString(R.string.you_can)
         val quoteAuthor = quote?.get(1) ?: getString(R.string.me)

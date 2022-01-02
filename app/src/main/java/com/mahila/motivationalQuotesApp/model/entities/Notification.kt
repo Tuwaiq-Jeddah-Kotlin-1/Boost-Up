@@ -13,9 +13,10 @@ data class Notification(
     var type: String,
     var active: Boolean,
     var timeAsString: String,
-    var dateAsString: String,
+    var dateAsString: String
+     , var randomQuote:String
 
-    ) : Parcelable {
+) : Parcelable {
 
     companion object {
 
@@ -28,7 +29,10 @@ data class Notification(
                 val active = getBoolean("active")!!
                 val timeAsString = getString("timeAsString")!!
                 val dateAsString = getString("dateAsString")!!
-                Notification(notificationId, dateAndTime,delay, type, active, timeAsString, dateAsString)
+                val randomQuote = getString("randomQuote")!!
+                Notification(
+                    notificationId, dateAndTime, delay, type, active, timeAsString, dateAsString
+                    ,randomQuote)
 
             } catch (e: Exception) {
                 Log.e(TAG, "Error converting toNotification", e)

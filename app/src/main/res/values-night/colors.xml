@@ -14,8 +14,8 @@
     <color name="darkGray">#8E8E8E</color>
     <color name="colorBackground">#2d2d2d</color>
 
-    <color name="colorGrayBackground">#1e1e1e</color>
-    <color name="colorNeonPurple">#44437f</color>
+    <color name="colorGrayBackground">#1E1E1E</color>
+    <color name="colorNeonPurple">#44437F</color>
     <color name="colorDarkGrayText">#94949b</color>
     <color name="colorLightGrayText">#c3c4c8</color>
     <color name="InactiveBottomNavIconColor">#444444</color>

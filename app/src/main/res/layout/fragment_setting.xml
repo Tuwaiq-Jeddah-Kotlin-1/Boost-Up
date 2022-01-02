@@ -30,9 +30,9 @@
             android:layout_marginBottom="40dp"
             android:gravity="center_vertical|start"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/resetPasswordLL"
-            app:layout_constraintEnd_toEndOf="@+id/resetPasswordLL"
-            app:layout_constraintStart_toStartOf="@+id/resetPasswordLL"
+            app:layout_constraintBottom_toTopOf="@+id/changeLangLL"
+            app:layout_constraintEnd_toEndOf="@+id/changeLangLL"
+            app:layout_constraintStart_toStartOf="@+id/changeLangLL"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <ImageView
@@ -61,7 +61,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/resetPasswordLL"
+            android:id="@+id/changeLangLL"
             android:layout_width="333dp"
             android:layout_height="66dp"
             android:layout_marginHorizontal="40dp"
@@ -102,7 +102,7 @@
             app:layout_constraintBottom_toTopOf="@+id/signOutLL"
             app:layout_constraintEnd_toEndOf="@+id/signOutLL"
             app:layout_constraintStart_toStartOf="@+id/signOutLL"
-            app:layout_constraintTop_toBottomOf="@+id/resetPasswordLL">
+            app:layout_constraintTop_toBottomOf="@+id/changeLangLL">
 
             <ImageView
                 android:id="@+id/modeIcon"
