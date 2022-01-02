@@ -1,8 +1,17 @@
 package com.mahila.motivationalQuotesApp.model.repository
 
+import android.app.Application
+import android.provider.Settings.Global.getString
+import android.provider.Settings.Secure.getString
 import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.model.entities.Notification.Companion.toNotification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
@@ -11,19 +20,23 @@ import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.entities.User.Companion.toUser
 import kotlinx.coroutines.tasks.await
 
+
 object FirebaseUserService {
     private const val TAG = "FirebaseUserService"
     private val db by lazy { FirebaseFirestore.getInstance() }
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var application: Application
+    fun firebaseUserService(_application: Application) {
+        application = _application
+    }
 
-    //get user data
+    //get user data-------------------------------------
     suspend fun getUserData(): User? {
         return try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid).get().await().toUser()
             }
-
         } catch (e: Exception) {
             Log.e(TAG, "Error getting the user details", e)
 
@@ -73,7 +86,6 @@ object FirebaseUserService {
                     .document(notification.notificationId).delete().await()
             }
 
-
         } catch (e: Exception) {
             Log.e(TAG, "Error deleting an favorite quote", e)
         }
@@ -81,12 +93,13 @@ object FirebaseUserService {
 
     suspend fun setToInactiveNotification(notification: Notification) {
         try {
+            val isActive=!notification.active
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid).collection("notificationsList")
                     .document(notification.notificationId).update(
                         mapOf(
-                            "active" to false
+                            "active" to isActive
                         )
                     ).await()
             }
@@ -175,78 +188,64 @@ object FirebaseUserService {
     }
 
     //----------- Manage User Account
-    suspend fun signUp(name: String, email: String, password: String)//: Task<AuthResult>
-    {
-
+    fun signUp(name: String, email: String, password: String) {
         try {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     //Add user to FireStore
                     val user = User(auth.currentUser!!.uid, name, email)
-
                     db.collection("users").document(auth.currentUser!!.uid).set(user)
-                    //   return@addOnCompleteListener
+                   // firebaseUserMutableLiveData.postValue(auth.currentUser)
+                    Toast.makeText(application, R.string.successfully_sign_up, Toast.LENGTH_SHORT).show()
+
                 } else {
-
-                    //  return@addOnCompleteListener
+                    Toast.makeText(application, task.exception!!.message, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, "Error add the user ", task.exception!!)
-                    //    Toast.makeText(this ,task.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
-            }.await()
-
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Error sign up ", e)
-
         }
-
     }
 
-    suspend fun signIn(email: String, password: String):Boolean {
 
+    fun signIn(email: String, password: String,view:View) {
         try {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    //Toast
-                } else {
-                    Log.e(TAG, task.exception!!.message, task.exception!!)
-                    //    Toast.makeText(this ,"", Toast.LENGTH_SHORT).show()
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                      //  firebaseUserMutableLiveData.postValue(auth.currentUser)
+                        Toast.makeText(application, R.string.successfully_sign_in, Toast.LENGTH_SHORT)
+                            .show()
+                        Navigation.findNavController(view).navigate(R.id.action_signinFragment_to_quotesFragment)
+
+                    } else {
+                        Toast.makeText(application, task.exception!!.message, Toast.LENGTH_SHORT)
+                            .show()
+                        Log.e(TAG, task.exception!!.message, task.exception!!)
+                    }
                 }
-            }.await()
-            return true
-
-
         } catch (e: Exception) {
-
             Log.e(TAG, "Error sign in ", e)
-            return false
         }
-
     }
 
     suspend fun forgotPassword(email: String) {
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(application, "Password Reset Email sent.", Toast.LENGTH_SHORT)
+                        .show()
                     Log.d(TAG, "Password Reset Email sent.")
-                    //Toast msg
                 } else {
+                    Toast.makeText(
+                        application,
+                        "Something wrong happened, try again!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.d(TAG, "Password Reset Email has not been sent.")
-
-                    //Toast msg
                 }
             }.await()
-    }
-
-    suspend fun resetPassword(newPassword: String) {
-        auth.currentUser?.updatePassword(newPassword)
-            ?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "User password updated.")
-                } else {
-                    Log.d(TAG, "User password has not been updated.")
-                    //Toast msg
-                }
-            }?.await()
     }
 
     suspend fun resetUserName(newName: String) {
@@ -265,19 +264,6 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun resetEmail(newEmail: String) {
-        auth.currentUser?.updateEmail(newEmail)
-            ?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "User email updated.")
-                } else {
-                    Log.d(TAG, "User email has not been updated.")
-                    //Toast msg
-                }
-            }?.await()
-    }
-
-    //
     fun signOut() {
         auth.signOut()
     }

@@ -23,31 +23,23 @@ class NotificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        // Data binding
+        // binding
         _binding = FragmentNotificationBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
-        // Setup RecyclerView
-        // Observe LiveData
         return binding.root
     }
-//
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Setup RecyclerView
         // Observe LiveData
         userViewModel.notifications.observe(viewLifecycleOwner, { notificationsList ->
-            if (notificationsList != null) {
                 val adapter = NotificationRecycleViewAdapter(notificationsList)
                 binding.notificationListRecycleView.adapter = adapter
-            }
-
-
         })
         binding.addingBtn.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_notificationFragment_to_addNotificationFragment)
+          //  view.findNavController().navigate(R.id.action_notificationFragment_to_addNotificationFragment)
         }
 
 

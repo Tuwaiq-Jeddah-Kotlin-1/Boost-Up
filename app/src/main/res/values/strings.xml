@@ -30,7 +30,7 @@
     <string name="not_match">Passwords don\'t match</string>
     <string name="quotes">Quotes</string>
     <string name="favorites">Favorites</string>
-    <string name="notification">Notification</string>
+    <string name="notification">Reminders</string>
     <string name="setting">Setting</string>
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>
@@ -47,9 +47,29 @@
     <string name="ar">العربية</string>
     <string name="en">EN</string>
     <string name="forgot">Forgot Password</string>
-    <string name="Add_reminder">Add Notification</string>
+    <string name="Add_reminder">Add Reminder</string>
     <string name="join_boost_up">Join Boost Up</string>
-    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_email">Email</string>
     <string name="select_date">Select date</string>
     <string name="select_time">Select time</string>
+    <string name="enter_your_name">User Name</string>
+    <string name="password_helper">"8 is minimum length,
+        has special character,
+        has capital letter,
+        has number"</string>
+    <string name="stay_signed_in">Stay signed in?</string>
+    <string name="successfully_sign_in">Successfully Sign In.</string>
+    <string name="successfully_sign_up">Successfully Sign Up.</string>
+    <string name="successfully_sign_out">Successfully Sign Out.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="out_of_app">Sign Out of App?</string>
+    <string name="are_you_sure">Are you sure that you would like to sign out?</string>
+    <string name="select_Reminder_time">Select Reminder time</string>
+    <string name="time_fields_cannot_be_empty">Time Fields cannot be Empty</string>
+    <string name="date_fields_cannot_be_empty">Date fields cannot be empty</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="input_fields_cannot_be_empty">Input Fields cannot be Empty</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="onetime_reminder">Onetime Reminder</string>
 </resources>

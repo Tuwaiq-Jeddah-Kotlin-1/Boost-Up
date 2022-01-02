@@ -1,16 +1,21 @@
 package com.mahila.motivationalQuotesApp.viewModels
 
+import android.app.Application
+import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
+import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService.firebaseUserService
 import kotlinx.coroutines.launch
 
-class UserViewModel : ViewModel() {
+
+class UserViewModel(application: Application) : AndroidViewModel(application)//: ViewModel()
+{
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
@@ -18,8 +23,10 @@ class UserViewModel : ViewModel() {
     val favoritesQuotes: LiveData<List<Quote>> = _FavoritesQuotes
     private val _Notifications = MutableLiveData<List<Notification>>()
     val notifications: LiveData<List<Notification>> = _Notifications
+  //  var userState = firebaseUserMutableLiveData
 
     init {
+        firebaseUserService(application)
         viewModelScope.launch {
             _user.value = FirebaseUserService.getUserData()
         }
@@ -36,9 +43,8 @@ class UserViewModel : ViewModel() {
         FirebaseUserService.signUp(name, email, password)
     }
 
-    fun signIn(email: String, password: String) = viewModelScope.launch {
-        FirebaseUserService.signIn(email, password)
-    }
+    fun signIn(email: String, password: String,view: View) =
+        viewModelScope.launch { FirebaseUserService.signIn(email, password,view) }
 
     fun signOut() = viewModelScope.launch {
         FirebaseUserService.signOut()
@@ -49,15 +55,10 @@ class UserViewModel : ViewModel() {
 
     }
 
-    fun checksignInState() = FirebaseUserService.checkSignInState()
+    fun checkSignInState() = FirebaseUserService.checkSignInState()
 
     fun resetUserName(newUserName: String) = viewModelScope.launch {
         FirebaseUserService.resetUserName(newUserName)
-
-    }
-
-    fun resetPassword(newPassword: String) = viewModelScope.launch {
-        FirebaseUserService.resetPassword(newPassword)
 
     }
 

@@ -21,7 +21,7 @@ class FavoritesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        // Data binding
+        // binding
         _binding = FragmentFavoritesListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -35,17 +35,15 @@ class FavoritesListFragment : Fragment() {
         // Setup RecyclerView
         // Observe LiveData
         userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
-            if (favoritesList != null) {
                 val adapter = FavoritesRecycleViewAdapter(favoritesList)
-
                 binding.favoritesListRecycleView.adapter = adapter
-            }
-
-
         })
 
-    }
 
+    }
+fun setupRecyclerView(){
+
+}
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,7 +25,9 @@
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,11 +37,11 @@
                 android:id="@+id/notificationIcon"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_margin="10dp"
                 android:layout_marginBottom="9dp"
                 android:inactiveNotificationIcon="@{notification}"
-                android:src="@drawable/ic_bell"
+                android:src="@drawable/ic_bell_purple"
                 android:tag="ACTIVE"
-                android:layout_margin="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/notificationTitleTextView"
                 app:layout_constraintEnd_toEndOf="@+id/notificationTitleTextView"
                 app:layout_constraintStart_toStartOf="@+id/notificationTitleTextView"

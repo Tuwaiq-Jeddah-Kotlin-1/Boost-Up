@@ -34,7 +34,7 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Data binding
+        //  binding
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -49,7 +49,7 @@ class SettingFragment : Fragment() {
         currentSystemLocaleCode =
             ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
 
-        binding.resetPasswordLL.setOnClickListener {
+        binding.changeLangLL.setOnClickListener {
             changeLang()
         }
 
@@ -70,6 +70,7 @@ class SettingFragment : Fragment() {
 
         binding.modeLL.setOnClickListener {
             changeMode(view)
+         //   activity?.recreate()
 
         }
     }
@@ -134,26 +135,24 @@ class SettingFragment : Fragment() {
     // Show AlertDialog for Confirming signOut the task
     private fun confirmSignOut() {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
             userViewModel.signOut()
             Toast.makeText(
                 requireContext(),
-                "Successfully Sign Out.",
+                getString(R.string.successfully_sign_out),
                 Toast.LENGTH_SHORT
             ).show()
-            /*requireActivity().run {
-                startActivity(Intent(this, AuthenticationActivity::class.java))
-                //finish()
-            }*/
+            sharedPre.edit().putBoolean(SHARED_STAY_SIGNED_IN,false).clear().apply()
             findNavController().navigate(R.id.action_settingFragment_to_signupFragment)
         }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Sign Out of App?")
-        builder.setMessage("Are you sure that you would like to sign out?")
+        builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
+        builder.setTitle(getString(R.string.out_of_app))
+        builder.setMessage(getString(R.string.are_you_sure))
         builder.create().show()
     }
 
     private fun setUpModeButton(view: View) {
+        val   sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
         when (sharePreferencesValueOfMode) {
             "Auto" -> {
                 binding.modeTextView.text = getString(R.string.dark_mode)
@@ -168,16 +167,18 @@ class SettingFragment : Fragment() {
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
-                        R.drawable.ic_light_moon
+                        R.drawable.ic_sun
                     )
                 )
                 binding.modeTextView.text = getString(R.string.light_mode)
             }
             else -> {
+               // println("-----elseelse--------")
+               // println(sharePreferencesValueOfMode)
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
-                        R.drawable.ic_light_moon
+                        R.drawable.ic_opacity
                     )
                 )
                 binding.modeTextView.text = getString(R.string.auto_mode)
@@ -242,12 +243,10 @@ class SettingFragment : Fragment() {
     }
 
     private fun changeMode(view: View) {
-        sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
-
-        when (sharePreferencesValueOfMode) {
+        when (sharedPre.getString(SHARED_MODE_KEY, "Auto")) {
             "Auto" -> {
-                sharedPre.edit().putString(SHARED_MODE_KEY, "DARK").apply()
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPre.edit().putString(SHARED_MODE_KEY, "DARK").apply()
                 setUpModeButton(view)
             }
             "DARK" -> {
@@ -261,7 +260,13 @@ class SettingFragment : Fragment() {
                 sharedPre.edit().putString(SHARED_MODE_KEY, "Auto")
                     .apply()
                 setUpModeButton(view)
-
+                binding.modeTextView.text = getString(R.string.dark_mode)
+                binding.modeIcon.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        view.context,
+                        R.drawable.ic_moon
+                    )
+                )
             }
         }
     }

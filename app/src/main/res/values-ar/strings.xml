@@ -8,7 +8,7 @@
     <string name="reset_password">تغيير كلمة المرور</string>
     <string name="enter_new_password">ادخِل كلمة المرور</string>
     <string name="dark_mode">الوضع الداكن</string>
-    <string name="light_mode">الوضع الفاتح</string>
+    <string name="light_mode"> وضع الإضاءة</string>
     <string name="sign_out">تسجيل الخروج</string>
     <string name="welcome_back">أهلا بعودتك</string>
     <string name="password">كلمة المرور</string>
@@ -20,7 +20,7 @@
     <string name="confirm_password">تأكيد كلمة المرور</string>
     <string name="sign_up"> أنشِئ حسابًا </string>
     <string name="already_have_an_account">لديك حساب؟</string>
-    <string name="daily_reminder">منبة يومي</string>
+    <string name="daily_reminder">منبه يومي</string>
     <string name="date_ntime">التاريخ:\nالوقت:</string>
     <string name="password_field">حقل كلمة المرور لا يمكن أن يكون فارغ</string>
     <string name="changes_saved">تم حفظ التغييرات بنجاح</string>
@@ -36,7 +36,7 @@
     <string name="cancel">إلغاء</string>
     <string name="date">التاريخ: </string>
     <string name="time">الوقت: </string>
-    <string name="auto_mode">الوضع التلقائي</string>
+    <string name="auto_mode">وضع النظام</string>
     <string name="auto_lang">لغة النظام</string>
     <string name="motivation_reminder">إشعار تحفيزي</string>
     <string name="Reminder_scheduled_successfully">تم ضبط الإشعار بنجاح.</string>
@@ -49,7 +49,27 @@
     <string name="forgot">نسيت كلمة المرور</string>
     <string name="Add_reminder">أنشِئ إشعار</string>
     <string name="join_boost_up">انضم لنا</string>
-    <string name="enter_your_email">ادخِل بريدك الإلكتروني</string>
+    <string name="enter_your_email"> البريد الإلكتروني</string>
     <string name="select_date">اختر تاريخ</string>
     <string name="select_time">اختر وقت </string>
+    <string name="enter_your_name">اسم المستخم</string>
+    <string name="password_helper">"8 is minimum length,
+        has special character,
+        has capital letter,
+        has number"</string>
+    <string name="stay_signed_in">البقاء في وضع تسجل الدخول؟</string>
+    <string name="successfully_sign_in">تم تسجيل الدخول بنجاح.</string>
+    <string name="successfully_sign_up">تم أنشاء الحساب بنجاح. </string>
+    <string name="successfully_sign_out">تم تسجيل الخروج بنجاح.</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="out_of_app">تسجيل الخروج من التطبيق؟</string>
+    <string name="are_you_sure">هل تريد حقاً تسجيل الخروج؟</string>
+    <string name="select_Reminder_time">اختر وقت الإشعار</string>
+    <string name="time_fields_cannot_be_empty">يرجى تحديد الوقت</string>
+    <string name="date_fields_cannot_be_empty">يرجى تحديد التاريخ</string>
+    <string name="invalid_email">البريد الإلكتروني غير صالح</string>
+    <string name="input_fields_cannot_be_empty">حقول الإدخال لايمكن ان تبقى فارغة </string>
+    <string name="invalid_password">كلمة المرور غير صالحة</string>
+    <string name="onetime_reminder">إشعار لمرة واحدة</string>
 </resources>

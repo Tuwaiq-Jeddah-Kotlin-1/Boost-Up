@@ -1,6 +1,5 @@
 package com.mahila.motivationalQuotesApp.views.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentForgotPasswordBinding
+import com.mahila.motivationalQuotesApp.util.ValidationUtil
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
 
@@ -23,7 +23,7 @@ class ForgotPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Data binding
+        // binding
         _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -31,22 +31,24 @@ class ForgotPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       binding.sendButton.setOnClickListener {
-           if (binding.emailEditText.text.toString().isBlank()
-           ) {
-               Toast.makeText(requireContext(), getString(R.string.email_field), Toast.LENGTH_LONG)
-                   .show()
-           } else {
-               userViewModel.forgotPassword(
-                   binding.emailEditText.text.toString().trim()
-               )
-                 findNavController().navigate(R.id.action_forgotPasswordFragment_to_signinFragment)
-              /* requireActivity().run {
-                   startActivity(Intent(this, AuthenticationActivity::class.java))
-                   //  finish()
-               }*/
-           }
-       }
+        binding.sendButton.setOnClickListener {
+            if (binding.emailEditText.editText?.text.toString().isBlank()
+            ) {
+                Toast.makeText(requireContext(), getString(R.string.email_field), Toast.LENGTH_LONG)
+                    .show()
+            } else if (!ValidationUtil.isValidEmail(
+                    binding.emailEditText.editText?.text.toString().trim()
+                )
+            ) {
+                Toast.makeText(requireContext(), getString(R.string.invalid_email)
+                    , Toast.LENGTH_LONG).show()
+            } else {
+                userViewModel.forgotPassword(
+                    binding.emailEditText.editText?.text.toString().trim()
+                )
+                findNavController().navigate(R.id.action_forgotPasswordFragment_to_signinFragment)
+            }
+        }
 
     }
 
