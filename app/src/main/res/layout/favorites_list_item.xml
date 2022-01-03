@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
 
@@ -99,7 +100,6 @@
                     android:layout_height="25dp"
                     android:layout_margin="10dp"
                     android:gravity="center_vertical"
-                    android:sendAQuoteToFavoritesList="@{quote}"
                     android:src="@drawable/ic_like"
                     android:tag="LIKE" />
 

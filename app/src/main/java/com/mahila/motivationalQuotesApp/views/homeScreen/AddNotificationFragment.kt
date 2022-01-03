@@ -40,6 +40,7 @@ class AddNotificationFragment : Fragment() {
     var dateAsString = ""
     private var randomQuote = ""
     private var notificationType: String = "Onetime Reminder"
+    private var everyDay: Boolean = false
     private val userViewModel: UserViewModel by viewModels()
     private val quoteViewModel: QuotesViewModel by viewModels()
 
@@ -55,7 +56,6 @@ class AddNotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //
-        println("-----------onViewCreated-----")
         quoteViewModel.fetchQuotes().observe(viewLifecycleOwner, { quotesList ->
             val listOfRandomQuotes = quotesList.results.shuffled().take(1)
             randomQuote = "${listOfRandomQuotes[0].text}*${listOfRandomQuotes[0].author}"
@@ -69,9 +69,10 @@ class AddNotificationFragment : Fragment() {
         }
 
         binding.btnOk.setOnClickListener {
-            /*if (binding.isEveryDay.isChecked) {
+            if (binding.isEveryDay.isChecked) {
                 notificationType = "Daily Reminder"
-            }*/
+                everyDay = true
+            }
             if (selectedDday == 0) {
                 Toast.makeText(
                     requireContext(),
@@ -188,31 +189,34 @@ class AddNotificationFragment : Fragment() {
             NOTIFICATION_CONTENT_ID,
             randomQuote
         ).build()
+        if (everyDay) {
+            val periodicNotificationWork =
+                PeriodicWorkRequest.Builder(NotificationWorker::class.java, 1, TimeUnit.HOURS)
+                    .addTag(notificationId.toString())
+                    .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+                    .setInputData(quoteNotification)
+                    .build()
+            val instanceWorkManager2 = WorkManager.getInstance(requireContext())
+            instanceWorkManager2.enqueueUniquePeriodicWork(
+                NOTIFICATION_WORK,
+                ExistingPeriodicWorkPolicy.REPLACE,
+                periodicNotificationWork
+            )
+        } else {
+            val oneTimeNotificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
+                .addTag(notificationId.toString())
+                .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+                .setInputData(quoteNotification)
+                .build()
 
-        val oneTimeNotificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-            .addTag(notificationId.toString())
-            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
-            .setInputData(quoteNotification)
-            .build()
-     /*   val periodicNotificationWork =
-            PeriodicWorkRequest.Builder(NotificationWorker::class.java,1,TimeUnit.HOURS)
-            .addTag(notificationId.toString())
-            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
-            .setInputData(quoteNotification)
-            .build()
-        val instanceWorkManager2 = WorkManager.getInstance(requireContext())
-        instanceWorkManager2.enqueueUniquePeriodicWork(
-            NOTIFICATION_WORK,
-            ExistingPeriodicWorkPolicy.REPLACE,
-            periodicNotificationWork
-        )
-*/
-        val instanceWorkManager = WorkManager.getInstance(requireContext())
-        instanceWorkManager.beginUniqueWork(
-            NOTIFICATION_WORK,
-            ExistingWorkPolicy.REPLACE,
-            oneTimeNotificationWork
-        ).enqueue()
+            val instanceWorkManager = WorkManager.getInstance(requireContext())
+            instanceWorkManager.beginUniqueWork(
+                NOTIFICATION_WORK,
+                ExistingWorkPolicy.REPLACE,
+                oneTimeNotificationWork
+            ).enqueue()
+        }
+
 
         //add Notification to FireStore
 
@@ -224,8 +228,7 @@ class AddNotificationFragment : Fragment() {
                 notificationType,
                 true,
                 timeAsString,
-                dateAsString
-                 , randomQuote
+                dateAsString, randomQuote, everyDay
             )
         )
     }

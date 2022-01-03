@@ -39,6 +39,7 @@ class NotificationRecycleViewAdapter(var notificationList:List<Notification>) :
 
     override fun onBindViewHolder(holder: QuotesHolder, position: Int) {
         val currentNotification = notificationList[position]
+       // holder.itemView.
         holder.bind(currentNotification)
     }
 

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentFavoritesListBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.adapters.FavoritesRecycleViewAdapter
@@ -33,16 +35,20 @@ class FavoritesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup RecyclerView
-        // Observe LiveData
-        userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
-                val adapter = FavoritesRecycleViewAdapter(favoritesList)
-                binding.favoritesListRecycleView.adapter = adapter
-        })
+        setupRecyclerView()
 
-
+        binding.refreshLayout.setOnRefreshListener {
+            setupRecyclerView()
+            findNavController().navigate(R.id.action_favoriteFragment_to_favoriteFragment)
+            binding.refreshLayout.isRefreshing = false
+        }
     }
 fun setupRecyclerView(){
-
+    // Observe LiveData
+    userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
+        val adapter = FavoritesRecycleViewAdapter(favoritesList)
+        binding.favoritesListRecycleView.adapter = adapter
+    })
 }
     override fun onDestroyView() {
         super.onDestroyView()

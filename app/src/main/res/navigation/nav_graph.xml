@@ -44,6 +44,15 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"/>
+        <action
+            android:id="@+id/action_notificationFragment_to_notificationFragment"
+            app:destination="@id/navigation_notification"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/navigation_notification"
+            app:popUpToInclusive="true"
+            />
 
     </fragment>
 
@@ -55,7 +64,9 @@
         tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingFragment_to_signupFragment"
-            app:destination="@id/navigation_signup" />
+            app:destination="@id/navigation_signup"
+            app:popUpTo="@id/navigation_setting"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
