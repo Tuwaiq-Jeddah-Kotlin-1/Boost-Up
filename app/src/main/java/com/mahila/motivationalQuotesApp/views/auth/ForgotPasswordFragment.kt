@@ -34,14 +34,13 @@ class ForgotPasswordFragment : Fragment() {
         binding.sendButton.setOnClickListener {
             if (binding.emailEditText.editText?.text.toString().isBlank()
             ) {
-                Toast.makeText(requireContext(), getString(R.string.email_field), Toast.LENGTH_LONG)
-                    .show()
+                binding.emailEditText.error=getString(R.string.input_fields_cannot_be_empty)
             } else if (!ValidationUtil.isValidEmail(
                     binding.emailEditText.editText?.text.toString().trim()
                 )
             ) {
-                Toast.makeText(requireContext(), getString(R.string.invalid_email)
-                    , Toast.LENGTH_LONG).show()
+                binding.emailEditText.error=getString(R.string.invalid_email)
+
             } else {
                 userViewModel.forgotPassword(
                     binding.emailEditText.editText?.text.toString().trim()

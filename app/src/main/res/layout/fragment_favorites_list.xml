@@ -24,6 +24,7 @@
                 android:clipToPadding="false"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
+                android:layoutAnimation="@anim/recyclerview_anim"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

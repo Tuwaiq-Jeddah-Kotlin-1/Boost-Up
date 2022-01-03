@@ -69,7 +69,11 @@
     <string name="time_fields_cannot_be_empty">يرجى تحديد الوقت</string>
     <string name="date_fields_cannot_be_empty">يرجى تحديد التاريخ</string>
     <string name="invalid_email">البريد الإلكتروني غير صالح</string>
-    <string name="input_fields_cannot_be_empty">حقول الإدخال لايمكن ان تبقى فارغة </string>
+    <string name="input_fields_cannot_be_empty">حقل الإدخال لايمكن ان يبقى فارغاً </string>
     <string name="invalid_password">كلمة المرور غير صالحة</string>
     <string name="onetime_reminder">إشعار لمرة واحدة</string>
+    <string name="minimum_password">يجب أن تحتوي ثمانية أحرف على الأقل </string>
+    <string name="capital_letter">يجب أن تحتوي حرفاً كبيراً.</string>
+    <string name="number">يجب أن تحتوي على رقماً.</string>
+    <string name="special_character">يجب أن تحتوي على رمزاً.</string>
 </resources>

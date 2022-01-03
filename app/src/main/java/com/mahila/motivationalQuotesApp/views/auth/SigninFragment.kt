@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
+import com.mahila.motivationalQuotesApp.util.ValidationUtil
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.SHARED_STAY_SIGNED_IN
 import com.mahila.motivationalQuotesApp.views.sharedPre
@@ -48,17 +49,18 @@ class SigninFragment : Fragment() {
 
         }
         binding.signinButton.setOnClickListener {
-            if (binding.passwordEditText.editText?.text.toString().isBlank()) {
-                binding.passwordEditText.error="Input field cannot be empty"
-            }
-            if (binding.emailEditText.editText?.text.toString().isBlank()
 
+            if (binding.emailEditText.editText?.text.toString().isBlank()
             ) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.input_fields_cannot_be_empty), Toast.LENGTH_LONG
-                )
-                    .show()
+                binding.emailEditText.error = getString(R.string.input_fields_cannot_be_empty)
+
+            } else if (!ValidationUtil.isValidEmail(
+                    binding.emailEditText.editText?.text.toString().trim())
+            ) {
+                binding.emailEditText.error = getString(R.string.invalid_email)
+
+            } else if (binding.passwordEditText.editText?.text.toString().isBlank()) {
+                binding.passwordEditText.error = getString(R.string.input_fields_cannot_be_empty)
             } else {
                 userViewModel.signIn(
                     binding.emailEditText.editText?.text.toString().trim(),
