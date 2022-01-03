@@ -23,6 +23,11 @@
         <action
             android:id="@+id/action_favoriteFragment_to_favoriteFragment"
             app:destination="@id/navigation_favorite"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/navigation_favorite"
+            app:popUpToInclusive="true"
             />
 
     </fragment>

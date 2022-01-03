@@ -39,7 +39,7 @@ class NotificationFragment : Fragment() {
                 binding.notificationListRecycleView.adapter = adapter
         })
         binding.addingBtn.setOnClickListener {
-          //  view.findNavController().navigate(R.id.action_notificationFragment_to_addNotificationFragment)
+           view.findNavController().navigate(R.id.action_notificationFragment_to_addNotificationFragment)
         }
 
 

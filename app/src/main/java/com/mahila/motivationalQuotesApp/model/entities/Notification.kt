@@ -29,7 +29,7 @@ data class Notification(
                 val active = getBoolean("active")!!
                 val timeAsString = getString("timeAsString")!!
                 val dateAsString = getString("dateAsString")!!
-                val randomQuote = getString("randomQuote")!!
+               val randomQuote = getString("randomQuote")!!
                 Notification(
                     notificationId, dateAndTime, delay, type, active, timeAsString, dateAsString
                     ,randomQuote)

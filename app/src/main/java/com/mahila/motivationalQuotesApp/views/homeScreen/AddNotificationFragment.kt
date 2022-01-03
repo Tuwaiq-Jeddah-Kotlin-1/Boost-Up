@@ -1,9 +1,5 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_ID
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_WORK
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
@@ -14,10 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.work.Data
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_KEYBOARD
 import com.google.android.material.timepicker.TimeFormat
@@ -26,6 +19,10 @@ import com.mahila.motivationalQuotesApp.databinding.FragmentAddNotificationBindi
 import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.viewModels.QuotesViewModel
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_ID
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_WORK
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -41,8 +38,8 @@ class AddNotificationFragment : Fragment() {
     private var selectedMinute: Int = 0
     var timeAsString = ""
     var dateAsString = ""
-    private var randomQuote =""
-    private var notificationType: String = getString(R.string.onetime_reminder)
+    private var randomQuote = ""
+    private var notificationType: String = "Onetime Reminder"
     private val userViewModel: UserViewModel by viewModels()
     private val quoteViewModel: QuotesViewModel by viewModels()
 
@@ -58,10 +55,10 @@ class AddNotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //
-
+        println("-----------onViewCreated-----")
         quoteViewModel.fetchQuotes().observe(viewLifecycleOwner, { quotesList ->
             val listOfRandomQuotes = quotesList.results.shuffled().take(1)
-            randomQuote="${listOfRandomQuotes[0].text}*${listOfRandomQuotes[0].author}"
+            randomQuote = "${listOfRandomQuotes[0].text}*${listOfRandomQuotes[0].author}"
         })
 
         binding.datePicker.setOnClickListener {
@@ -76,12 +73,17 @@ class AddNotificationFragment : Fragment() {
                 notificationType = "Daily Reminder"
             }*/
             if (selectedDday == 0) {
-                Toast.makeText(requireContext(), getString(R.string.time_fields_cannot_be_empty)
-                    , Toast.LENGTH_LONG)
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.time_fields_cannot_be_empty),
+                    Toast.LENGTH_LONG
+                )
                     .show()
             } else if (selectedYear == 0) {
-                Toast.makeText(requireContext(), getString(R.string.date_fields_cannot_be_empty),
-                    Toast.LENGTH_LONG)
+                Toast.makeText(
+                    requireContext(), getString(R.string.date_fields_cannot_be_empty),
+                    Toast.LENGTH_LONG
+                )
                     .show()
             } else {
                 setUpNotification()
@@ -157,17 +159,25 @@ class AddNotificationFragment : Fragment() {
         )
         val notificationTime = customCalendar.timeInMillis
         val currentTime = Calendar.getInstance().timeInMillis
-       // println(customCalendar.time)
-       // println(Calendar.getInstance().time)
+        // println(customCalendar.time)
+        // println(Calendar.getInstance().time)
         if (notificationTime > currentTime) {
             val data = Data.Builder().putInt(NOTIFICATION_ID, 0).build()
             val delay = notificationTime - currentTime
             scheduleNotification(delay, data, notificationTime)
-            Toast.makeText(requireContext(), getString(R.string.Reminder_scheduled_successfully), Toast.LENGTH_LONG)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.Reminder_scheduled_successfully),
+                Toast.LENGTH_LONG
+            )
                 .show()
 
         } else {
-            Toast.makeText(requireContext(), getString(R.string.invalid_time_date), Toast.LENGTH_LONG)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.invalid_time_date),
+                Toast.LENGTH_LONG
+            )
                 .show()
         }
     }
@@ -179,16 +189,29 @@ class AddNotificationFragment : Fragment() {
             randomQuote
         ).build()
 
-        val notificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
+        val oneTimeNotificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
             .addTag(notificationId.toString())
-            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data).setInputData(quoteNotification)
+            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+            .setInputData(quoteNotification)
             .build()
-
+     /*   val periodicNotificationWork =
+            PeriodicWorkRequest.Builder(NotificationWorker::class.java,1,TimeUnit.HOURS)
+            .addTag(notificationId.toString())
+            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+            .setInputData(quoteNotification)
+            .build()
+        val instanceWorkManager2 = WorkManager.getInstance(requireContext())
+        instanceWorkManager2.enqueueUniquePeriodicWork(
+            NOTIFICATION_WORK,
+            ExistingPeriodicWorkPolicy.REPLACE,
+            periodicNotificationWork
+        )
+*/
         val instanceWorkManager = WorkManager.getInstance(requireContext())
         instanceWorkManager.beginUniqueWork(
             NOTIFICATION_WORK,
             ExistingWorkPolicy.REPLACE,
-            notificationWork
+            oneTimeNotificationWork
         ).enqueue()
 
         //add Notification to FireStore
@@ -201,8 +224,8 @@ class AddNotificationFragment : Fragment() {
                 notificationType,
                 true,
                 timeAsString,
-                dateAsString,
-                randomQuote
+                dateAsString
+                 , randomQuote
             )
         )
     }
