@@ -76,4 +76,5 @@
     <string name="capital_letter">Must contain at least one capital letter.</string>
     <string name="number">Must contain at least one number</string>
     <string name="special_character">Must contain at least one special character.</string>
+    <string name="every_day">Every day?</string>
 </resources>

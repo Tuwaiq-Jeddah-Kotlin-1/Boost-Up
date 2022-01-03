@@ -13,8 +13,9 @@ data class Notification(
     var type: String,
     var active: Boolean,
     var timeAsString: String,
-    var dateAsString: String
-     , var randomQuote:String
+    var dateAsString: String,
+    var randomQuote: String,
+    var everyDay: Boolean
 
 ) : Parcelable {
 
@@ -29,10 +30,12 @@ data class Notification(
                 val active = getBoolean("active")!!
                 val timeAsString = getString("timeAsString")!!
                 val dateAsString = getString("dateAsString")!!
-               val randomQuote = getString("randomQuote")!!
+                val randomQuote = getString("randomQuote")!!
+                val everyDay = getBoolean("everyDay")!!
                 Notification(
-                    notificationId, dateAndTime, delay, type, active, timeAsString, dateAsString
-                    ,randomQuote)
+                    notificationId, dateAndTime, delay, type, active, timeAsString,
+                    dateAsString, randomQuote, everyDay
+                )
 
             } catch (e: Exception) {
                 Log.e(TAG, "Error converting toNotification", e)

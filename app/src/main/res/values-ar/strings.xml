@@ -76,4 +76,5 @@
     <string name="capital_letter">يجب أن تحتوي حرفاً كبيراً.</string>
     <string name="number">يجب أن تحتوي على رقماً.</string>
     <string name="special_character">يجب أن تحتوي على رمزاً.</string>
+    <string name="every_day">كل يوم؟</string>
 </resources>

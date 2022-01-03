@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentNotificationBinding
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
@@ -33,15 +34,27 @@ class NotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Setup RecyclerView
-        // Observe LiveData
-        userViewModel.notifications.observe(viewLifecycleOwner, { notificationsList ->
-                val adapter = NotificationRecycleViewAdapter(notificationsList)
-                binding.notificationListRecycleView.adapter = adapter
-        })
+        setupRecyclerView()
+
         binding.addingBtn.setOnClickListener {
-           view.findNavController().navigate(R.id.action_notificationFragment_to_addNotificationFragment)
+            view.findNavController()
+                .navigate(R.id.action_notificationFragment_to_addNotificationFragment)
+        }
+        binding.refreshLayout.setOnRefreshListener {
+            // Setup RecyclerView
+            setupRecyclerView()
+            findNavController().navigate(R.id.action_notificationFragment_to_notificationFragment)
+            binding.refreshLayout.isRefreshing = false
         }
 
+    }
+
+    private fun setupRecyclerView() {
+        // Observe LiveData
+        userViewModel.notifications.observe(viewLifecycleOwner, { notificationsList ->
+            val adapter = NotificationRecycleViewAdapter(notificationsList)
+            binding.notificationListRecycleView.adapter = adapter
+        })
 
     }
 

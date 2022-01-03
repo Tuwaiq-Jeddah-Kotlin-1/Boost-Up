@@ -7,10 +7,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.BindingAdapter
 import androidx.navigation.Navigation.findNavController
-import androidx.work.Data
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.model.entities.Notification
 import com.mahila.motivationalQuotesApp.model.entities.Quote
@@ -30,6 +27,7 @@ class BindingAdapters {
         fun sendAQuoteToFavoritesList(view: ImageView, currentQuote: Quote) {
             view.setOnClickListener {
                 if (view.tag != "LIKE") {
+                    view.tag = "LIKE"
                     view.setImageDrawable(
                         AppCompatResources.getDrawable(
                             view.context,
@@ -38,9 +36,10 @@ class BindingAdapters {
                     )
                     GlobalScope.launch(Dispatchers.IO) {
                         FirebaseUserService.addFavoriteQuote(currentQuote)
-
                     }
                 } else {
+
+                    view.tag = "UNLIKE"
                     view.setImageDrawable(
                         AppCompatResources.getDrawable(
                             view.context,
@@ -50,9 +49,6 @@ class BindingAdapters {
                     GlobalScope.launch(Dispatchers.IO) {
                         FirebaseUserService.deleteFavoriteQuote(currentQuote)
 
-                    }
-                    if (view.tag == "LIKE") {
-                        findNavController(view).navigate(R.id.action_favoriteFragment_to_favoriteFragment)
                     }
 
 
@@ -80,11 +76,19 @@ class BindingAdapters {
         @BindingAdapter("android:inactiveNotificationIcon")
         @JvmStatic
         fun inactiveNotificationIcon(view: ImageView, currentNotification: Notification) {
+            if (!currentNotification.active) {
+                view.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        view.context,
+                        R.drawable.ic_bell_gray
+                    )
+                )
+            }
             view.setOnClickListener {
-                WorkManager.getInstance(view.context)
-                    .cancelAllWorkByTag(currentNotification.notificationId)
-                if (currentNotification.active) {
-                   // view.tag = "INACTIVE"
+                println(currentNotification.active)
+                println(view.tag.toString())
+                if ( view.tag == "ACTIVE") {
+                    view.tag = "INACTIVE"
                     view.setImageDrawable(
                         AppCompatResources.getDrawable(
                             view.context,
@@ -95,9 +99,10 @@ class BindingAdapters {
                         //update the activity field
                         FirebaseUserService.setToInactiveNotification(currentNotification)
                     }
-
-                }else{
-                    println("-----INACTIVE---")
+                    WorkManager.getInstance(view.context)
+                        .cancelAllWorkByTag(currentNotification.notificationId)
+                } else if (view.tag == "INACTIVE" ) {
+                    view.tag = "ACTIVE"
                     view.setImageDrawable(
                         AppCompatResources.getDrawable(
                             view.context,
@@ -106,17 +111,40 @@ class BindingAdapters {
                     )
                     GlobalScope.launch(Dispatchers.IO) {
                         FirebaseUserService.setToInactiveNotification(currentNotification)
-                        val currentTime = Calendar.getInstance().timeInMillis
-                        val delay = currentNotification.dateAndTime - currentTime
-                        val data = Data.Builder().putInt(NotificationWorker.NOTIFICATION_ID, 0).build()
-                        val quoteNotification = Data.Builder().putString(
-                            NotificationWorker.NOTIFICATION_CONTENT_ID,
-                            currentNotification.randomQuote
-                        ).build()
-                        val notificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-                            .addTag(currentNotification.notificationId)
-                            .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data).setInputData(quoteNotification)
-                            .build()
+
+                    }
+                    val currentTime = Calendar.getInstance().timeInMillis
+                    val delay = currentNotification.dateAndTime - currentTime
+                    val data = Data.Builder().putInt(NotificationWorker.NOTIFICATION_ID, 0).build()
+                    val quoteNotification = Data.Builder().putString(
+                        NotificationWorker.NOTIFICATION_CONTENT_ID,
+                        currentNotification.randomQuote
+                    ).build()
+
+                    if (currentNotification.everyDay) {
+                        val periodicNotificationWork =
+                            PeriodicWorkRequest.Builder(
+                                NotificationWorker::class.java,
+                                24,
+                                TimeUnit.HOURS
+                            )
+                                .addTag(currentNotification.notificationId)
+                                .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+                                .setInputData(quoteNotification)
+                                .build()
+                        val instanceWorkManager2 = WorkManager.getInstance(view.context)
+                        instanceWorkManager2.enqueueUniquePeriodicWork(
+                            NotificationWorker.NOTIFICATION_WORK,
+                            ExistingPeriodicWorkPolicy.REPLACE,
+                            periodicNotificationWork
+                        )
+                    } else {
+                        val notificationWork =
+                            OneTimeWorkRequest.Builder(NotificationWorker::class.java)
+                                .addTag(currentNotification.notificationId)
+                                .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
+                                .setInputData(quoteNotification)
+                                .build()
 
                         val instanceWorkManager = WorkManager.getInstance(view.context)
                         instanceWorkManager.beginUniqueWork(
@@ -125,16 +153,11 @@ class BindingAdapters {
                             notificationWork
                         ).enqueue()
                     }
+
+
                 }
             }
-            if (!currentNotification.active) {
-                view.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        view.context,
-                        R.drawable.ic_bell_gray
-                    )
-                )
-            }
+
         }
 
         @BindingAdapter("android:delNotificationIcon")
@@ -142,7 +165,7 @@ class BindingAdapters {
         fun delNotificationIcon(view: View, currentNotification: Notification) {
             val currentTime = Calendar.getInstance().timeInMillis
 
-            if (currentNotification.dateAndTime < currentTime) {
+            if ((!currentNotification.everyDay) && currentNotification.dateAndTime < currentTime) {
 
                 view.visibility = View.GONE
                 GlobalScope.launch(Dispatchers.IO) {

@@ -1,6 +1,5 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentOpenNotificationQuoteBinding
+import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
 
 
 class OpenNotificationQuoteFragment : Fragment() {
