@@ -52,7 +52,7 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
                 .setDestination(R.id.navigation_openNotificationQuote)
                 .setArguments(bundleOf(Pair(NOTIFICATION_CONTENT_ID, text))).createPendingIntent()
         val notification = NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL)
-            .setSmallIcon(R.drawable.ic_bell)
+            .setSmallIcon(R.drawable.reminder_logo)
             .setContentTitle(titleNotification).setContentText(text)
             .setDefaults(DEFAULT_ALL).setContentIntent(pendingIntent2).setAutoCancel(true)
 

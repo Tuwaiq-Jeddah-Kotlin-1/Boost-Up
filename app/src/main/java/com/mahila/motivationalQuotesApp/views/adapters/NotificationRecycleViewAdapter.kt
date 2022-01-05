@@ -1,17 +1,23 @@
 package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mahila.motivationalQuotesApp.databinding.NotificationListItemBinding
-import com.mahila.motivationalQuotesApp.model.entities.Notification
+import com.mahila.motivationalQuotesApp.model.entities.Reminder
+import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 
-class NotificationRecycleViewAdapter(var notificationList:List<Notification>) :
-    RecyclerView.Adapter< NotificationRecycleViewAdapter.QuotesHolder>() {
+class NotificationRecycleViewAdapter(var reminderList: List<Reminder>) :
+    RecyclerView.Adapter<NotificationRecycleViewAdapter.QuotesHolder>() {
     class QuotesHolder(private val binding: NotificationListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(notification: Notification) {
-            binding.notification = notification
+        fun bind(reminder: Reminder) {
+            binding.reminder = reminder
             binding.executePendingBindings()
         }
 
@@ -34,16 +40,13 @@ class NotificationRecycleViewAdapter(var notificationList:List<Notification>) :
     }
 
     override fun getItemCount(): Int {
-        return notificationList.size
+        return reminderList.size
     }
 
     override fun onBindViewHolder(holder: QuotesHolder, position: Int) {
-        val currentNotification = notificationList[position]
-       // holder.itemView.
+        val currentNotification = reminderList[position]
         holder.bind(currentNotification)
     }
-
-
 
 
 }

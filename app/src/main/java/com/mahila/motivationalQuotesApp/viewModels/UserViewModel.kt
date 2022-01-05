@@ -2,31 +2,25 @@ package com.mahila.motivationalQuotesApp.viewModels
 
 import android.app.Application
 import android.view.View
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.mahila.motivationalQuotesApp.model.entities.Notification
+import androidx.lifecycle.*
+import com.mahila.motivationalQuotesApp.model.entities.Reminder
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
-import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService.firebaseUserService
 import kotlinx.coroutines.launch
 
 
-class UserViewModel(application: Application) : AndroidViewModel(application)//: ViewModel()
+class UserViewModel(): ViewModel()
 {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
     private val _FavoritesQuotes = MutableLiveData<List<Quote>>()
     val favoritesQuotes: LiveData<List<Quote>> = _FavoritesQuotes
-    private val _Notifications = MutableLiveData<List<Notification>>()
-    val notifications: LiveData<List<Notification>> = _Notifications
-  //  var userState = firebaseUserMutableLiveData
+    private val _Notifications = MutableLiveData<List<Reminder>>()
+    val notifications: LiveData<List<Reminder>> = _Notifications
 
     init {
-        firebaseUserService(application)
         viewModelScope.launch {
             _user.value = FirebaseUserService.getUserData()
         }
@@ -66,9 +60,13 @@ class UserViewModel(application: Application) : AndroidViewModel(application)//:
         FirebaseUserService.addFavoriteQuote(quote)
 
     }
+    fun deleteReminder(reminder: Reminder ) = viewModelScope.launch {
+        FirebaseUserService.deleteReminder(reminder)
 
-    fun addNotification(notification: Notification) = viewModelScope.launch {
-        FirebaseUserService.addNotification(notification)
+    }
+
+    fun addReminder(reminder: Reminder) = viewModelScope.launch {
+        FirebaseUserService.addNotification(reminder)
 
     }
 

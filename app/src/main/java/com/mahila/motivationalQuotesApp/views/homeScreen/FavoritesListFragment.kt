@@ -9,14 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentFavoritesListBinding
+import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.adapters.FavoritesRecycleViewAdapter
 
 
 class FavoritesListFragment : Fragment() {
+
     private var _binding: FragmentFavoritesListBinding? = null
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by viewModels()
+    private  var q: Quote? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,7 @@ class FavoritesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         // Setup RecyclerView
         setupRecyclerView()
 
@@ -42,14 +46,19 @@ class FavoritesListFragment : Fragment() {
             findNavController().navigate(R.id.action_favoriteFragment_to_favoriteFragment)
             binding.refreshLayout.isRefreshing = false
         }
+
     }
-fun setupRecyclerView(){
-    // Observe LiveData
-    userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
-        val adapter = FavoritesRecycleViewAdapter(favoritesList)
-        binding.favoritesListRecycleView.adapter = adapter
-    })
-}
+
+    fun setupRecyclerView() {
+        // Observe LiveData
+        userViewModel.favoritesQuotes.observe(viewLifecycleOwner, { favoritesList ->
+            val adapter = FavoritesRecycleViewAdapter(favoritesList.toMutableList())
+            binding.favoritesListRecycleView.adapter = adapter
+            binding.favoritesListRecycleView.scheduleLayoutAnimation()
+
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

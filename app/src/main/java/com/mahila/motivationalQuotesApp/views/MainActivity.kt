@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-   /*     println("-----Patterns----")
-        println(android.util.Patterns.EMAIL_ADDRESS.matcher("m..a@gmali.com").matches())*/
         sharedPre = this.getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
         sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
         changeMode()
