@@ -10,21 +10,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.work.*
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_KEYBOARD
 import com.google.android.material.timepicker.TimeFormat
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentAddNotificationBinding
-import com.mahila.motivationalQuotesApp.model.entities.Notification
+import com.mahila.motivationalQuotesApp.model.entities.Reminder
+import com.mahila.motivationalQuotesApp.util.ReminderUtil
 import com.mahila.motivationalQuotesApp.viewModels.QuotesViewModel
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_CONTENT_ID
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_ID
-import com.mahila.motivationalQuotesApp.worker.NotificationWorker.Companion.NOTIFICATION_WORK
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class AddNotificationFragment : Fragment() {
@@ -39,7 +34,6 @@ class AddNotificationFragment : Fragment() {
     var timeAsString = ""
     var dateAsString = ""
     private var randomQuote = ""
-    private var notificationType: String = "Onetime Reminder"
     private var everyDay: Boolean = false
     private val userViewModel: UserViewModel by viewModels()
     private val quoteViewModel: QuotesViewModel by viewModels()
@@ -70,7 +64,7 @@ class AddNotificationFragment : Fragment() {
 
         binding.btnOk.setOnClickListener {
             if (binding.isEveryDay.isChecked) {
-                notificationType = "Daily Reminder"
+                dateAsString=getString(R.string.daily)
                 everyDay = true
             }
             if (selectedDday == 0) {
@@ -87,8 +81,7 @@ class AddNotificationFragment : Fragment() {
                 )
                     .show()
             } else {
-                setUpNotification()
-
+                setUpReminder(view)
                 findNavController()
                     .navigate(R.id.action_addNotificationFragment_to_notificationFragment)
             }
@@ -148,7 +141,7 @@ class AddNotificationFragment : Fragment() {
 
     }
 
-    fun setUpNotification() {
+    fun setUpReminder(view: View) {
         var customCalendar = Calendar.getInstance()
         customCalendar.set(
             selectedYear,
@@ -158,74 +151,39 @@ class AddNotificationFragment : Fragment() {
             selectedMinute,
             0
         )
-        val notificationTime = customCalendar.timeInMillis
+        val reminderTime = customCalendar.timeInMillis
         val currentTime = Calendar.getInstance().timeInMillis
-        // println(customCalendar.time)
-        // println(Calendar.getInstance().time)
-        if (notificationTime > currentTime) {
-            val data = Data.Builder().putInt(NOTIFICATION_ID, 0).build()
-            val delay = notificationTime - currentTime
-            scheduleNotification(delay, data, notificationTime)
+        if (reminderTime > currentTime) {
+            val delay = reminderTime - currentTime
+            scheduleReminder(delay, view, reminderTime)
             Toast.makeText(
                 requireContext(),
                 getString(R.string.Reminder_scheduled_successfully),
                 Toast.LENGTH_LONG
-            )
-                .show()
+            ).show()
 
         } else {
             Toast.makeText(
                 requireContext(),
                 getString(R.string.invalid_time_date),
                 Toast.LENGTH_LONG
-            )
-                .show()
+            ).show()
         }
     }
 
-    private fun scheduleNotification(delay: Long, data: Data, notificationTime: Long) {
-        val notificationId = UUID.randomUUID()
-        val quoteNotification = Data.Builder().putString(
-            NOTIFICATION_CONTENT_ID,
-            randomQuote
-        ).build()
-        if (everyDay) {
-            val periodicNotificationWork =
-                PeriodicWorkRequest.Builder(NotificationWorker::class.java, 1, TimeUnit.HOURS)
-                    .addTag(notificationId.toString())
-                    .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
-                    .setInputData(quoteNotification)
-                    .build()
-            val instanceWorkManager2 = WorkManager.getInstance(requireContext())
-            instanceWorkManager2.enqueueUniquePeriodicWork(
-                NOTIFICATION_WORK,
-                ExistingPeriodicWorkPolicy.REPLACE,
-                periodicNotificationWork
-            )
-        } else {
-            val oneTimeNotificationWork = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
-                .addTag(notificationId.toString())
-                .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
-                .setInputData(quoteNotification)
-                .build()
-
-            val instanceWorkManager = WorkManager.getInstance(requireContext())
-            instanceWorkManager.beginUniqueWork(
-                NOTIFICATION_WORK,
-                ExistingWorkPolicy.REPLACE,
-                oneTimeNotificationWork
-            ).enqueue()
-        }
-
-
-        //add Notification to FireStore
-
-        userViewModel.addNotification(
-            Notification(
-                notificationId.toString(),
-                notificationTime,
+    private fun scheduleReminder(delay: Long, view: View, reminderTime: Long) {
+        val reminderId = UUID.randomUUID()
+        //create reminder
+        ReminderUtil.setReminder(
+            reminderTime, randomQuote,
+            everyDay, reminderId.toString(), view
+        )
+        //add reminder to FireStore
+        userViewModel.addReminder(
+            Reminder(
+                reminderId.toString(),
+                reminderTime,
                 delay,
-                notificationType,
                 true,
                 timeAsString,
                 dateAsString, randomQuote, everyDay

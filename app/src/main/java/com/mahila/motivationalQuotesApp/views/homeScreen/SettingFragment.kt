@@ -53,8 +53,6 @@ class SettingFragment : Fragment() {
             changeLang()
         }
 
-//------------
-
         binding.signOutLL.setOnClickListener {
             confirmSignOut()
         }
@@ -70,8 +68,6 @@ class SettingFragment : Fragment() {
 
         binding.modeLL.setOnClickListener {
             changeMode(view)
-         //   activity?.recreate()
-
         }
     }
 

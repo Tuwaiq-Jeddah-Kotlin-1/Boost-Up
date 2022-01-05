@@ -5,10 +5,9 @@
     <data>
 
         <import type="android.view.View" />
-
         <variable
-            name="notification"
-            type="com.mahila.motivationalQuotesApp.model.entities.Notification" />
+            name="reminder"
+            type="com.mahila.motivationalQuotesApp.model.entities.Reminder" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,16 +17,14 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-
-        android:delNotificationIcon="@{notification}"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -39,9 +36,9 @@
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="9dp"
-                android:inactiveNotificationIcon="@{notification}"
                 android:src="@drawable/ic_bell_purple"
                 android:tag="ACTIVE"
+                android:updateReminderState="@{reminder}"
                 app:layout_constraintBottom_toTopOf="@+id/notificationTitleTextView"
                 app:layout_constraintEnd_toEndOf="@+id/notificationTitleTextView"
                 app:layout_constraintStart_toStartOf="@+id/notificationTitleTextView"
@@ -55,14 +52,32 @@
                 android:layout_gravity="center"
                 android:foregroundGravity="top"
                 android:gravity="center"
-                android:text="@{notification.type}"
+                android:text="@string/onetime_reminder"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-                app:layout_constraintTop_toBottomOf="@+id/notificationIcon" />
+                app:layout_constraintTop_toBottomOf="@+id/notificationIcon"
+                android:visibility="@{reminder.everyDay? View.GONE:View.VISIBLE}"/>
+
+            <TextView
+                android:id="@+id/notificationTitleTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:foregroundGravity="top"
+                android:gravity="center"
+                android:text="@string/daily_reminder"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/notificationIcon"
+                android:visibility="@{reminder.everyDay? View.VISIBLE:View.GONE}"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout3"
@@ -107,7 +122,7 @@
                         android:layout_marginEnd="10dp"
                         android:gravity="center_vertical"
                         android:hint="set time"
-                        android:text="@{notification.dateAsString}"
+                        android:text="@{reminder.dateAsString}"
                         android:textColor="@color/darkGray"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -148,7 +163,7 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:hint="set Time"
-                        android:text="@{notification.timeAsString}"
+                        android:text="@{reminder.timeAsString}"
                         android:textColor="@color/darkGray"
                         android:textSize="15sp"
                         android:textStyle="bold" />

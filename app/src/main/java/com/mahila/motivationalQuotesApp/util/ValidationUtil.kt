@@ -7,8 +7,8 @@ object ValidationUtil {
 
     fun isValidPassword(
         inputString: String,
-        minLength: Int=8,
-        maxLength: Int=30,
+        minLength: Int = 8,
+        maxLength: Int = 30,
         containSpecialCharacter: Int = 1,
         containNumbers: Int = 1,
         containCapitalLetters: Int = 1
@@ -34,7 +34,7 @@ object ValidationUtil {
         var enableCapitalMandatory = "?!"
         var enableCapitalOptional = ""
         when (containCapitalLetters) {
-            2-> {
+            2 -> {
                 enableCapitalMandatory = ""
                 enableCapitalOptional = "*?"
             }
@@ -50,7 +50,7 @@ object ValidationUtil {
         var enableSpecialCharMandatory = "?!"
         var enableSpecialCharOptional = ""
         when (containSpecialCharacter) {
-            2-> {
+            2 -> {
                 enableSpecialCharMandatory = ""
                 enableSpecialCharOptional = "*?"
             }
@@ -66,7 +66,7 @@ object ValidationUtil {
         var enableNumbersMandatory = "?!"
         var enableNumbersOptional = ""
         when (containNumbers) {
-            2-> {
+            2 -> {
                 enableNumbersMandatory = ""
                 enableNumbersOptional = "*?"
             }
@@ -74,7 +74,7 @@ object ValidationUtil {
                 enableNumbersMandatory = "?="
                 enableNumbersOptional = ""
             }
-            -1-> {
+            -1 -> {
                 enableNumbersMandatory = "?!"
                 enableNumbersOptional = ""
             }
@@ -88,6 +88,7 @@ object ValidationUtil {
     ): Boolean {
         //return android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()
         val email = Pattern.compile(
+
             "[a-zA-Z0-9\\+]{1,256}" +
                     "\\@" +
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
@@ -96,7 +97,7 @@ object ValidationUtil {
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                     ")+"
         )
-    return email.matcher(userEmail).matches()
+        return email.matcher(userEmail).matches()
     }
 
 }

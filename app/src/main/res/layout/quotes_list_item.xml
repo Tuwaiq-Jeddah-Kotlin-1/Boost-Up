@@ -112,6 +112,7 @@
                 android:sendAQuoteToFavoritesList="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
+                android:tag="UNLIKE"
                 android:src="@drawable/ic_unlike" />
 
         </LinearLayout>

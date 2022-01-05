@@ -58,6 +58,7 @@ class QuotesListFragment : Fragment() {
             val listOfRandomQuotes = dataQuotesList.results.shuffled().take(5)
             val adapter = QuotesRecycleViewAdapter(listOfRandomQuotes)
             binding.quotesListRecycleView.adapter = adapter
+            binding.quotesListRecycleView.scheduleLayoutAnimation()
 
         })
     }

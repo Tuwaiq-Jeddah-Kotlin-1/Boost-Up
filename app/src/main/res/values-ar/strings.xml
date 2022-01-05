@@ -20,7 +20,7 @@
     <string name="confirm_password">تأكيد كلمة المرور</string>
     <string name="sign_up"> أنشِئ حسابًا </string>
     <string name="already_have_an_account">لديك حساب؟</string>
-    <string name="daily_reminder">منبه يومي</string>
+    <string name="daily_reminder">إشعار يومي</string>
     <string name="date_ntime">التاريخ:\nالوقت:</string>
     <string name="password_field">حقل كلمة المرور لا يمكن أن يكون فارغ</string>
     <string name="changes_saved">تم حفظ التغييرات بنجاح</string>
@@ -30,7 +30,7 @@
     <string name="not_match">كلمة المرور ليست متطابقة</string>
     <string name="quotes">اقتباسات</string>
     <string name="favorites">المفضلة</string>
-    <string name="notification">الإشعارات</string>
+    <string name="reminder">الإشعارات</string>
     <string name="setting">الإعدادات</string>
     <string name="done">تم</string>
     <string name="cancel">إلغاء</string>
@@ -52,11 +52,7 @@
     <string name="enter_your_email"> البريد الإلكتروني</string>
     <string name="select_date">اختر تاريخ</string>
     <string name="select_time">اختر وقت </string>
-    <string name="enter_your_name">اسم المستخم</string>
-    <string name="password_helper">"8 is minimum length,
-        has special character,
-        has capital letter,
-        has number"</string>
+    <string name="enter_your_name">اسم المستخدم</string>
     <string name="stay_signed_in">البقاء في وضع تسجل الدخول؟</string>
     <string name="successfully_sign_in">تم تسجيل الدخول بنجاح.</string>
     <string name="successfully_sign_up">تم أنشاء الحساب بنجاح. </string>
@@ -76,5 +72,9 @@
     <string name="capital_letter">يجب أن تحتوي حرفاً كبيراً.</string>
     <string name="number">يجب أن تحتوي على رقماً.</string>
     <string name="special_character">يجب أن تحتوي على رمزاً.</string>
-    <string name="every_day">كل يوم؟</string>
+    <string name="every_day">إشعار يومي؟</string>
+    <string name="daily">كل يوم</string>
+    <string name="successfully_send">تم إرسال بريد إعادة كلمة المرور.</string>
+    <string name="INACTIVE_msg">"تم إلغاء الإشعار بنجاح."</string>
+    <string name="ACTIVE_msg">تم تفعيل الإشعار بنجاح.</string>
 </resources>

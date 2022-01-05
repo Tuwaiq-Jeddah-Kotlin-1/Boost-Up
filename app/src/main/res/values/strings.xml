@@ -30,7 +30,7 @@
     <string name="not_match">Passwords don\'t match</string>
     <string name="quotes">Quotes</string>
     <string name="favorites">Favorites</string>
-    <string name="notification">Reminders</string>
+    <string name="reminder">Reminders</string>
     <string name="setting">Setting</string>
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>
@@ -53,10 +53,6 @@
     <string name="select_date">Select date</string>
     <string name="select_time">Select time</string>
     <string name="enter_your_name">User Name</string>
-    <string name="password_helper">"8 is minimum length,
-        has special character,
-        has capital letter,
-        has number"</string>
     <string name="stay_signed_in">Stay signed in?</string>
     <string name="successfully_sign_in">Successfully Sign In.</string>
     <string name="successfully_sign_up">Successfully Sign Up.</string>
@@ -77,4 +73,8 @@
     <string name="number">Must contain at least one number</string>
     <string name="special_character">Must contain at least one special character.</string>
     <string name="every_day">Every day?</string>
+    <string name="daily">Every Day</string>
+    <string name="successfully_send">Successfully password reset email sent.</string>
+    <string name="INACTIVE_msg">"Successfully, reminder is canceled. "</string>
+    <string name="ACTIVE_msg">Successfully, reminder is activated.</string>
 </resources>

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/navigation_notification"
         android:icon="@drawable/ic_bell"
-        android:title="@string/notification" />
+        android:title="@string/reminder" />
     <item
         android:id="@+id/navigation_setting"
         android:icon="@drawable/ic_settings"
