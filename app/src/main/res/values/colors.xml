@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#A9310A</color>
     <color name="lightGray">#FBFBFB</color>
-    <color name="lightPurple">#A191F0</color>
+    <!-- <color name="lightPurple">#5947b0</color>-->
+     <color name="lightPurple">#A191F0</color>
     <color name="darkPurple">#130F25</color>
     <color name="darkGray">#8E8E8E</color>
     <color name="appBarColor">#000000</color>
@@ -21,4 +22,6 @@
     <color name="colorDarkGrayText">#94949b</color>
     <color name="colorLightGrayText">#c3c4c8</color>
     <color name="InactiveBottomNavIconColor">#c3c4c8</color>
+    <color name="fbc">#FFFFFF</color>
+
 </resources>

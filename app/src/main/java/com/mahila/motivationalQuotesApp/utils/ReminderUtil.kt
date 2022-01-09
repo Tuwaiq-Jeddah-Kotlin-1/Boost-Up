@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.util
+package com.mahila.motivationalQuotesApp.utils
 
 import android.view.View
 import androidx.work.*

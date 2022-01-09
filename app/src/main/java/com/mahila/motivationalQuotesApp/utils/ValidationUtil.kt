@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.util
+package com.mahila.motivationalQuotesApp.utils
 
 import java.util.regex.Pattern
 
@@ -86,7 +86,7 @@ object ValidationUtil {
     fun isValidEmail(
         userEmail: String
     ): Boolean {
-        //return android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()
+        //return android.utils.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()
         val email = Pattern.compile(
 
             "[a-zA-Z0-9\\+]{1,256}" +

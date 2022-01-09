@@ -1,6 +1,7 @@
 package com.mahila.motivationalQuotesApp.views
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.core.os.ConfigurationCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -105,8 +107,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyLocalized(langCode: String) {
-        var langCode = langCode
+    private fun applyLocalized(_langCode: String) {
+        var langCode = _langCode
         if (langCode == "Auto") {
             langCode =
                 ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
@@ -121,4 +123,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
 }

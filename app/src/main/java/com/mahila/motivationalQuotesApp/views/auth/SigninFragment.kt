@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSigninBinding
-import com.mahila.motivationalQuotesApp.util.ValidationUtil
+import com.mahila.motivationalQuotesApp.utils.ValidationUtil
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.SHARED_STAY_SIGNED_IN
 import com.mahila.motivationalQuotesApp.views.sharedPre
@@ -70,14 +69,6 @@ class SigninFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (sharedPre.getBoolean(SHARED_STAY_SIGNED_IN, false) &&
-            userViewModel.checkSignInState()
-        ) {
-            findNavController().navigate(R.id.action_signinFragment_to_quotesFragment)
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

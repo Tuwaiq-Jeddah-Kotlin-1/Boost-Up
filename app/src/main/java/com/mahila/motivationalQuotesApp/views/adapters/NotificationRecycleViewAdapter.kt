@@ -1,16 +1,10 @@
 package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mahila.motivationalQuotesApp.databinding.NotificationListItemBinding
 import com.mahila.motivationalQuotesApp.model.entities.Reminder
-import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.util.*
 
 class NotificationRecycleViewAdapter(var reminderList: List<Reminder>) :
     RecyclerView.Adapter<NotificationRecycleViewAdapter.QuotesHolder>() {

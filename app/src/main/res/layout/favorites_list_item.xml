@@ -20,6 +20,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
@@ -101,7 +103,8 @@
                     android:layout_margin="10dp"
                     android:gravity="center_vertical"
                     android:src="@drawable/ic_like"
-                    android:tag="LIKE" />
+                    android:tag="LIKE"
+                    />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
