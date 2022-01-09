@@ -22,7 +22,6 @@ object FirebaseUserService {
     private val db by lazy { FirebaseFirestore.getInstance() }
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    //get user data-------------------------------------
     suspend fun getUserData(): User? {
         return try {
             auth.currentUser?.let {
@@ -179,7 +178,6 @@ object FirebaseUserService {
         }
     }
 
-    //----------- Manage User Account
     fun signUp(name: String, email: String, password: String) {
         try {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
@@ -187,7 +185,6 @@ object FirebaseUserService {
                     //Add user to FireStore
                     val user = User(auth.currentUser!!.uid, name, email)
                     db.collection("users").document(auth.currentUser!!.uid).set(user)
-                    // firebaseUserMutableLiveData.postValue(auth.currentUser)
                     Toast.makeText(instant.applicationContext, R.string.successfully_sign_up, Toast.LENGTH_SHORT)
                         .show()
 
@@ -207,7 +204,6 @@ object FirebaseUserService {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        //  firebaseUserMutableLiveData.postValue(auth.currentUser)
                         Toast.makeText(
                             instant.applicationContext,
                             R.string.successfully_sign_in,
