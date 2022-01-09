@@ -1,6 +1,7 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.view.LayoutInflater
@@ -10,13 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_KEYBOARD
 import com.google.android.material.timepicker.TimeFormat
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentAddNotificationBinding
 import com.mahila.motivationalQuotesApp.model.entities.Reminder
-import com.mahila.motivationalQuotesApp.util.ReminderUtil
+import com.mahila.motivationalQuotesApp.utils.ReminderUtil
 import com.mahila.motivationalQuotesApp.viewModels.QuotesViewModel
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import java.util.*
@@ -51,7 +50,7 @@ class AddNotificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //
         quoteViewModel.fetchQuotes().observe(viewLifecycleOwner, { quotesList ->
-            val listOfRandomQuotes = quotesList.results.shuffled().take(1)
+            val listOfRandomQuotes = quotesList.shuffled().take(1)
             randomQuote = "${listOfRandomQuotes[0].text}*${listOfRandomQuotes[0].author}"
         })
 
@@ -64,7 +63,7 @@ class AddNotificationFragment : Fragment() {
 
         binding.btnOk.setOnClickListener {
             if (binding.isEveryDay.isChecked) {
-                dateAsString=getString(R.string.daily)
+                dateAsString = getString(R.string.daily)
                 everyDay = true
             }
             if (selectedDday == 0) {
@@ -95,37 +94,22 @@ class AddNotificationFragment : Fragment() {
     }
 
     private fun OpenTimePiecker() {
-        val isSystem24Hour = is24HourFormat(requireContext())
-        val clockFormat = if (isSystem24Hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
-
-        val timePicker =
-            MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setHour(12)
-                .setMinute(10)
-                .setTitleText(getString(R.string.select_Reminder_time))
-                .setInputMode(INPUT_MODE_KEYBOARD)
-                .setTimeFormat(clockFormat)
-                .build()
-
-
-        timePicker.show(parentFragmentManager, "Time")
-        timePicker.addOnNegativeButtonClickListener {
-
-        }
-        timePicker.addOnPositiveButtonClickListener {
-            selectedHour = timePicker.hour
-            selectedMinute = timePicker.minute
-            timeAsString = "$selectedHour:$selectedMinute:00"
-        }
-
+        val calendar = Calendar.getInstance()
+        val timePicker = TimePickerDialog(
+            binding.root.context, TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+                selectedHour = hour
+                selectedMinute = minute
+                timeAsString = "$selectedHour:$selectedMinute:00"
+            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
+        )
+        timePicker.show()
     }
 
     private fun OpenDatePiecker() {
         val calendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog(
             binding.root.context,
-            { view, year, monthOfYear, dayOfMonth ->
+            { _, year, monthOfYear, dayOfMonth ->
                 selectedDday = dayOfMonth
                 selectedMonth = monthOfYear
                 selectedYear = year

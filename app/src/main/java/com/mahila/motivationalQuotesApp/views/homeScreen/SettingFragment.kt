@@ -25,8 +25,6 @@ class SettingFragment : Fragment() {
     private val userViewModel: UserViewModel by viewModels()
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
-
-    //---------------------
     private lateinit var currentSystemLocaleCode: String
 
 
@@ -56,11 +54,8 @@ class SettingFragment : Fragment() {
         binding.signOutLL.setOnClickListener {
             confirmSignOut()
         }
+        setUpUserData()
 
-        userViewModel.user.observe(viewLifecycleOwner, {
-            binding.userNamTextView.text = it?.name
-
-        })
         binding.editNameIcon.setOnClickListener {
             editName(view)
         }
@@ -69,6 +64,13 @@ class SettingFragment : Fragment() {
         binding.modeLL.setOnClickListener {
             changeMode(view)
         }
+    }
+
+    private fun setUpUserData() {
+        userViewModel.user.observe(viewLifecycleOwner, {
+            binding.userNamTextView.text = it?.name
+
+        })
     }
 
 
@@ -117,12 +119,12 @@ class SettingFragment : Fragment() {
                     }
                     //update nam, vm called
                     userViewModel.resetUserName(binding.userNamEditText.text.toString())
+                    binding.userNamTextView.text=binding.userNamEditText.text
                     Toast.makeText(
                         requireContext(),
                         getString(R.string.changes_saved),
                         Toast.LENGTH_LONG
                     ).show()
-
                 }
             }
         }
@@ -138,7 +140,8 @@ class SettingFragment : Fragment() {
                 getString(R.string.successfully_sign_out),
                 Toast.LENGTH_SHORT
             ).show()
-            sharedPre.edit().putBoolean(SHARED_STAY_SIGNED_IN,false).clear().apply()
+            sharedPre.edit().putBoolean(SHARED_STAY_SIGNED_IN, false).clear().apply()
+
             findNavController().navigate(R.id.action_settingFragment_to_signupFragment)
         }
         builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
@@ -148,7 +151,7 @@ class SettingFragment : Fragment() {
     }
 
     private fun setUpModeButton(view: View) {
-        val   sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
+        val sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
         when (sharePreferencesValueOfMode) {
             "Auto" -> {
                 binding.modeTextView.text = getString(R.string.dark_mode)
@@ -169,8 +172,6 @@ class SettingFragment : Fragment() {
                 binding.modeTextView.text = getString(R.string.light_mode)
             }
             else -> {
-               // println("-----elseelse--------")
-               // println(sharePreferencesValueOfMode)
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
                         view.context,
@@ -222,15 +223,15 @@ class SettingFragment : Fragment() {
         }
     }
 
-    private fun applyLocalized(langCode: String) {
-        var langCode = langCode
+    private fun applyLocalized(_langCode: String) {
+        var langCode = _langCode
         if (langCode == "Auto") {
             langCode =
                 ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
         }
-         val locale = Locale(langCode)
+        val locale = Locale(langCode)
         Locale.setDefault(locale)
-         val resources = activity?.resources
+        val resources = activity?.resources
         val configuration = activity?.resources?.configuration
         configuration?.setLocale(locale)
         resources?.updateConfiguration(configuration, resources.displayMetrics)
@@ -266,7 +267,14 @@ class SettingFragment : Fragment() {
             }
         }
     }
-
+    override fun onStart() {
+        super.onStart()
+        if (!sharedPre.getBoolean(SHARED_STAY_SIGNED_IN, false) ||
+            !userViewModel.checkSignInState()
+        ) {
+            findNavController().navigate(R.id.action_settingFragment_to_signupFragment)
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

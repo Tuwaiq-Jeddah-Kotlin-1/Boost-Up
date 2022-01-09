@@ -5,14 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_signin">
+    app:startDestination="@id/navigation_quotes">
 
     <fragment
         android:id="@+id/navigation_quotes"
         android:name="com.mahila.motivationalQuotesApp.views.homeScreen.QuotesListFragment"
         android:label="@string/quotes"
         tools:layout="@layout/fragment_quotes_list">
-
+        <action
+            android:id="@+id/action_quotesFragment_to_signinFragment"
+            app:destination="@id/navigation_signin"
+            app:popUpTo="@id/navigation_signin"
+            app:launchSingleTop="true"/>
     </fragment>
 
     <fragment
@@ -24,8 +28,7 @@
             android:id="@+id/action_favoriteFragment_to_favoriteFragment"
             app:destination="@id/navigation_favorite"
             app:launchSingleTop="false"
-            app:popUpTo="@id/navigation_favorite"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/navigation_favorite" />
     </fragment>
 
     <fragment
@@ -44,8 +47,7 @@
             android:id="@+id/action_notificationFragment_to_notificationFragment"
             app:destination="@id/navigation_notification"
             app:launchSingleTop="false"
-            app:popUpTo="@id/navigation_notification"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/navigation_notification" />
 
     </fragment>
 
@@ -57,9 +59,8 @@
         tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingFragment_to_signupFragment"
-            app:destination="@id/navigation_signup"
-            app:popUpTo="@id/navigation_setting"
-            app:popUpToInclusive="true" />
+            app:destination="@id/navigation_signin"
+            app:popUpTo="@id/navigation_signin" />
 
     </fragment>
 
@@ -71,13 +72,17 @@
         tools:layout="@layout/fragment_signin">
         <action
             android:id="@+id/action_signinFragment_to_quotesFragment"
-            app:destination="@id/navigation_quotes" />
+            app:destination="@id/navigation_quotes"
+            app:popUpTo="@id/navigation_quotes"
+            app:launchSingleTop="true"/>
         <action
             android:id="@+id/action_signinFragment_to_signupFragment"
-            app:destination="@id/navigation_signup" />
+            app:destination="@id/navigation_signup"
+            app:popUpTo="@id/navigation_signin"/>
         <action
             android:id="@+id/action_signinFragment_to_forgotPasswordFragment"
-            app:destination="@id/navigation_forgotPassword" />
+            app:destination="@id/navigation_forgotPassword"
+            app:popUpTo="@id/navigation_signin"/>
     </fragment>
 
     <fragment
@@ -87,7 +92,8 @@
         tools:layout="@layout/fragment_signin">
         <action
             android:id="@+id/action_signupFragment_to_signinFragment"
-            app:destination="@id/navigation_signin" />
+            app:destination="@id/navigation_signin"
+            app:popUpTo="@id/navigation_signin"/>
         <action
             android:id="@+id/action_signupFragment_to_quotesFragment"
             app:destination="@id/navigation_quotes" />
@@ -100,7 +106,8 @@
         tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_signinFragment"
-            app:destination="@id/navigation_signin" />
+            app:destination="@id/navigation_signin"
+            app:popUpTo="@id/navigation_signin"/>
 
     </fragment>
 
@@ -115,8 +122,7 @@
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:launchSingleTop="false"
-            app:popUpTo="@id/navigation_notification"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/navigation_notification" />
     </fragment>
 
     <fragment
@@ -126,7 +132,8 @@
         tools:layout="@layout/fragment_open_notification_quote">
         <action
             android:id="@+id/action_openNotificationQuoteFragment_to_quotesFragment"
-            app:destination="@id/navigation_quotes" />
+            app:destination="@id/navigation_quotes"
+            app:popUpTo="@id/navigation_quotes" />
 
     </fragment>
 </navigation>

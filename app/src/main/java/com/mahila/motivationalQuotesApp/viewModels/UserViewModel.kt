@@ -1,12 +1,11 @@
 package com.mahila.motivationalQuotesApp.viewModels
 
-import android.app.Application
 import android.view.View
 import androidx.lifecycle.*
 import com.mahila.motivationalQuotesApp.model.entities.Reminder
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.User
-import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
+import com.mahila.motivationalQuotesApp.model.repositories.FirebaseUserService
 import kotlinx.coroutines.launch
 
 
@@ -60,8 +59,16 @@ class UserViewModel(): ViewModel()
         FirebaseUserService.addFavoriteQuote(quote)
 
     }
+    fun deleteFavoriteQuote(quote: Quote) = viewModelScope.launch {
+        FirebaseUserService.deleteFavoriteQuote(quote)
+
+    }
     fun deleteReminder(reminder: Reminder ) = viewModelScope.launch {
         FirebaseUserService.deleteReminder(reminder)
+
+    }
+    fun updateReminderState(reminder: Reminder ) = viewModelScope.launch {
+        FirebaseUserService.updateReminderState(reminder)
 
     }
 

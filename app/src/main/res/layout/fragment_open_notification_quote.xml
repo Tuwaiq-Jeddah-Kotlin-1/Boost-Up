@@ -14,6 +14,8 @@
         android:paddingRight="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"

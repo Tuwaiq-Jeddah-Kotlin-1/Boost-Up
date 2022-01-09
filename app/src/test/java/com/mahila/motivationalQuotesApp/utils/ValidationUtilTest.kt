@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.util
+package com.mahila.motivationalQuotesApp.utils
 
 import org.junit.Test
 

@@ -77,4 +77,5 @@
     <string name="successfully_send">Successfully password reset email sent.</string>
     <string name="INACTIVE_msg">"Successfully, reminder is canceled. "</string>
     <string name="ACTIVE_msg">Successfully, reminder is activated.</string>
+    <string name="REACTIVE_msg">It cannot be reactivated.</string>
 </resources>

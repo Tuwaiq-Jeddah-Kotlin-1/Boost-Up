@@ -1,19 +1,15 @@
 package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mahila.motivationalQuotesApp.databinding.FavoritesListItemBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote
-import com.mahila.motivationalQuotesApp.model.repository.FirebaseUserService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
-class FavoritesRecycleViewAdapter(var quotesList: MutableList<Quote>) :
+class FavoritesRecycleViewAdapter(var quotesList: List<Quote>) :
     RecyclerView.Adapter<FavoritesRecycleViewAdapter.QuotesHolder>() {
-    class QuotesHolder(val binding: FavoritesListItemBinding) :
+    class QuotesHolder(private val binding: FavoritesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(quote: Quote) {
             binding.quote = quote
@@ -44,14 +40,6 @@ class FavoritesRecycleViewAdapter(var quotesList: MutableList<Quote>) :
 
     override fun onBindViewHolder(holder: QuotesHolder, position: Int) {
         val currentQuote = quotesList[position]
-        holder.binding.likeIcon.setOnClickListener {
-            quotesList.removeAt(position)
-            GlobalScope.launch(Dispatchers.IO) {
-                FirebaseUserService.deleteFavoriteQuote(currentQuote)
-            }
-            notifyItemRemoved(position)
-            notifyItemRangeRemoved(position, itemCount)
-        }
         holder.bind(currentQuote)
     }
 

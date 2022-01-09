@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentSignupBinding
-import com.mahila.motivationalQuotesApp.util.ValidationUtil
-import com.mahila.motivationalQuotesApp.util.ValidationUtil.isValidPassword
+import com.mahila.motivationalQuotesApp.utils.ValidationUtil
+import com.mahila.motivationalQuotesApp.utils.ValidationUtil.isValidPassword
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
 

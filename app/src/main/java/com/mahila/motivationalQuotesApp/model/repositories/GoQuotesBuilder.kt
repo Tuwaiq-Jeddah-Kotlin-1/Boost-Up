@@ -1,4 +1,4 @@
-package com.mahila.motivationalQuotesApp.model.repository
+package com.mahila.motivationalQuotesApp.model.repositories
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

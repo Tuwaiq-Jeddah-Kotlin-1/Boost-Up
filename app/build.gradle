@@ -4,7 +4,6 @@ plugins {
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-
 }
 
 android {
@@ -40,6 +39,7 @@ android {
 }
 
 dependencies {
+    //ML Kit
     //work
     implementation 'androidx.work:work-runtime:2.7.1'
     //Retrofit

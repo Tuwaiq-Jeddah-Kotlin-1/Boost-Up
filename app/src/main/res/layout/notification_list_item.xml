@@ -1,172 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="android.view.View" />
+        <import type="android.view.View"/>
+
         <variable
-            name="reminder"
-            type="com.mahila.motivationalQuotesApp.model.entities.Reminder" />
+                name="reminder"
+                type="com.mahila.motivationalQuotesApp.model.entities.Reminder"/>
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cl1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+            android:id="@+id/cl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+      >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/notificationIcon"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="10dp"
-                android:layout_marginBottom="9dp"
-                android:src="@drawable/ic_bell_purple"
-                android:tag="ACTIVE"
-                android:updateReminderState="@{reminder}"
-                app:layout_constraintBottom_toTopOf="@+id/notificationTitleTextView"
-                app:layout_constraintEnd_toEndOf="@+id/notificationTitleTextView"
-                app:layout_constraintStart_toStartOf="@+id/notificationTitleTextView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <TextView
-                android:id="@+id/notificationTitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:foregroundGravity="top"
-                android:gravity="center"
-                android:text="@string/onetime_reminder"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-                app:layout_constraintTop_toBottomOf="@+id/notificationIcon"
-                android:visibility="@{reminder.everyDay? View.GONE:View.VISIBLE}"/>
+                    android:id="@+id/notificationIcon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:src="@drawable/ic_bell_purple"
+                    android:tag="ACTIVE"
+                    android:visibility="@{reminder.active? View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                    android:id="@+id/notificationIcon2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:src="@drawable/ic_bell_gray"
+                    android:tag="INACTIVE"
+                    android:visibility="@{reminder.active? View.GONE:View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
-                android:id="@+id/notificationTitleTextView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:foregroundGravity="top"
-                android:gravity="center"
-                android:text="@string/daily_reminder"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-                app:layout_constraintTop_toBottomOf="@+id/notificationIcon"
-                android:visibility="@{reminder.everyDay? View.VISIBLE:View.GONE}"/>
+                    android:id="@+id/notificationTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:foregroundGravity="top"
+                    android:gravity="center"
+                    android:text="@string/onetime_reminder"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:visibility="@{reminder.everyDay? View.GONE:View.VISIBLE}"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+            <TextView
+                    android:id="@+id/notificationTitleTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:foregroundGravity="top"
+                    android:gravity="center"
+                    android:text="@string/daily_reminder"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:visibility="@{reminder.everyDay? View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+            />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="45dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notificationTitleTextView">
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+            >
 
 
                 <LinearLayout
-                    android:id="@+id/linearLayout4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-
-                    <TextView
-                        android:id="@+id/DateTextView"
+                        android:id="@+id/linearLayout4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/date"
-                        android:textColor="@color/darkGray"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
                     <TextView
-                        android:id="@+id/notificationDateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center_vertical"
-                        android:hint="set time"
-                        android:text="@{reminder.dateAsString}"
-                        android:textColor="@color/darkGray"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                            android:id="@+id/DateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/date"
+                            android:textColor="@color/darkGray"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:id="@+id/notificationDateTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center_vertical"
+                            android:hint="set time"
+                            android:text="@{reminder.dateAsString}"
+                            android:textColor="@color/darkGray"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_chainStyle="packed">
-
-                    <TextView
-                        android:id="@+id/timeTextView"
+                        android:id="@+id/linearLayout5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/time"
-                        android:textColor="@color/darkGray"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed">
+
+                    <TextView
+                            android:id="@+id/timeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/time"
+                            android:textColor="@color/darkGray"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
 
 
                     <TextView
-                        android:id="@+id/notificationTimeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:hint="set Time"
-                        android:text="@{reminder.timeAsString}"
-                        android:textColor="@color/darkGray"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                            android:id="@+id/notificationTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:hint="set Time"
+                            android:text="@{reminder.timeAsString}"
+                            android:textColor="@color/darkGray"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
                 </LinearLayout>
 
 

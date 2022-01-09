@@ -16,6 +16,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
@@ -109,12 +111,23 @@
                 android:id="@+id/unlikeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:sendAQuoteToFavoritesList="@{quote}"
                 android:layout_margin="20dp"
                 android:gravity="center_vertical"
                 android:tag="UNLIKE"
-                android:src="@drawable/ic_unlike" />
+                android:src="@drawable/ic_unlike"
+                android:visibility="@{quote.liked? View.GONE:View.VISIBLE}"
+                />
+            <ImageView
+                android:id="@+id/likeIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="20dp"
+                android:gravity="center_vertical"
+                android:tag="LIKE"
+                android:src="@drawable/ic_like"
+                android:visibility="@{quote.liked? View.VISIBLE:View.GONE}"
 
+                />
         </LinearLayout>
 
 

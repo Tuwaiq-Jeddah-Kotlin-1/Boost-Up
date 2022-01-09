@@ -1,7 +1,6 @@
-package com.mahila.motivationalQuotesApp.model.repository
+package com.mahila.motivationalQuotesApp.model.repositories
 
 import QuotableData
-import com.mahila.motivationalQuotesApp.model.entities.GoQuotesData
 import retrofit2.http.GET
 
 interface GoQuotesAPIService {
