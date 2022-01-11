@@ -10,7 +10,7 @@ Libraries and technologies used:.\
 •	Junit4.\
 •	Retrofit .\
 •	Firebase Authentication.\
-•	Cloud Firestore.\
+•	Cloud Firestore.
 
  
 
