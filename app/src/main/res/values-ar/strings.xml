@@ -48,7 +48,7 @@
     <string name="en">EN</string>
     <string name="forgot">نسيت كلمة المرور</string>
     <string name="Add_reminder">أنشِئ إشعار</string>
-    <string name="join_boost_up">انضم لنا</string>
+    <string name="join_boost_up">انضم لبووست اب</string>
     <string name="enter_your_email">البريد الإلكتروني</string>
     <string name="select_date">اختر تاريخ</string>
     <string name="select_time">اختر وقت</string>
@@ -59,7 +59,7 @@
     <string name="successfully_sign_out">تم تسجيل الخروج بنجاح.</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
-    <string name="out_of_app">تسجيل الخروج </string>
+    <string name="out_of_app">تسجيل الخروج</string>
     <string name="are_you_sure">هل تريد حقاً تسجيل الخروج؟</string>
     <string name="select_Reminder_time">اختر وقت الإشعار</string>
     <string name="time_fields_cannot_be_empty">يرجى تحديد الوقت</string>
@@ -78,4 +78,9 @@
     <string name="INACTIVE_msg">"تم إلغاء الإشعار بنجاح."</string>
     <string name="ACTIVE_msg">تم تفعيل الإشعار بنجاح.</string>
     <string name="REACTIVE_msg">غير قابل لإعادة التفعيل.</string>
+    <string name="NetworkConnected_msg">لا يوجد اتصال بالأنترنت.</string>
+    <string name="like_removed">تم حذف الإقتباس.</string>
+    <string name="undo">تراجع</string>
+    <string name="invalid_email_or_pass">كلمة المرور غير صالحة او البريد غير صالح.</string>
+
 </resources>

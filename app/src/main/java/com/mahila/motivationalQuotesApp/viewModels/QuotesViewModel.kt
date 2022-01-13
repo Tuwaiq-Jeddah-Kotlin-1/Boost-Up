@@ -7,21 +7,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.repositories.GoQuotesRepo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private const val TAG = "QuotesViewModel"
 
 class QuotesViewModel : ViewModel() {
 
-    val goQuotesRepo = GoQuotesRepo()
     fun fetchQuotes(): LiveData<List<Quote>> {
 
         val quotes = MutableLiveData<List<Quote>>()
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO)  {
             try {
-                quotes.postValue(goQuotesRepo.fetchQuotes())
+                quotes.postValue(GoQuotesRepo.fetchQuotes())
             } catch (e: Exception) {
                 Log.e(TAG, "Error fetching Quotes", e)
+            }
+        }
+        return quotes
+    }   fun fetchARQuotes(): LiveData<List<Quote>> {
+
+        val quotes = MutableLiveData<List<Quote>>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                quotes.postValue(GoQuotesRepo.fetchARQuotes())
+            } catch (e: Exception) {
+                Log.e(TAG, "Error fetching ARQuotes", e)
             }
         }
         return quotes

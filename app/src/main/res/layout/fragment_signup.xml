@@ -5,7 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_pattern_a7">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cl1"
@@ -60,6 +61,8 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:hint="@string/enter_your_name"
+                    app:boxStrokeColor="@color/lightPurple"
+                    app:hintTextColor="@color/lightPurple"
                     app:layout_constraintBottom_toTopOf="@+id/emailEditText"
                     app:layout_constraintEnd_toEndOf="@+id/emailEditText"
                     app:layout_constraintStart_toStartOf="@+id/emailEditText"
@@ -80,6 +83,8 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:hint="@string/enter_your_email"
+                    app:boxStrokeColor="@color/lightPurple"
+                    app:hintTextColor="@color/lightPurple"
                     app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
                     app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
                     app:layout_constraintStart_toStartOf="@+id/passwordEditText"
@@ -100,9 +105,11 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="0dp"
                     android:hint="@string/password"
+                    app:boxStrokeColor="@color/lightPurple"
                     app:counterEnabled="true"
                     app:endIconMode="password_toggle"
                     app:helperTextTextColor="@color/lightPurple"
+                    app:hintTextColor="@color/lightPurple"
                     app:layout_constraintBottom_toTopOf="@+id/confirmPasswordEditText"
                     app:layout_constraintEnd_toEndOf="@+id/confirmPasswordEditText"
                     app:layout_constraintStart_toStartOf="@+id/confirmPasswordEditText"
@@ -124,7 +131,9 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
                     android:hint="@string/confirm_password"
+                    app:boxStrokeColor="@color/lightPurple"
                     app:endIconMode="password_toggle"
+                    app:hintTextColor="@color/lightPurple"
                     app:layout_constraintBottom_toTopOf="@+id/signupButton"
                     app:layout_constraintEnd_toEndOf="@+id/signupButton"
                     app:layout_constraintStart_toStartOf="@+id/signupButton"

@@ -67,10 +67,10 @@ class SettingFragment : Fragment() {
     }
 
     private fun setUpUserData() {
-        userViewModel.user.observe(viewLifecycleOwner, {
+        userViewModel.user.observe(viewLifecycleOwner) {
             binding.userNamTextView.text = it?.name
 
-        })
+        }
     }
 
 
@@ -151,8 +151,7 @@ class SettingFragment : Fragment() {
     }
 
     private fun setUpModeButton(view: View) {
-        val sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
-        when (sharePreferencesValueOfMode) {
+        when (sharedPre.getString(SHARED_MODE_KEY, "Auto")) {
             "Auto" -> {
                 binding.modeTextView.text = getString(R.string.dark_mode)
                 binding.modeIcon.setImageDrawable(

@@ -6,18 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentFavoritesListBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote
-import com.mahila.motivationalQuotesApp.model.entities.Reminder
 import com.mahila.motivationalQuotesApp.utils.OnItemClickListener
+import com.mahila.motivationalQuotesApp.utils.NetworkConnectionUtil.isNetworkConnected
 import com.mahila.motivationalQuotesApp.utils.addOnItemClickListener
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.adapters.FavoritesRecycleViewAdapter
-import com.mahila.motivationalQuotesApp.views.adapters.NotificationRecycleViewAdapter
-import com.mahila.motivationalQuotesApp.views.adapters.QuotesRecycleViewAdapter
 
 
 class FavoritesListFragment : Fragment() {
@@ -40,30 +37,45 @@ class FavoritesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Setup RecyclerView
-        setupRecyclerView()
-        //Refreshing
-        binding.refreshLayout.setOnRefreshListener {
+        //
+        if (isNetworkConnected(requireContext())) {
+            // Setup RecyclerView
             setupRecyclerView()
-            binding.refreshLayout.isRefreshing = false
+        } else {
+            binding.favoritesListRecycleView.visibility = View.GONE
+            binding.tvNetworkConnected.visibility = View.VISIBLE
+            binding.networkConnectedIcon.visibility = View.VISIBLE
         }
+
+
         //delete a quote from favoritesList
         binding.favoritesListRecycleView.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
+                val favoriteQuote = favoritesList[position]
                 userViewModel.deleteFavoriteQuote(favoritesList[position])
-                favoritesList[position].apply {
-                    this.isLiked = !this.isLiked
-                }
                 favoritesList.removeAt(position)
                 adapter = FavoritesRecycleViewAdapter(favoritesList)
                 binding.favoritesListRecycleView.adapter = adapter
+                val snackBar = Snackbar.make(
+                    binding.favoritesListRecycleView, getString(R.string.like_removed),
+                    Snackbar.LENGTH_LONG
+                )
+                snackBar.setAction(getString(R.string.undo)) {
+
+                    userViewModel.addFavoriteQuote(favoriteQuote)
+                    favoritesList.add(position, favoriteQuote)
+                    adapter = FavoritesRecycleViewAdapter(favoritesList)
+                    binding.favoritesListRecycleView.adapter = adapter
+                    binding.favoritesListRecycleView.layoutManager?.scrollToPosition(position)
+
+                }
+                snackBar.show()
             }
         })
 
     }
 
-    fun setupRecyclerView() {
+    private fun setupRecyclerView() {
         // Observe LiveData
         userViewModel.favoritesQuotes.observe(viewLifecycleOwner) {
             favoritesList = it.toMutableList()

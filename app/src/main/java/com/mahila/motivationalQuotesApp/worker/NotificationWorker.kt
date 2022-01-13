@@ -84,7 +84,6 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
         const val NOTIFICATION_CONTENT_ID = "BoostUpApp_notification_id"
         const val NOTIFICATION_NAME = "BoostUpApp"
         const val NOTIFICATION_CHANNEL = "BoostUpApp_channel_01"
-        const val NOTIFICATION_WORK = "BoostUpApp_notification_work"
     }
 
 }

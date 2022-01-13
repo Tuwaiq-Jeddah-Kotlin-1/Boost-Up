@@ -2,13 +2,11 @@ package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.mahila.motivationalQuotesApp.databinding.QuotesListItemBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote
-import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 
-class QuotesRecycleViewAdapter(var quotesList:List<Quote>) :
+class QuotesRecycleViewAdapter(var quotesList: List<Quote>) :
     RecyclerView.Adapter<QuotesRecycleViewAdapter.QuotesHolder>() {
     class QuotesHolder(private val binding: QuotesListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -43,8 +41,6 @@ class QuotesRecycleViewAdapter(var quotesList:List<Quote>) :
         val currentQuote = quotesList[position]
         holder.bind(currentQuote)
     }
-
-
 
 
 }

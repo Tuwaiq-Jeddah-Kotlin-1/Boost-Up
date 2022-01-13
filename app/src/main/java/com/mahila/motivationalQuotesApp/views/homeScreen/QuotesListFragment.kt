@@ -1,26 +1,26 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.ConfigurationCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.work.WorkManager
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.databinding.FragmentQuotesListBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote
-import com.mahila.motivationalQuotesApp.model.entities.Reminder
 import com.mahila.motivationalQuotesApp.utils.OnItemClickListener
-import com.mahila.motivationalQuotesApp.utils.ReminderUtil
+import com.mahila.motivationalQuotesApp.utils.NetworkConnectionUtil
 import com.mahila.motivationalQuotesApp.utils.addOnItemClickListener
 import com.mahila.motivationalQuotesApp.viewModels.QuotesViewModel
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
+import com.mahila.motivationalQuotesApp.views.SHARED_LANG_KEY
 import com.mahila.motivationalQuotesApp.views.SHARED_STAY_SIGNED_IN
-import com.mahila.motivationalQuotesApp.views.adapters.NotificationRecycleViewAdapter
 import com.mahila.motivationalQuotesApp.views.adapters.QuotesRecycleViewAdapter
+import com.mahila.motivationalQuotesApp.views.sharePreferencesValueOfLang
 import com.mahila.motivationalQuotesApp.views.sharedPre
 
 
@@ -47,9 +47,16 @@ class QuotesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //check network connection.
+        if (NetworkConnectionUtil.isNetworkConnected(requireContext())) {
+            // Setup RecyclerView
+            setupRecyclerView()
+        } else {
+            binding.quotesListRecycleView.visibility = View.GONE
 
-        // Setup RecyclerView
-        setupRecyclerView()
+            binding.networkConnectedIcon.visibility = View.VISIBLE
+            binding.tvNetworkConnected.visibility = View.VISIBLE
+        }
 
         // Refresh RecyclerView
         binding.refreshLayout.setOnRefreshListener {
@@ -59,19 +66,18 @@ class QuotesListFragment : Fragment() {
         // Favouring a quote
         binding.quotesListRecycleView.addOnItemClickListener(object : OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
-                if (view.tag != "LIKE") {
-                    view.tag = "LIKE"
-                    userViewModel.addFavoriteQuote(quotesList[position])
-                }else{
-                    view.tag = "UNLIKE"
-                    userViewModel.deleteFavoriteQuote(quotesList[position])
 
+                if (!quotesList[position].isLiked) {
+                    userViewModel.addFavoriteQuote(quotesList[position])
+                } else {
+                    userViewModel.deleteFavoriteQuote(quotesList[position])
                 }
                 quotesList[position].apply {
                     this.isLiked = !this.isLiked
                 }
                 adapter = QuotesRecycleViewAdapter(quotesList)
                 binding.quotesListRecycleView.adapter = adapter
+                binding.quotesListRecycleView.layoutManager?.scrollToPosition(position)
             }
 
 
@@ -81,12 +87,33 @@ class QuotesListFragment : Fragment() {
 
     private fun setupRecyclerView() {
         // Observe LiveData
-        quotesViewModel.fetchQuotes().observe(viewLifecycleOwner) { dataQuotesList ->
-            quotesList = dataQuotesList.toMutableList()
-            adapter = QuotesRecycleViewAdapter(dataQuotesList)
-            binding.quotesListRecycleView.adapter = adapter
-            binding.quotesListRecycleView.scheduleLayoutAnimation()
+        if (currentLang() == "en") {
+            quotesViewModel.fetchQuotes().observe(viewLifecycleOwner) { dataQuotesList ->
+                quotesList = dataQuotesList.toMutableList()
+                adapter = QuotesRecycleViewAdapter(dataQuotesList)
+                binding.quotesListRecycleView.adapter = adapter
+                binding.quotesListRecycleView.scheduleLayoutAnimation()
+            }
+        } else {
+            quotesViewModel.fetchARQuotes().observe(viewLifecycleOwner) { dataQuotesList ->
+                quotesList = dataQuotesList.toMutableList()
+                adapter = QuotesRecycleViewAdapter(dataQuotesList)
+                binding.quotesListRecycleView.adapter = adapter
+                binding.quotesListRecycleView.scheduleLayoutAnimation()
 
+            }
+        }
+
+    }
+
+    private fun currentLang(): String {
+        sharePreferencesValueOfLang = sharedPre.getString(SHARED_LANG_KEY, "Auto")
+        return when (sharePreferencesValueOfLang) {
+            "en" -> "en"
+            "Auto" ->
+                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
+
+            else -> "ar"
         }
     }
 
