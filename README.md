@@ -28,11 +28,11 @@ Demo account:.\
 ## :camera_flash: Screenshots
  coming on!✨
  
- •	Sign in/up screens (light mode):.\
+ #•	Sign in/up screens (light mode):
 
   <img src="sing_screens.png" width="1100">
   
- •	Home screen (light mode):.\
+# •	Home screen (light mode):
 
   <img src="home_screens.png" width="1100">
   
