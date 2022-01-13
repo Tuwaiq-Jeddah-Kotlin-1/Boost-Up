@@ -14,6 +14,7 @@ import com.mahila.motivationalQuotesApp.databinding.FragmentNotificationBinding
 import com.mahila.motivationalQuotesApp.model.entities.Reminder
 import com.mahila.motivationalQuotesApp.utils.OnItemClickListener
 import com.mahila.motivationalQuotesApp.utils.ReminderUtil.setReminder
+import com.mahila.motivationalQuotesApp.utils.NetworkConnectionUtil
 import com.mahila.motivationalQuotesApp.utils.addOnItemClickListener
 import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.adapters.NotificationRecycleViewAdapter
@@ -39,8 +40,16 @@ class NotificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Setup RecyclerView
-        setupRecyclerView()
+        //check network connection.
+        if (NetworkConnectionUtil.isNetworkConnected(requireContext())) {
+            // Setup RecyclerView
+            setupRecyclerView()
+        } else {
+            binding.notificationListRecycleView.visibility = View.GONE
+            binding.tvNetworkConnected.visibility = View.VISIBLE
+
+            binding.networkConnectedIcon.visibility = View.VISIBLE
+        }
 
         binding.addingBtn.setOnClickListener {
             view.findNavController()
@@ -68,7 +77,7 @@ class NotificationFragment : Fragment() {
                 } else if (!reminderList[position].active) {
                     setReminder(
                         reminderList[position].dateAndTime, reminderList[position].randomQuote,
-                        reminderList[position].everyDay, reminderList[position].reminderId, view
+                        reminderList[position].everyDay, reminderList[position].reminderId
                     )
                     Toast.makeText(
                         requireContext(),
@@ -116,11 +125,19 @@ class NotificationFragment : Fragment() {
 
     }
 
-    private fun deleteEndedReminders(reminderList: List<Reminder>): List<Reminder> {
+    private fun deleteEndedReminders(_reminderList: List<Reminder>): List<Reminder> {
         val currentTime = Calendar.getInstance().timeInMillis
-        return reminderList.filter {
-            it.dateAndTime >= currentTime || (it.everyDay && it.active)
+        val reminderList = mutableListOf<Reminder>()
+        _reminderList.forEach {
+            if (!(it.dateAndTime >= currentTime || (it.everyDay && it.active))) {
+                userViewModel.deleteReminder(it)
+
+            } else {
+                reminderList.add(it)
+            }
+
         }
+        return reminderList
 
     }
 

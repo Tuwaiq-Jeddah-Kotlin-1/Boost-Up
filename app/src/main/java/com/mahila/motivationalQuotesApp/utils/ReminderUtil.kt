@@ -1,7 +1,7 @@
 package com.mahila.motivationalQuotesApp.utils
 
-import android.view.View
 import androidx.work.*
+import com.mahila.motivationalQuotesApp.app.BoostUp
 import com.mahila.motivationalQuotesApp.worker.NotificationWorker
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 object ReminderUtil {
     fun setReminder(
         dateAndTime: Long, randomQuote: String,
-        isEveryDay: Boolean, reminderId: String, view: View
+        isEveryDay: Boolean, reminderId: String
     ) {
         val currentTime = Calendar.getInstance().timeInMillis
         val delay = dateAndTime - currentTime
@@ -29,9 +29,9 @@ object ReminderUtil {
                     .setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data)
                     .setInputData(quoteNotification)
                     .build()
-            val instanceWorkManager2 = WorkManager.getInstance(view.context)
+            val instanceWorkManager2 = WorkManager.getInstance(BoostUp.instant.applicationContext)
             instanceWorkManager2.enqueueUniquePeriodicWork(
-                NotificationWorker.NOTIFICATION_WORK,
+                reminderId,
                 ExistingPeriodicWorkPolicy.REPLACE,
                 periodicNotificationWork
             )
@@ -43,9 +43,10 @@ object ReminderUtil {
                     .setInputData(quoteNotification)
                     .build()
 
-            val instanceWorkManager = WorkManager.getInstance(view.context)
+            val instanceWorkManager = WorkManager.getInstance(BoostUp.instant.applicationContext)
+
             instanceWorkManager.beginUniqueWork(
-                NotificationWorker.NOTIFICATION_WORK,
+                reminderId,
                 ExistingWorkPolicy.REPLACE,
                 notificationWork
             ).enqueue()

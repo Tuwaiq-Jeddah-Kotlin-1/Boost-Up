@@ -1,7 +1,6 @@
 package com.mahila.motivationalQuotesApp.views
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
@@ -12,7 +11,6 @@ import androidx.core.os.ConfigurationCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         sharePreferencesValueOfMode = sharedPre.getString(SHARED_MODE_KEY, "Auto")
         changeMode()
         sharePreferencesValueOfLang = sharedPre.getString(SHARED_LANG_KEY, "Auto")
-
         sharePreferencesValueOfLang?.let {
             applyLocalized(it)
         }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
@@ -66,7 +64,8 @@ class MainActivity : AppCompatActivity() {
                     hideBoth()
                 }
                 R.id.navigation_forgotPassword -> {
-                    hideOne()
+                    //  hideOne()
+                    hideBoth()
                 }
                 R.id.navigation_addNotification -> {
                     hideOne()
@@ -117,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         Locale.setDefault(locale)
         val configuration = resources.configuration
         configuration?.setLocale(locale)
-        resources.updateConfiguration(configuration,resources.displayMetrics)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -2,7 +2,6 @@ package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mahila.motivationalQuotesApp.databinding.FavoritesListItemBinding
 import com.mahila.motivationalQuotesApp.model.entities.Quote

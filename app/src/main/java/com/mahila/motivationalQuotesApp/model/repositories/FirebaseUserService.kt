@@ -8,22 +8,24 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mahila.motivationalQuotesApp.R
 import com.mahila.motivationalQuotesApp.app.BoostUp.Companion.instant
-import com.mahila.motivationalQuotesApp.model.entities.Reminder
-import com.mahila.motivationalQuotesApp.model.entities.Reminder.Companion.toReminder
 import com.mahila.motivationalQuotesApp.model.entities.Quote
 import com.mahila.motivationalQuotesApp.model.entities.Quote.Companion.toQuote
+import com.mahila.motivationalQuotesApp.model.entities.Reminder
+import com.mahila.motivationalQuotesApp.model.entities.Reminder.Companion.toReminder
 import com.mahila.motivationalQuotesApp.model.entities.User
 import com.mahila.motivationalQuotesApp.model.entities.User.Companion.toUser
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 
 object FirebaseUserService {
     private const val TAG = "FirebaseUserService"
     private val db by lazy { FirebaseFirestore.getInstance() }
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    suspend fun getUserData(): User? {
-        return try {
+    suspend fun getUserData(): User? = withContext(Dispatchers.IO) {
+        try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid).get().await().toUser()
@@ -35,8 +37,8 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun getNotifications(): List<Reminder>? {
-        return try {
+    suspend fun getReminders(): List<Reminder>? = withContext(Dispatchers.IO) {
+        try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid)
@@ -53,28 +55,27 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun addNotification(reminder: Reminder) {
+    suspend fun addReminder(reminder: Reminder) = withContext(Dispatchers.IO) {
         try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid)
                     .collection("notificationsList")
-                    .document(reminder.reminderId).set(reminder).await()
+                    .document(reminder.reminderId).set(reminder)
             }
-
 
         } catch (e: Exception) {
             Log.e(TAG, "Error adding an reminder", e)
         }
     }
 
-    suspend fun deleteReminder(reminder: Reminder) {
+    suspend fun deleteReminder(reminder: Reminder) = withContext(Dispatchers.IO) {
         try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid)
                     .collection("notificationsList")
-                    .document(reminder.reminderId).delete().await()
+                    .document(reminder.reminderId).delete()
             }
 
         } catch (e: Exception) {
@@ -100,8 +101,8 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun getFavoritesQuotes(): List<Quote>? {
-        return try {
+    suspend fun getFavoritesQuotes(): List<Quote>? = withContext(Dispatchers.IO) {
+        try {
             auth.currentUser?.let {
                 db.collection("users")
                     .document(auth.currentUser!!.uid)
@@ -118,7 +119,8 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun addFavoriteQuote(quote: Quote) {
+
+    suspend fun addFavoriteQuote(quote: Quote) = withContext(Dispatchers.IO) {
         try {
             // Create a reference to the collection
             val favoritesListRef = auth.currentUser?.let {
@@ -138,14 +140,15 @@ object FirebaseUserService {
                 }
             }?.addOnFailureListener { e ->
                 Log.e(TAG, "Error adding an favorite quote", e)
-            }?.await()
+            }
 
         } catch (e: Exception) {
             Log.e(TAG, "Error adding an favorite quote", e)
         }
+
     }
 
-    suspend fun deleteFavoriteQuote(quote: Quote) {
+    suspend fun deleteFavoriteQuote(quote: Quote) = withContext(Dispatchers.IO) {
         try {
             // Create a reference to the collection
             val favoritesListRef = auth.currentUser?.let {
@@ -171,7 +174,7 @@ object FirebaseUserService {
                 }
             }?.addOnFailureListener { exception ->
                 Log.e(TAG, "Error deleting an favorite quote", exception)
-            }?.await()
+            }
 
         } catch (e: Exception) {
             Log.e(TAG, "Error deleting an favorite quote", e)
@@ -185,11 +188,19 @@ object FirebaseUserService {
                     //Add user to FireStore
                     val user = User(auth.currentUser!!.uid, name, email)
                     db.collection("users").document(auth.currentUser!!.uid).set(user)
-                    Toast.makeText(instant.applicationContext, R.string.successfully_sign_up, Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        instant.applicationContext,
+                        R.string.successfully_sign_up,
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
 
                 } else {
-                    Toast.makeText(instant.applicationContext, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        instant.applicationContext,
+                        task.exception!!.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.e(TAG, "Error add the user ", task.exception!!)
                 }
             }
@@ -214,7 +225,12 @@ object FirebaseUserService {
                             .navigate(R.id.action_signinFragment_to_quotesFragment)
 
                     } else {
-                        Toast.makeText(instant.applicationContext, task.exception!!.message, Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            instant.applicationContext,
+                            //task.exception!!.message
+                            R.string.invalid_email_or_pass,
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                         Log.e(TAG, task.exception!!.message, task.exception!!)
                     }
@@ -224,7 +240,7 @@ object FirebaseUserService {
         }
     }
 
-    suspend fun forgotPassword(email: String) {
+    suspend fun forgotPassword(email: String) = withContext(Dispatchers.IO) {
         try {
             auth.sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->
@@ -244,13 +260,13 @@ object FirebaseUserService {
                         ).show()
 
                     }
-                }.await()
+                }
         } catch (e: Exception) {
             Log.d(TAG, "Password Reset Email has not been sent.")
         }
     }
 
-    suspend fun resetUserName(newName: String) {
+    suspend fun resetUserName(newName: String) = withContext(Dispatchers.IO) {
         try {
             auth.currentUser?.let {
                 db.collection("users")
@@ -258,7 +274,7 @@ object FirebaseUserService {
                         mapOf(
                             "name" to newName
                         )
-                    ).await()
+                    )
             }
 
         } catch (e: Exception) {

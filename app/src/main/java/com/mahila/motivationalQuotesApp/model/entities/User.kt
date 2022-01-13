@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 data class User(
     val uid: String,
     var name: String,
-    var email: String,
+    val email: String,
 ) : Parcelable {
 
     companion object {

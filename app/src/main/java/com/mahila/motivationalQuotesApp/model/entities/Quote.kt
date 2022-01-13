@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Quote(
     @SerializedName("content")
-    var text: String,
+    val text: String,
     val author: String,
     var isLiked:Boolean=false
 ) : Parcelable {

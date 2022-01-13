@@ -8,13 +8,13 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Reminder(
     val reminderId: String,
-    var dateAndTime: Long,
-    var delay: Long,
+    val dateAndTime: Long,
+    val delay: Long,
     var active: Boolean,
-    var timeAsString: String,
+    val timeAsString: String,
     var dateAsString: String,
-    var randomQuote: String,
-    var everyDay: Boolean
+    val randomQuote: String,
+    val everyDay: Boolean
 
 ) : Parcelable {
     companion object {

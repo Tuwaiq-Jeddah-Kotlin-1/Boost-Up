@@ -29,6 +29,15 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_like.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_moon.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_opacity.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a2.xml" value="0.25794871794871793" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a2___1.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a3.xml" value="0.25794871794871793" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a4.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a5.xml" value="0.26197916666666665" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a6.xml" value="0.2" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_a7.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pattern_black.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_pencil.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_plus.xml" value="0.103125" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_quote_right.xml" value="0.19635416666666666" />
@@ -40,6 +49,7 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_unlike.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_user.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_user_24.xml" value="0.26197916666666665" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_wifi_alt.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/ic_world.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/pencil_24.xml" value="0.14375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/drawable/power_24.xml" value="0.14375" />
@@ -60,13 +70,13 @@
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profil.xml" value="0.2359375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_edit_profile.xml" value="0.234375" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_favorites_list.xml" value="0.1" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_forgot_password.xml" value="0.234375" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_forgot_password.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_open_notification_quote.xml" value="0.22056159420289856" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_quotes_list.xml" value="0.16" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.14285714285714285" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.2" />
-        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signin.xml" value="0.1" />
+        <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/fragment_signup.xml" value="0.2" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/jj.xml" value="0.25" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/notification_list_item.xml" value="0.25" />
         <entry key="..\:/Users/mila/AndroidStudioProjects/MotivationalQuotesApp/app/src/main/res/layout/quotes_list_item.xml" value="0.264" />
@@ -81,5 +91,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>

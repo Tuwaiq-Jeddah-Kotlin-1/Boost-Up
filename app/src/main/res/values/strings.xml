@@ -78,4 +78,9 @@
     <string name="INACTIVE_msg">"Successfully, reminder is canceled. "</string>
     <string name="ACTIVE_msg">Successfully, reminder is activated.</string>
     <string name="REACTIVE_msg">It cannot be reactivated.</string>
+    <string name="NetworkConnected_msg">No network connection.</string>
+    <string name="like_removed">Quote deleted.</string>
+    <string name="undo">Undo</string>
+    <string name="invalid_email_or_pass">Invalid password or invalid email.</string>
+
 </resources>

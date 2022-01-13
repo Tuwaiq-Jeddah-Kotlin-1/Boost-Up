@@ -1,7 +1,6 @@
 package com.mahila.motivationalQuotesApp.views.adapters
 
 import android.content.Intent
-import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.BindingAdapter
