@@ -11,12 +11,12 @@ Libraries and technologies used:.\
 •	Junit4.\
 •	Retrofit .\
 •	Firebase Authentication.\
-•	Cloud Firestore.\
+•	Cloud Firestore.
 
  
 Demo account :.\
 •	Email: mahila@gmail.com.\
-•	Password: Mahila1* .\
+•	Password: Mahila1* .
 
 
 ## :bulb: Motivation
