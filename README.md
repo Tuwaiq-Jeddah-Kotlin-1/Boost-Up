@@ -27,7 +27,10 @@ Demo account:.\
  
 ## :camera_flash: Screenshots
  coming on!✨
- <img src="home_screens_b.png" width="1100">
+  <img src="sign_screens.png" width="1100">
+
   <img src="home_screens.png" width="1100">
+  
+  
 
 
