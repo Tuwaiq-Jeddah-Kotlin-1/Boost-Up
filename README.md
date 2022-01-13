@@ -38,7 +38,7 @@ Demo account:.\
   
  # •	Home screen (Dark mode):
 
-  <img src="home_screens_b.png" width="1100">
+  <img src="dark_mode.png" width="1100">
    
 
 
