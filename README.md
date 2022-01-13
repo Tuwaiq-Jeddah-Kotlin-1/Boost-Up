@@ -1,4 +1,4 @@
- <img src="boost_up_header.png" width="300">
+ <img src="boost_up_header.png" width="900">
 
 # Boost-Up
 Boost up app aims to boost you up; to achieve your goals and enhance your lives.\
