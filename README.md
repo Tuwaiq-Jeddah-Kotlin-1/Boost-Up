@@ -32,10 +32,13 @@ Demo account:.\
 
   <img src="sing_screens.png" width="1100">
   
-# •	Home screen (light mode):
+# •	Home screen (Light mode):
 
   <img src="home_screens.png" width="1100">
   
-  
+ # •	Home screen (Dark mode):
+
+  <img src="home_screens_b.png" width="1100">
+   
 
 
