@@ -14,7 +14,7 @@ Libraries and technologies used:
 •	Cloud Firestore.
 
  
-Demo account :
+Demo account:.\
 •	Email: mahila@gmail.com.\
 •	Password: Mahila1* .
 
