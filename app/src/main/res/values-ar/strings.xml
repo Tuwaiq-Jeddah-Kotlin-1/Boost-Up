@@ -82,5 +82,6 @@
     <string name="like_removed">تم حذف الإقتباس.</string>
     <string name="undo">تراجع</string>
     <string name="invalid_email_or_pass">كلمة المرور غير صالحة او البريد غير صالح.</string>
+    <string name="reset_password_1">إعادة تعيين كلمة المرور</string>
 
 </resources>

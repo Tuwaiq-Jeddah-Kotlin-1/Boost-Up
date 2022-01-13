@@ -82,5 +82,6 @@
     <string name="like_removed">Quote deleted.</string>
     <string name="undo">Undo</string>
     <string name="invalid_email_or_pass">Invalid password or invalid email.</string>
+    <string name="reset_password_1">Reset Password</string>
 
 </resources>

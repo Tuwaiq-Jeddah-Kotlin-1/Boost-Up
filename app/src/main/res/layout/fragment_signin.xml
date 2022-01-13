@@ -43,6 +43,7 @@
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/leigo"
                     app:layout_constraintBottom_toTopOf="@+id/emailEditText"
                     app:layout_constraintEnd_toEndOf="@+id/emailEditText"
                     app:layout_constraintStart_toStartOf="@+id/emailEditText"
