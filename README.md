@@ -5,7 +5,7 @@ It enables you to explore many motivational quotes to motivate and inspire✨.
 ## :scroll: Description
 
 
-Libraries and technologies used:\
+Libraries and technologies used:.\
 
 •	Jetpack libraries (Coroutines, Lifecycle, Navigation, WorkManager, and DataBinding).\
 •	Junit4.\
@@ -14,9 +14,9 @@ Libraries and technologies used:\
 •	Cloud Firestore.\
 
  
-Demo account :
-•	Email: mahila@gmail.com
-•	Password: Mahila1* 
+Demo account :.\
+•	Email: mahila@gmail.com.\
+•	Password: Mahila1* .\
 
 
 ## :bulb: Motivation
