@@ -2,7 +2,7 @@
 
 # Boost Up App
 
-•	It is a mobile app for Android, that aims to boost the target user up by allowing the target user to explore many motivational quotes✨.\
+•	It is a mobile app for Android, that aims to boost the target user up by allowing the user to explore many motivational quotes✨.\
 •	The target users of Boost Up are people needing the motivation to achieve their goals or enhance their lives.
 
 ## :scroll: Description
@@ -44,7 +44,7 @@ Demo account:.\
 
   <img src="home_screens_b.png" width="1100">
    
- •	Refresh to get new quotes  Refresh to get new quotes.
+ •	Refresh to get new quotes.
  
  •	Add/remove the quote to/from favorite list.
  
@@ -52,9 +52,10 @@ Demo account:.\
  
 | <img src="Refresh.gif" width="260">|<img src="favorite.gif" width="260">|<img src="Deactivate_Reactivate_Reminder.gif" width="260">
 
-•	change the language.
 
 •	change the mode.
+
+•	change the language.
 
 <img src="mode.gif" width="260">|<img src="language.gif" width="255">
 
