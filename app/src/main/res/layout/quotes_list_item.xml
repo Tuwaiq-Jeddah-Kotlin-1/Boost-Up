@@ -11,53 +11,48 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.433"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+      >
 
         <ImageView
             android:id="@+id/quoteIcon"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="343dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/ic_quote_right"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toEndOf="@+id/quoteText"
-            app:layout_constraintStart_toStartOf="@+id/quoteText"
+            app:layout_constraintBottom_toTopOf="@id/quoteText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/quoteText"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginBottom="13dp"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:text="@{quote.text}"
             android:textColor="@color/black"
@@ -65,45 +60,44 @@
             android:textStyle="bold"
             android:foregroundGravity="top"
             app:layout_constraintBottom_toTopOf="@+id/quoteAuthor"
-            app:layout_constraintEnd_toEndOf="@+id/quoteAuthor"
-            app:layout_constraintStart_toStartOf="@+id/quoteAuthor"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quoteIcon"  />
 
         <TextView
             android:id="@+id/quoteAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="43dp"
+            android:layout_margin="10dp"
             android:gravity="center_vertical"
             android:textColor="@color/lightPurple"
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="@{quote.author}"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quoteText" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="5dp"
             android:gravity="end"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quoteIcon">
+            app:layout_constraintTop_toBottomOf="@+id/quoteAuthor">
 
             <ImageView
                 android:id="@+id/shareIcon"
-                android:layout_width="26dp"
+                android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:shareAQuoteViaOtherApps="@{quote}"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_u_share" />
 
@@ -111,7 +105,7 @@
                 android:id="@+id/unlikeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:gravity="center_vertical"
                 android:tag="UNLIKE"
                 android:src="@drawable/ic_unlike"
@@ -121,7 +115,7 @@
                 android:id="@+id/likeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:gravity="center_vertical"
                 android:tag="LIKE"
                 android:src="@drawable/ic_like"
