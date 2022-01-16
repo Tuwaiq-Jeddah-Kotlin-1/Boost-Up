@@ -2,7 +2,7 @@
 
 # Boost Up App
 
-•	It is a mobile app for Android, that aims to boost the target user up by allowing the user to explore many motivational quotes✨.\
+•	It is a mobile app for Android, that aims to boost the target user up by allowing the user to explore many motivational quotes✨.
 
 ## :scroll: Description
 
