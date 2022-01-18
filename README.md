@@ -20,9 +20,9 @@
 •	Email: mahila@gmail.com.\
 •	Password: Mahila1* .
 
-### SRS of [Bosst Up](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
-### Trello of [Bosst Up](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
-### Prototype of [Bosst Up](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
+### SRS of [Boost Up](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
+### Trello of [Boost Up](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
+### Prototype of [Boost Up](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
  
 ## :camera_flash: Screenshots
  
