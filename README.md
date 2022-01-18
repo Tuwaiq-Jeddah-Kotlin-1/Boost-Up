@@ -11,8 +11,8 @@
 •	Junit4.\
 •	Retrofit .\
 •	Firebase Authentication.\
-•	Cloud Firestore.
-•	[QuotableAPI](https://github.com/lukePeavey/quotable) 
+•	Cloud Firestore.\
+•	[QuotableAPI](https://github.com/lukePeavey/quotable). 
 
  
 ### Demo account:
