@@ -2,12 +2,10 @@ package com.mahila.motivationalQuotesApp.views
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.ConfigurationCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -64,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                     hideBoth()
                 }
                 R.id.navigation_forgotPassword -> {
-                    //  hideOne()
                     hideBoth()
                 }
                 R.id.navigation_addNotification -> {
@@ -94,29 +91,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun changeMode() {
         when (sharePreferencesValueOfMode) {
-            "Auto" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            "LIGHT" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
             "DARK" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             else -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
     }
 
     private fun applyLocalized(_langCode: String) {
-        var langCode = _langCode
-        if (langCode == "Auto") {
-            langCode =
-                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
+        //  var langCode = _langCode
+        if (_langCode != "Auto") {
+            val locale = Locale(_langCode)
+            Locale.setDefault(locale)
+            val configuration = resources.configuration
+            configuration?.setLocale(locale)
+            resources.updateConfiguration(configuration, resources.displayMetrics)
         }
-        val locale = Locale(langCode)
-        Locale.setDefault(locale)
-        val configuration = resources.configuration
-        configuration?.setLocale(locale)
-        resources.updateConfiguration(configuration, resources.displayMetrics)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

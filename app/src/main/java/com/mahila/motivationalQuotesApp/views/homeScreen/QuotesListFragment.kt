@@ -20,7 +20,6 @@ import com.mahila.motivationalQuotesApp.viewModels.UserViewModel
 import com.mahila.motivationalQuotesApp.views.SHARED_LANG_KEY
 import com.mahila.motivationalQuotesApp.views.SHARED_STAY_SIGNED_IN
 import com.mahila.motivationalQuotesApp.views.adapters.QuotesRecycleViewAdapter
-import com.mahila.motivationalQuotesApp.views.sharePreferencesValueOfLang
 import com.mahila.motivationalQuotesApp.views.sharedPre
 
 
@@ -100,20 +99,19 @@ class QuotesListFragment : Fragment() {
                 adapter = QuotesRecycleViewAdapter(dataQuotesList)
                 binding.quotesListRecycleView.adapter = adapter
                 binding.quotesListRecycleView.scheduleLayoutAnimation()
-
             }
+
         }
 
     }
 
     private fun currentLang(): String {
-        sharePreferencesValueOfLang = sharedPre.getString(SHARED_LANG_KEY, "Auto")
-        return when (sharePreferencesValueOfLang) {
+        return when (sharedPre.getString(SHARED_LANG_KEY, "Auto")) {
             "en" -> "en"
-            "Auto" ->
-                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
+            "ar" -> "ar"
 
-            else -> "ar"
+            else -> ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
+
         }
     }
 
