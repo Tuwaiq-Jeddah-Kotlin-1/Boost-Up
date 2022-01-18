@@ -1,6 +1,6 @@
 package com.mahila.motivationalQuotesApp.views.homeScreen
 
-import android.content.Intent
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -119,7 +119,7 @@ class SettingFragment : Fragment() {
                     }
                     //update nam, vm called
                     userViewModel.resetUserName(binding.userNamEditText.text.toString())
-                    binding.userNamTextView.text=binding.userNamEditText.text
+                    binding.userNamTextView.text = binding.userNamEditText.text
                     Toast.makeText(
                         requireContext(),
                         getString(R.string.changes_saved),
@@ -150,9 +150,66 @@ class SettingFragment : Fragment() {
         builder.create().show()
     }
 
+    private fun setUpLangButton() {
+        when (sharePreferencesValueOfLang) {
+
+            "ar" -> {
+                binding.langEditText.text = getString(R.string.en)
+            }
+            "en" -> {
+
+                binding.langEditText.text = getString(R.string.ar)
+            }
+            else -> binding.langEditText.text =
+                if (reverseCurrentLang() == "en") getString(R.string.en) else getString(R.string.ar)
+        }
+    }
+
+    private fun changeLang() {
+        when (sharePreferencesValueOfLang) {
+            "ar" -> {
+                applyLocalized("en")
+                sharedPre.edit().putString(SHARED_LANG_KEY, "en").apply()
+                setUpLangButton()
+            }
+            "en" -> {
+                applyLocalized("ar")
+                sharedPre.edit().putString(SHARED_LANG_KEY, "ar")
+                    .apply()
+                setUpLangButton()
+            }
+            else -> {
+                applyLocalized("Auto")
+                sharedPre.edit().putString(SHARED_LANG_KEY, reverseCurrentLang())
+                    .apply()
+                setUpLangButton()
+
+            }
+        }
+    }
+
+    private fun applyLocalized(_langCode: String) {
+        var langCode = _langCode
+        if (langCode == "Auto") {
+            langCode = reverseCurrentLang()
+        }
+        val locale = Locale(langCode)
+        Locale.setDefault(locale)
+        activity?.recreate()
+    }
+
+    private fun reverseCurrentLang(): String {
+        return if (ConfigurationCompat.getLocales(
+                Resources.getSystem().configuration
+            ).get(0).language == "en"
+        ) {
+            "ar"
+        } else "en"
+    }
+
     private fun setUpModeButton(view: View) {
         when (sharedPre.getString(SHARED_MODE_KEY, "Auto")) {
-            "Auto" -> {
+            "LIGHT" -> {
                 binding.modeTextView.text = getString(R.string.dark_mode)
                 binding.modeIcon.setImageDrawable(
                     AppCompatResources.getDrawable(
@@ -171,76 +228,36 @@ class SettingFragment : Fragment() {
                 binding.modeTextView.text = getString(R.string.light_mode)
             }
             else -> {
-                binding.modeIcon.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        view.context,
-                        R.drawable.ic_opacity
-                    )
-                )
-                binding.modeTextView.text = getString(R.string.auto_mode)
-            }
-        }
-    }
 
-    private fun setUpLangButton() {
-        when (sharePreferencesValueOfLang) {
-            "Auto" -> {
-                binding.langEditText.text = getString(R.string.en)
-            }
-            "en" -> {
+                when (requireContext().resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                    Configuration.UI_MODE_NIGHT_NO -> {
+                        binding.modeTextView.text = getString(R.string.dark_mode)
+                        binding.modeIcon.setImageDrawable(
+                            AppCompatResources.getDrawable(
+                                view.context,
+                                R.drawable.ic_moon
+                            )
+                        )
+                    }
+                    Configuration.UI_MODE_NIGHT_YES -> {
+                        binding.modeIcon.setImageDrawable(
+                            AppCompatResources.getDrawable(
+                                view.context,
+                                R.drawable.ic_sun
+                            )
+                        )
+                        binding.modeTextView.text = getString(R.string.light_mode)
+                    }
+                }
 
-                binding.langEditText.text = getString(R.string.ar)
-            }
-            else -> {
-
-                binding.langEditText.text = getString(R.string.auto_lang)
-            }
-        }
-    }
-
-    private fun changeLang() {
-
-        when (sharePreferencesValueOfLang) {
-            "Auto" -> {
-                applyLocalized("en")
-                sharedPre.edit().putString(SHARED_LANG_KEY, "en").apply()
-                setUpLangButton()
-            }
-            "en" -> {
-                applyLocalized("ar")
-                sharedPre.edit().putString(SHARED_LANG_KEY, "ar")
-                    .apply()
-                setUpLangButton()
-            }
-            else -> {
-                applyLocalized("Auto")
-                sharedPre.edit().putString(SHARED_LANG_KEY, "Auto")
-                    .apply()
-                setUpLangButton()
 
             }
         }
-    }
-
-    private fun applyLocalized(_langCode: String) {
-        var langCode = _langCode
-        if (langCode == "Auto") {
-            langCode =
-                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0).language
-        }
-        val locale = Locale(langCode)
-        Locale.setDefault(locale)
-        val resources = activity?.resources
-        val configuration = activity?.resources?.configuration
-        configuration?.setLocale(locale)
-        resources?.updateConfiguration(configuration, resources.displayMetrics)
-        startActivity(Intent(requireContext(), MainActivity::class.java))
-        activity?.finish()
     }
 
     private fun changeMode(view: View) {
         when (sharedPre.getString(SHARED_MODE_KEY, "Auto")) {
-            "Auto" -> {
+            "LIGHT" -> {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 sharedPre.edit().putString(SHARED_MODE_KEY, "DARK").apply()
                 setUpModeButton(view)
@@ -252,20 +269,22 @@ class SettingFragment : Fragment() {
                 setUpModeButton(view)
             }
             else -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                sharedPre.edit().putString(SHARED_MODE_KEY, "Auto")
-                    .apply()
+                if (requireContext().resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                    == Configuration.UI_MODE_NIGHT_YES
+                ) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    sharedPre.edit().putString(SHARED_MODE_KEY, "LIGHT")
+                        .apply()
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    sharedPre.edit().putString(SHARED_MODE_KEY, "DARK")
+                        .apply()
+                }
                 setUpModeButton(view)
-                binding.modeTextView.text = getString(R.string.dark_mode)
-                binding.modeIcon.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        view.context,
-                        R.drawable.ic_moon
-                    )
-                )
             }
         }
     }
+
     override fun onStart() {
         super.onStart()
         if (!sharedPre.getBoolean(SHARED_STAY_SIGNED_IN, false) ||
@@ -274,6 +293,7 @@ class SettingFragment : Fragment() {
             findNavController().navigate(R.id.action_settingFragment_to_signupFragment)
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

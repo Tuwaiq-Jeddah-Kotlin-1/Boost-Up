@@ -13,14 +13,14 @@ object ValidationUtil {
         containNumbers: Int = 1,
         containCapitalLetters: Int = 1
     ): Boolean {
-        var regexString = getInputRegexString(
+        val regexString = getInputRegexString(
             minLength,
             maxLength,
             containSpecialCharacter,
             containNumbers,
             containCapitalLetters
         )
-        var validationRegex = Regex(regexString)
+        val validationRegex = Regex(regexString)
         return inputString.matches(validationRegex)
     }
 
@@ -86,7 +86,6 @@ object ValidationUtil {
     fun isValidEmail(
         userEmail: String
     ): Boolean {
-        //return android.utils.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()
         val email = Pattern.compile(
 
             "[a-zA-Z0-9\\+]{1,256}" +

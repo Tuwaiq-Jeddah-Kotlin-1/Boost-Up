@@ -50,7 +50,7 @@
     <string name="Add_reminder">أنشِئ إشعار</string>
     <string name="join_boost_up">انضم لبووست اب</string>
     <string name="enter_your_email">البريد الإلكتروني</string>
-    <string name="select_date">اختر تاريخ</string>
+    <string name="select_date">حدد تاريخ البداية</string>
     <string name="select_time">اختر وقت</string>
     <string name="enter_your_name">اسم المستخدم</string>
     <string name="stay_signed_in">البقاء في وضع تسجل الدخول؟</string>

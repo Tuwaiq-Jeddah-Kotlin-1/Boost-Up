@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -53,19 +54,20 @@ class AddNotificationFragment : Fragment() {
         }
 
         binding.datePicker.setOnClickListener {
-            openDatePicker()
+            openDatePicker(view)
         }
         binding.timePicker.setOnClickListener {
-            openTimePicker()
+            openTimePicker(view)
         }
 
         binding.btnOk.setOnClickListener {
             if (binding.isEveryDay.isChecked) {
                 dateAsString = getString(R.string.daily)
                 everyDay = true
+
             }
             when {
-                selectedDay == 0 -> {
+                selectedHour == 0  -> {
                     Toast.makeText(
                         requireContext(),
                         getString(R.string.time_fields_cannot_be_empty),
@@ -95,19 +97,25 @@ class AddNotificationFragment : Fragment() {
 
     }
 
-    private fun openTimePicker() {
+    private fun openTimePicker(view: View) {
         val calendar = Calendar.getInstance()
         val timePicker = TimePickerDialog(
-            binding.root.context, TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            binding.root.context, { _, hour, minute ->
                 selectedHour = hour
                 selectedMinute = minute
                 timeAsString = "$selectedHour:$selectedMinute:00"
+                binding.timeIcon.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        view.context,
+                        R.drawable.ic_checkbox
+                    )
+                )
             }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
         )
         timePicker.show()
     }
 
-    private fun openDatePicker() {
+    private fun openDatePicker(view: View) {
         val calendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog(
             binding.root.context,
@@ -116,6 +124,12 @@ class AddNotificationFragment : Fragment() {
                 selectedMonth = monthOfYear
                 selectedYear = year
                 dateAsString = year.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth
+                binding.dateIcon.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        view.context,
+                        R.drawable.ic_checkbox
+                    )
+                )
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -127,16 +141,18 @@ class AddNotificationFragment : Fragment() {
 
     }
 
-    fun setUpReminder() {
-        var customCalendar = Calendar.getInstance()
-        customCalendar.set(
-            selectedYear,
-            selectedMonth,
-            selectedDay,
-            selectedHour,
-            selectedMinute,
-            0
-        )
+    private fun setUpReminder() {
+        val customCalendar = Calendar.getInstance()
+
+            customCalendar.set(
+                selectedYear,
+                selectedMonth,
+                selectedDay,
+                selectedHour,
+                selectedMinute,
+                0
+            )
+
         val reminderTime = customCalendar.timeInMillis
         val currentTime = Calendar.getInstance().timeInMillis
         if (reminderTime > currentTime) {

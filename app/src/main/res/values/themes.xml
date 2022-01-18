@@ -19,7 +19,8 @@
         <item name="android:statusBarColor" >#000000</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/colorBackground</item>
-
+        <item name="android:positiveButtonText">@color/black</item>
+        <item name="android:negativeButtonText">@color/black</item>
     </style>
 
 
