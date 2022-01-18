@@ -7,7 +7,7 @@
 ## :scroll: Description
 
 ### Libraries and technologies used:
-•	MVVM Architectural Pattern
+•	MVVM Architectural Pattern.\
 •	Jetpack libraries (Coroutines, Lifecycle, Navigation, WorkManager, and DataBinding).\
 •	Junit4.\
 •	Retrofit .\
