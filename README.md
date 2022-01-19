@@ -23,7 +23,7 @@
 ### SRS for [Boost Up](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
 ### Trello board of [Boost Up](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
 ### Prototype of [Boost Up](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
-### presentation of [Boost Up](https://drive.google.com/drive/recent)
+### presentation of [Boost Up](https://drive.google.com/file/d/1Ljrz4ru3jeZh-tOT6URxDxkeQtXRc3b7/view?usp=sharing)
 
 ## :camera_flash: Screenshots
  
