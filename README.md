@@ -20,11 +20,11 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 •	Email: mahila@gmail.com.\
 •	Password: Mahila1* .
 
-### Boost-Up App's [SRS](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
-### Boost-Up App's [Trello board](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
-### Boost-Up App's [Prototype](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
-### Boost-Up App's [Presentation](https://drive.google.com/file/d/1QrpXr9oXkNTL78toRrblD6JinzijZcpU/view?usp=sharing)
-### Boost-Up App's [Demo](https://drive.google.com/file/d/1Te0iFksD2dGdezaiSX4f9mdaDWHGP2rJ/view)
+### [SRS](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
+### [Trello board](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
+### [Prototype](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
+### [Presentation](https://drive.google.com/file/d/1QrpXr9oXkNTL78toRrblD6JinzijZcpU/view?usp=sharing)
+### [Demo](https://drive.google.com/file/d/1Te0iFksD2dGdezaiSX4f9mdaDWHGP2rJ/view)
 
 ## :camera_flash: Screenshots
  
