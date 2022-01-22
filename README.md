@@ -30,7 +30,7 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
  
   •	Sign in/up screens (Light mode):
 
-  <img src="Images\sing_screens.png" width="1000">
+  <img src="Images\sing_screen.png" width="1000">
   
  •	Home screens (Light mode):
 
