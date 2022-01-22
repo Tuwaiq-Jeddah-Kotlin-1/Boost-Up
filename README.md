@@ -42,7 +42,7 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 
  •	Home screens (Dark mode):
 
-  <img src="Images\home_screens_b.png" width="1100">
+  <img src="Images\dark_mode.png" width="1100">
    
  •	Refresh to get new quotes.
 
