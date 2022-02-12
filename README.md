@@ -4,7 +4,7 @@
 
 It is a mobile app for Android, that aims to boost the target user up by allowing the user to explore many motivational quotes✨.
 
-## :scroll: Description
+## Description
 
 ### Libraries and technologies used:
 •	MVVM Architectural Pattern.\
@@ -13,6 +13,7 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 •	Retrofit .\
 •	Firebase Authentication.\
 •	Cloud Firestore.\
+•	Figma.\
 •	[QuotableAPI](https://github.com/lukePeavey/quotable). 
 
  
@@ -23,10 +24,10 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 ### [SRS](https://docs.google.com/document/d/1xF_MbsooJ3ZabX1bLwrxRIHnb96w84Iy/edit)
 ### [Trello board](https://trello.com/b/ayhTI3mT/motivational-quotes-app)
 ### [Prototype](https://www.figma.com/proto/idLGi9AnYq1Xt4UEYEgfJS/Boost-Up-App?node-id=26%3A53&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A53)
-### [Presentation](https://drive.google.com/file/d/1E_XSPuAFz6urMPhPnO0gvJX7pq_ofo68/view?usp=sharing)
+### [Presentation](https://drive.google.com/file/d/19rcOEKifintQROno3h1gj6LcwE0yEgEZ/view?usp=sharing)
 ### [Demo](https://drive.google.com/file/d/1Te0iFksD2dGdezaiSX4f9mdaDWHGP2rJ/view)
 
-## :camera_flash: Screenshots
+## Screenshots
  
   •	Sign in/up screens (Light mode):
 
@@ -42,7 +43,7 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 
  •	Home screens (Dark mode):
 
-  <img src="Images\dark_mode.png" width="1100">
+  <img src="Images\home_screens_b.png" width="1100">
    
  •	Refresh to get new quotes.
 
@@ -55,11 +56,11 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
  •	One click to deactivate & reactivate the reminder.
 
  
-| <img src="Images\Refresh.gif" width="260">|<img src="Images\shareVia.gif" width="260">|<img src="Images\SetReminder.gif" width="260">|
+ <img src="Images\Refresh.gif" width="260"> <img src="Images\shareVia.gif" width="260"> <img src="Images\SetReminder.gif" width="260">
 
   
 
-|<img src="Images\PushReminder.gif" width="260">|<img src="Images\Deactivate_Reactivate_Reminder.gif" width="260">|<img src="Images\favorite.gif" width="260">|
+<img src="Images\PushReminder.gif" width="260"> <img src="Images\Deactivate_Reactivate_Reminder.gif" width="260"> <img src="Images\favorite.gif" width="260">
 
 
 • One click to undo removing from the favorites list.
@@ -68,4 +69,4 @@ It is a mobile app for Android, that aims to boost the target user up by allowin
 
 •	One click to change the language.
 
-|<img src="Images\undo.gif" width="260">|<img src="Images\mode.gif" width="260">|<img src="Images\language.gif" width="255">
+<img src="Images\undo.gif" width="260"> <img src="Images\mode.gif" width="260"> <img src="Images\language.gif" width="255">
